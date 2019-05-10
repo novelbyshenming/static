@@ -48,11 +48,11 @@
 
                 if ( tparams1[0] =='page' ){
 
-                    alert("tparams1   "+tparams1[0]+" "+tparams1[1])
-                    /*ajaxType(tparams1[1],tparams2[1])*/
+                   /* alert("tparams1   "+tparams1[0]+" "+tparams1[1])*/
+                    ajaxType(tparams1[1],tparams2[1])
                 }else{
-                    alert("tparams2   "+tparams2[0]+" "+tparams2[1])
-                    /*ajaxType(tparams2[1],tparams1[1])*/
+                    // alert("tparams2   "+tparams2[0]+" "+tparams2[1])
+                    ajaxType(tparams2[1],tparams1[1])
                 }
 
                 /*ajaxType(localUrl)*/
@@ -60,7 +60,10 @@
             }
 
             function ajaxType(page,key) {
-                var target = 'solr/collection1/select?start=0&rows=15&wt=json&indent=true&q=novel_keywords:'+localUrl
+
+                var start = (page-1)*15
+
+                var target = 'solr/collection1/select?start='+start+'&rows=15&wt=json&indent=true&q=novel_keywords:'+key
 
                 $.ajax({
 
@@ -83,21 +86,14 @@
 
                         }
 
-                        var start = jsonObject.response.start
-
                         var docs= jsonObject.response.docs
 
                         $(docs).each(function (index,ele) {
 
-                        "<tr><td class=\"odd\"><a href=\"#\">斗罗大陆4终极斗罗</a></td>"
-                            "<td class=\"hidden-xs\"><a href=\"#\" target=\"_blank\"> 第二百九十四章 樱落红</a></td>"
-                            "<td class=\"odd\">唐家三少</td>"
-                               "<td class=\"hidden-xs\">1568K</td>"
-                            "<td class=\"hidden-xs\">19-05-08</td>"
-                               "<td class=\"even\">连载中</td></tr>"
+                        console.log(ele.novel_name)
 
-                        })
-                        $("#searchTable").append(result)
+                        })/*$("#searchTable").append(result)*/
+
                     },
                     type:'GET'
                 });
