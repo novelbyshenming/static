@@ -36,12 +36,12 @@
 
                 localUrl = localUrl.substring(number+1)
 
-                ajaxType(localUrl)
+                /*ajaxType(localUrl)*/
 
             }
 
             function ajaxType(localUrl) {
-                var target = 'solr/collection1/select?start=0&rows=15&wt=json&indent=true&q=novel_keywords:'+localUrl
+                var target = 'solr/collection1/select?start=0&rows=15&wt=json&indent=true&q=novel_type:'+localUrl
 
                 $.ajax({
 
