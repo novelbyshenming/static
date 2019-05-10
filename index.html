@@ -31,8 +31,13 @@
     <script type="text/javascript">
 
         function search() {
-            var data = document.getElementById("bdcsMain").value
-            window.location.href="/search.html?"+data
+            var data1 = document.getElementById("bdcsMain1").value
+            var data2 = document.getElementById("bdcsMain2").value
+
+            if(data1 != null)
+            window.location.href="/search.html?"+data1
+            else
+                window.location.href="/search.html?"+data2
         }
         $(function () {
 
@@ -91,7 +96,7 @@
                         <div class="col-md-6 col-xs-8 pull-right">
                                 <div class="input-group">
                                     <input type="text" class="form-control"
-                                                                placeholder="电脑端 请输入您需要搜索的关键字" id="bdcsMain"
+                                                                placeholder="电脑端 请输入您需要搜索的关键字" id="bdcsMain1"
                                                                 name="searchkey">
                                     <span class="input-group-btn">
 
@@ -220,7 +225,7 @@
         <div class="col-md-4 pl0">
           <span class="visible-xs mb10">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="手机端  请输入您需要搜索的关键字" id="bdcsMain" name="searchkey">
+                    <input type="text" class="form-control" placeholder="手机端  请输入您需要搜索的关键字" id="bdcsMain2" name="searchkey">
                     <span class="input-group-btn">
                         <button class="btn btn-default"  onclick="search()">
                         <i class="fa fa-search fa-fw"></i>
