@@ -25,7 +25,60 @@
     <script src="/novel/js/search.js"></script>
 
     <!--[if lt IE 9]><script src="/novel/js/respond.min.js"></script><![endif]-->
+    <script type="text/javascript">
+        $(function () {
 
+            var localUrl = window.location.href;
+
+            var number = localUrl.lastIndexOf('?')
+
+            if (number >0 ){
+
+                localUrl = localUrl.substring(number+1)
+
+                ajaxType(localUrl)
+
+            }
+
+            function ajaxType(localUrl) {
+                var target = 'solr/collection1/select?start=0&rows=15&wt=json&indent=true&q=novel_type:'+localUrl
+
+                $.ajax({
+
+                    url:target,
+                    error:function(){
+
+                        alert("请求出错.")
+
+                    },
+                    success:function(data){
+
+                        var result="";
+
+                        var jsonObject = eval("("+data+")")
+
+                        var start = jsonObject.response.start
+
+                        var docs= jsonObject.response.docs
+
+                        $(docs).each(function (index,ele) {
+
+                        "<tr><td class=\"odd\"><a href=\"#\">斗罗大陆4终极斗罗</a></td>"
+                            "<td class=\"hidden-xs\"><a href=\"#\" target=\"_blank\"> 第二百九十四章 樱落红</a></td>"
+                            "<td class=\"odd\">唐家三少</td>"
+                               "<td class=\"hidden-xs\">1568K</td>"
+                            "<td class=\"hidden-xs\">19-05-08</td>"
+                               "<td class=\"even\">连载中</td></tr>"
+
+                        })
+                        $("#searchTable").append(result)
+                    },
+                    type:'GET'
+                });
+            }
+        })
+
+    </script>
 
 </head>
 <body>
@@ -70,7 +123,7 @@
 
     <div class="panel panel-default">
         <div class="panel-heading"><h1 class="fs-18 mg0"><strong>搜索结果</strong></h1></div>
-        <table class="table">
+        <table class="table" id="searchTable">
             <tbody>
 
             <tr align="center">
