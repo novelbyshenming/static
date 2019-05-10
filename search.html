@@ -44,22 +44,22 @@
 
                 var params2 = localUrl.substring(number+1)
 
-                var tparams2 = params1.split('=')
+                var tparams2 = params2.split('=')
 
-                if (tparams1[0] =='page'){
+                if ( tparams1[0] =='page' ){
 
                     alert("tparams1   "+tparams1[0]+" "+tparams1[1])
-                    /*ajaxType(localUrl,tp)*/
+                    /*ajaxType(tparams1[1],tparams2[1])*/
                 }else{
                     alert("tparams2   "+tparams2[0]+" "+tparams2[1])
-                    /*ajaxType(localUrl,page)*/
+                    /*ajaxType(tparams2[1],tparams1[1])*/
                 }
 
                 /*ajaxType(localUrl)*/
 
             }
 
-            function ajaxType(localUrl) {
+            function ajaxType(page,key) {
                 var target = 'solr/collection1/select?start=0&rows=15&wt=json&indent=true&q=novel_keywords:'+localUrl
 
                 $.ajax({
