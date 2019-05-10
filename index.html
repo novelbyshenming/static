@@ -31,11 +31,12 @@
     <script type="text/javascript">
         $(function () {
 
-            alert(6)
-            $("#toSearch").onclick(function () {
+
+            function search() {
                 var data = $("#bdcsMain").value
                 alert(data)
-            })
+            }
+
         })
     </script>
 
@@ -95,7 +96,7 @@
                                                                 name="searchkey">
                                     <span class="input-group-btn">
 
-                                    <button  class="btn btn-default" type="submit" id="toSearch">
+                                    <button  class="btn btn-default" type="submit" onclick="search()">
                                         <i class="fa fa-search fa-fw"> </i>
                                     </button>
                                     </span>
