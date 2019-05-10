@@ -44,12 +44,30 @@
 
                 localUrl = localUrl.substring(number+1)
 
-                ajaxType(localUrl)
+                number = localUrl.lastIndexOf('&')
 
+                var params1 = localUrl.substring(0,number)
+
+                var tparams1 = params1.split('=')
+
+                var params2 = localUrl.substring(number+1)
+
+                var tparams2 = params2.split('=')
+
+                if ( tparams1[0] =='page' ){
+
+                    /* alert("tparams1   "+tparams1[0]+" "+tparams1[1])*/
+                    ajaxType(tparams1[1],tparams2[1])
+                }else{
+                    // alert("tparams2   "+tparams2[0]+" "+tparams2[1])
+                    ajaxType(tparams2[1],tparams1[1])
+                }
             }
 
-            function ajaxType(localUrl) {
-                var target = 'solr/collection1/select?start=0&rows=15&wt=json&indent=true&q=novel_type:'+localUrl
+            function ajaxType(page,type) {
+
+                var start = (page-1)*28
+                var target = 'solr/collection1/select?start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+type
                  $.ajax({
                     url:target,
                     error:function(){
@@ -61,15 +79,14 @@
                        var start = jsonObject.response.start
                        var docs= jsonObject.response.docs
                        $(docs).each(function (index,ele) {
-                            var tIndex = index+1
-                            result+="<li class=\"list-group-item\">"
-                            result+="<i class=\"topNum\">"+tIndex+"</i>"
-                            result+= "<a href=\"#\" title=\""+ele.novel_name+"\">"+ele.novel_name+"</a>"
-                            result+= "<small class=\"text-muted\">/ "+ele.novel_author+"</small>"
-                            result+=  "<span class=\"pull-right text-muted\">"+ele.novel_type+"</span>"
-                            result+=  "</li>"
+
+                               result+="<tr><td><a href=\"#\" title=\""+ele.novel_name+"\" target=\"_blank\">"+ele.novel_name+"</a></td>"
+                               result+="<td class=\"hidden-xs\"><a class=\"text-muted\" href=\"#\" target=\"_blank\">"+ele.novel_latestChapters+"章节,暂时无数据+"</a></td>"
+                               result+="<td class=\"text-muted\">"+ele.novel_author+"</td>"
+                               result+="<td class=\"hidden-xs\">"+ele.novel_updateTimes+"</td>"
+                               result+="<td>连载中</td></tr>"
                         })
-                           $("#searchList").html(result)
+                           $("#typeTable").append()
                     },
                     type:'GET'
                 });
@@ -93,22 +110,12 @@
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
             <ul class="nav navbar-nav">
-                <li><a href="solr/collection1/select?&wt=json&indent=true&q=novel_keywords:XXL" title="玄幻魔法">玄幻魔法</a></li>
-                <li><a href="#" title="武侠修真">武侠修真</a></li>
-                <li><a href="#" title="都市言情">都市言情</a></li>
-                <li><a href="#" title="历史军事">历史军事</a></li>
-                <li><a href="#" title="侦探推理">侦探推理</a></li>
-                <li><a href="#" title="网游动漫">网游动漫</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">更多分类<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#" title="科幻小说">科幻小说</a></li>
-                        <li><a href="#" title="恐怖灵异">恐怖灵异</a></li>
-                        <li><a href="#" title="穿越小说">穿越小说</a></li>
-                        <li><a href="#" title="其他类型">其他类型</a></li>
-                    </ul>
-                </li>
-
+                <li><a href="/type.html?page=1&type=玄幻" title="玄幻魔法">玄幻魔法</a></li>
+                <li><a href="/type.html?page=1&type=武侠" title="武侠修真">武侠修真</a></li>
+                <li><a href="/type.html?page=1&type=都市" title="都市言情">都市言情</a></li>
+                <li><a href="/type.html?page=1&type=穿越" title="历史军事">历史军事</a></li>
+                <li><a href="/type.html?page=1&type=科幻" title="侦探推理">侦探推理</a></li>
+                <li><a href="/type.html?page=1&type=网游" title="网游动漫">网游动漫</a></li>
                 <li><a href="#" title="完本小说">完本小说</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -165,9 +172,9 @@
         <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading"><h1 class="fs-16 mg0"><i class="fa fa-list fa-fw"></i>玄幻魔法最新更新</h1></div>
-                <table class="table">
-                    <tbody><tr>
-
+                <table class="table" id="typeTable">
+                    <tbody>
+                    <tr>
                         <th>书名</th>
                         <th class="hidden-xs">最新章节</th>
                         <th>作者</th>
@@ -175,18 +182,11 @@
                         <th>连载状态</th>
                     </tr>
 
-                    <tr>
-
-                        <td>
-                            <a href="https://www.biqukan.cc/book/42304/" title="恶魔就在身边" target="_blank">恶魔就在身边</a>
-                        </td>
-                        <td class="hidden-xs">
-                            <a class="text-muted" href="https://www.biqukan.cc/book/42304/32202234.html" target="_blank">02120 进化</a>
-                        </td>
+                    <tr><td><a href="#" title="恶魔就在身边" target="_blank">恶魔就在身边</a></td>
+                        <td class="hidden-xs"><a class="text-muted" href="#" target="_blank">02120 进化</a></td>
                         <td class="text-muted">汉宝</td>
                         <td class="hidden-xs">19-5-9</td>
-                        <td>连载中</td>
-                    </tr>
+                        <td>连载中</td></tr>
 
                     </tbody>
                 </table>
