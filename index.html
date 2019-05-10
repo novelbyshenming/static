@@ -31,11 +31,11 @@
     <script type="text/javascript">
         $(function () {
 
-
-
-
+            $("#toSearch").onclick(function () {
+                var data = $("#bdcsMain").value
+                alert(data)
+            })
         })
-
     </script>
 
 </head>
@@ -83,21 +83,22 @@
         <div class="col-md-8">
             <div class="panel panel-default hidden-xs">
                 <div class="panel-heading">
-                    <div class="row"><h5 class="pull-left col-xs-4"><i class="fa fa-diamond fa-fw"></i>本站推荐</h5>
+                    <div class="row">
+                        <h5 class="pull-left col-xs-4">
+                        <i class="fa fa-diamond fa-fw"></i>本站推荐
+                        </h5>
                         <div class="col-md-6 col-xs-8 pull-right">
-                            <form action="#" target="_blank">
                                 <div class="input-group">
                                     <input type="text" class="form-control"
                                                                 placeholder="请输入您需要搜索的关键字" id="bdcsMain"
                                                                 name="searchkey">
                                     <span class="input-group-btn">
 
-                                    <button  class="btn btn-default" type="submit">
-                                        <i class="fa fa-search fa-fw"></i>
+                                    <button  class="btn btn-default" type="submit" id="toSearch">
+                                        <i class="fa fa-search fa-fw"> </i>
                                     </button>
                                     </span>
                                 </div>
-                            </form>
                         </div>
                         <div class="clear"></div>
                     </div>
@@ -116,21 +117,27 @@
                                 class="text-warning fs-12">11247人在看</span></div>
                     </a>
                     </div>
-                    <div class="col-md-3 col-xs-6 mb10 mt10"><a class="thumbnail"
+                    <div class="col-md-3 col-xs-6 mb10 mt10">
+                        <a class="thumbnail"
                                                                 href="https://www.biqukan.cc/book/51990/"
                                                                 title="仙宫">
                         <img
                             src="https://www.biqukan.cc/files/article/image/51/51990/51990s.jpg" alt="仙宫"
                             style="height:182px;">
-                        <div class="caption"><strong>仙宫</strong><br><span
-                                class="text-muted fs-12">打眼 / 著</span><br><span
-                                class="text-warning fs-12">7390人在看</span></div>
+                        <div class="caption">
+                            <strong>仙宫</strong><br>
+                            <span
+                                class="text-muted fs-12">打眼 / 著</span><br>
+                            <span
+                                class="text-warning fs-12">7390人在看</span>
+                        </div>
                     </a>
                     </div>
                     <div class="col-md-3 col-xs-6 mb10 mt10">
                         <a class="thumbnail"
                                                                 href="https://www.biqukan.cc/book/41888/"
-                                                                title="天下第九"><img
+                                                                title="天下第九">
+                            <img
                             src="https://www.biqukan.cc/files/article/image/41/41888/41888s.jpg" alt="天下第九"
                             style="height:182px;">
                         <div class="caption">
@@ -144,13 +151,15 @@
                     <div class="col-md-3 col-xs-6 mb10 mt10">
                         <a class="thumbnail"
                                                                 href="https://www.biqukan.cc/book/42287/"
-                                                                title="三寸人间"><img
+                                                                title="三寸人间">
+                            <img
                             src="https://www.biqukan.cc/files/article/image/42/42287/42287s.jpg" alt="三寸人间"
                             style="height:182px;">
                         <div class="caption">
-                            <strong>三寸人间</strong><br><span
-                                class="text-muted fs-12">耳根 / 著</span><br><span
-                                class="text-warning fs-12">10619人在看</span>
+                            <strong>三寸人间</strong>
+                            <br>
+                            <span class="text-muted fs-12">耳根 / 著</span><br>
+                            <span  class="text-warning fs-12">10619人在看</span>
                         </div>
                     </a>
                     </div>
@@ -160,18 +169,16 @@
                                                                 title="重生之都市仙尊"><img
                             src="https://www.biqukan.cc/files/article/image/40/40091/40091s.jpg" alt="重生之都市仙尊"
                             style="height:182px;">
-                        <div class="caption"><strong>重生之都市仙尊</strong><br><span
-                                class="text-muted fs-12">洛书 / 著</span><br><span
-                                class="text-warning fs-12">493992人在看</span></div>
+                        <div class="caption">
+                            <strong>重生之都市仙尊</strong><br>
+                            <span class="text-muted fs-12">洛书 / 著</span><br>
+                            <span class="text-warning fs-12">493992人在看</span>
+                        </div>
                     </a>
                     </div>
                     <div class="col-md-3 col-xs-6 mb10 mt10">
-                        <a class="thumbnail"
-                                                                href="https://www.biqukan.cc/book/20216/"
-                                                                title="飞剑问道">
-                            <img
-                            src="https://www.biqukan.cc/files/article/image/20/20216/20216s.jpg" alt="飞剑问道"
-                            style="height:182px;">
+                        <a class="thumbnail"  href="https://www.biqukan.cc/book/20216/" title="飞剑问道">
+                            <img src="https://www.biqukan.cc/files/article/image/20/20216/20216s.jpg" alt="飞剑问道" style="height:182px;">
                         <div class="caption">
                             <strong>飞剑问道</strong><br><span
                                 class="text-muted fs-12">我吃西红柿 / 著</span><br><span
@@ -179,12 +186,9 @@
                         </div>
                     </a>
                     </div>
-                    <div class="col-md-3 col-xs-6 mb10 mt10"><a class="thumbnail"
-                                                                href="https://www.biqukan.cc/book/47583/"
-                                                                title="开天录">
-                        <img
-                            src="https://www.biqukan.cc/files/article/image/47/47583/47583s.jpg" alt="开天录"
-                            style="height:182px;">
+                    <div class="col-md-3 col-xs-6 mb10 mt10">
+                        <a class="thumbnail" href="https://www.biqukan.cc/book/47583/"  title="开天录">
+                        <img  src="https://www.biqukan.cc/files/article/image/47/47583/47583s.jpg" alt="开天录"  style="height:182px;">
                         <div class="caption"><strong>开天录</strong><br><span
                                 class="text-muted fs-12">血红 / 著</span><br><span
                                 class="text-warning fs-12">13029人在看</span>
