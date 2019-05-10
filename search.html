@@ -41,9 +41,9 @@
             }
 
             function ajaxType(localUrl) {
-                var target = 'solr/collection1/select?start=0&rows=15&wt=json&indent=true&q=novel_type:'+localUrl
+                var target = 'solr/collection1/select?start=0&rows=15&wt=json&indent=true&q=novel_keywords:'+localUrl
 
-                /*$.ajax({
+                $.ajax({
 
                     url:target,
                     error:function(){
@@ -53,9 +53,16 @@
                     },
                     success:function(data){
 
-                        var result="";
+                        var result=""
 
                         var jsonObject = eval("("+data+")")
+
+                        /* 查询到的 总数量*/
+                        var numFound = jsonObject.response.numFound
+
+                        if(numFound>0){
+
+                        }
 
                         var start = jsonObject.response.start
 
@@ -74,7 +81,7 @@
                         $("#searchTable").append(result)
                     },
                     type:'GET'
-                });*/
+                });
             }
         })
 
