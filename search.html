@@ -36,12 +36,29 @@
 
                 localUrl = localUrl.substring(number+1)
 
+                number = localUrl.lastIndexOf('&')
+
+                var params1 = localUrl.substring(0,number)
+
+                var tparams1 = params1.split('=')
+
+                var params2 = localUrl.substring(number+1)
+
+                var tparams2 = params1.split('=')
+
+                if (tparams1[0] =='page'){
+
+                    alert("tparams1   "+tparams1[0])
+                }else{
+                    alert("tparams2   "+tparams2[0])
+                }
+
                 /*ajaxType(localUrl)*/
 
             }
 
             function ajaxType(localUrl) {
-                var target = 'solr/collection1/select?start=0&rows=15&wt=json&indent=true&q=novel_type:'+localUrl
+                var target = 'solr/collection1/select?start=0&rows=15&wt=json&indent=true&q=novel_keywords:'+localUrl
 
                 $.ajax({
 
