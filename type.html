@@ -80,7 +80,7 @@
                        var docs= jsonObject.response.docs
                        $(docs).each(function (index,ele) {
 
-                               result+="<tr><td><a href=\"#\" title=\""+ele.novel_name+"\" target=\"_blank\">"+ele.novel_name+"</a></td>"
+                               result+="<tr><td><a href=\"/introduction.html?id="+ele.id+"\" title=\""+ele.novel_name+"\" target=\"_blank\">"+ele.novel_name+"</a></td>"
                                result+="<td class=\"hidden-xs\"><a class=\"text-muted\" href=\"#\" target=\"_blank\">"+ele.novel_latestChapters+"章节,暂时无数据"+"</a></td>"
                                result+="<td class=\"text-muted\">"+ele.novel_author+"</td>"
                                result+="<td class=\"hidden-xs\">"+ele.novel_updateTimes+"</td>"
