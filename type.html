@@ -81,9 +81,11 @@
                        $(docs).each(function (index,ele) {
 
                                result+="<tr><td><a href=\"/introduction.html?id="+ele.id+"\" title=\""+ele.novel_name+"\" target=\"_blank\">"+ele.novel_name+"</a></td>"
-                               result+="<td class=\"hidden-xs\"><a class=\"text-muted\" href=\"/read.html?id="+ele.id+"&cid\" target=\"_blank\">"+ele.novel_latestChapters+"章节,暂时无数据"+"</a></td>"
+                               result+="<td class=\"hidden-xs\"><a class=\"text-muted\" href=\"/read.html?id="+ele.id+"&cid="+ele.novel_latestChaptersUrl+"\" target=\"_blank\">"+ele.novel_latestChapters+"章节,暂时无数据"+"</a></td>"
                                result+="<td class=\"text-muted\">"+ele.novel_author+"</td>"
-                               result+="<td class=\"hidden-xs\">"+ele.novel_updateTimes+"</td>"
+                               var tdate = ele.novel_tdate
+                               tdate = tdate.substring( 0, tdate.lastIndexOf(':'))
+                               result+="<td class=\"hidden-xs\">"+tdate+"</td>"
                                result+="<td>连载中</td></tr>"
                         })
                            $("#typeTable").append(result)

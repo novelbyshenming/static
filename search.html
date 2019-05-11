@@ -88,10 +88,13 @@
                         $(docs).each(function (index,ele) {
 
                             result+="<tr><td class=\"odd\"><a href=\"/introduction.html?id="+ele.id+"\">"+ele.novel_name+"</a></td>"
-                            result+="<td class=\"hidden-xs\"><a href=\"#\" target=\"_blank\"> "+ele.novel_latestChapters+"章节,暂时无数据"+"</a></td>"
+                            result+="<td class=\"hidden-xs\"><a href=\"/read.html?id="+ele.id+"&cid="+ele.novel_latestChaptersUrl+"\" target=\"_blank\"> "+ele.novel_latestChapters+"</a></td>"
                             result+="<td class=\"odd\">"+ele.novel_author+"</td>"
                             result+="<td class=\"hidden-xs\">"+ele.novel_type+"</td>"
-                            result+="<td class=\"hidden-xs\">"+ele.novel_updateTimes+"</td>"
+                            var tdate = ele.novel_tdate
+                            tdate = tdate.substring( 0, tdate.lastIndexOf(':'))
+
+                            result+="<td class=\"hidden-xs\">"+ele.tdate+"</td>"
                             result+="<td class=\"even\">连载中</td></tr>"
 
                         })
