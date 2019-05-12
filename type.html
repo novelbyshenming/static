@@ -154,7 +154,7 @@
                             if(numFound%15==0)
                                 pageNumber=numFound/15
                             else
-                                pageNumber=numFound/15 + 1
+                                pageNumber=Math.floor(numFound/15) + 1
 
                             // page  为当前页   5
                             if(pageNumber>10){
