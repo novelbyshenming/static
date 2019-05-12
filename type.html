@@ -56,6 +56,8 @@
 
                 var target=''
 
+                alert(params1)
+
                 if ( tparams1[0] =='page' ){
 
                     var start = (tparams1[1]-1)*28
@@ -167,8 +169,6 @@
                                 pageEnd = pageNumber+1
                                 getPage(page,pageStart,pageEnd,pageNumber,params)
                             }
-
-                            alert(numFound)
                         }
 
                        var docs= jsonObject.response.docs
