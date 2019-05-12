@@ -92,7 +92,6 @@
 
             function getPage(page,pageStart,pageEnd) {
 
-                alert("getPage    "+params+ "  pageNumber  "+pageNumber)
                 var result = ''
 
                 result+="<li class=\"disabled\"> <span>"+page+"/"+pageNumber+"</span></li>"
@@ -129,7 +128,6 @@
             }
             function ajaxType(target,page) {
 
-                 alert("ajaxType  "+ params)
                  $.ajax({
                     url:target,
                     error:function(){
