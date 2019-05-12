@@ -93,10 +93,10 @@
 
             function getPage(page,pageStart,pageEnd,pageNumber) {
 
-                alert("getPage    "+params)
+                alert("getPage    "+params+ "  pageNumber  "+pageNumber)
                 var result = ''
 
-                result+="<li class=\"disabled\"> <span>"+page+"//"+pageNumber+"</span></li>"
+                result+="<li class=\"disabled\"> <span>"+page+"/"+pageNumber+"</span></li>"
 
                 result+="<li><a href=\"/type.html?page=1&"+params+"\" class=\"first\">1</a></li>"
 
@@ -104,7 +104,7 @@
                 if(page !=1)
                     lastPage = page-1
 
-                result+="<li><a href=\"/type.html?page="+lastPage+"&"+params+"\" class=\"prev\"></a></li>"
+                result+="<li><a href=\"/type.html?page="+lastPage+"&"+params+"\" class=\"prev\">&lt;</a></li>"
 
                 for (var i = pageStart ; i < pageEnd ; i++ ){
 
@@ -116,7 +116,7 @@
                 }
 
                 var nextPage = page+1
-                
+
                 if( page==pageNumber )
                     nextPage=page
 
