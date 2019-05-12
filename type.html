@@ -113,10 +113,10 @@
 
                 }
 
-                var nextPage = page+1
+                var nextPage = parseInt(page)+1
 
                 if( pageNumber>page )
-                    nextPage=eval('page+1')
+                    nextPage=parseInt(page)+1
                 else
                     nextPage=pageNumber
 
@@ -164,7 +164,7 @@
 
                                     if(( page+4)<pageNumber){
                                         pageStart = page-5
-                                        pageEnd = eval('page+5')
+                                        pageEnd = parseInt(page)+5
                                         console.log(pageEnd +  "  "+ page)
                                     }
                                     else{
@@ -181,7 +181,7 @@
                             }else{
 
                                 pageStart = 1
-                                pageEnd =  eval('pageNumber+1')
+                                pageEnd = parseInt(pageNumber)+1
                                 getPage(page,pageStart,pageEnd)
                             }
                         }
