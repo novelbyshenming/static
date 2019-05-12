@@ -113,8 +113,8 @@
 
                         $(docs).each(function (index,ele) {
 
-                            result+="<tr><td class=\"odd\"><a href=\"/introduction.html?id="+ele.id+"\">"+ele.novel_name+"</a></td>"
-                            result+="<td class=\"hidden-xs\"><a href=\"/read.html?id="+ele.id+"&cid="+ele.novel_latestChaptersUrl+"\" target=\"_blank\"> "+ele.novel_latestChapters+"</a></td>"
+                            result+="<tr><td class=\"odd\"><a href=\"/introduction.html?nid="+ele.id+"\">"+ele.novel_name+"</a></td>"
+                            result+="<td class=\"hidden-xs\"><a href=\"/read.html?nid="+ele.id+"&cid="+ele.novel_latestChaptersUrl+"\" target=\"_blank\"> "+ele.novel_latestChapters+"</a></td>"
                             result+="<td class=\"odd\">"+ele.novel_author+"</td>"
                             result+="<td class=\"hidden-xs\">"+ele.novel_type+"</td>"
                             var tdate = ele.novel_tdate
