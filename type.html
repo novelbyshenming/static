@@ -60,7 +60,7 @@
 
                     var start = (tparams1[1]-1)*28
 
-                    if (tparams2[0]=='complete'){
+                    if (tparams2[1]=='complete'){
 
                         target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_state:已完成'
                     }else{
@@ -73,7 +73,7 @@
 
                     var start = (tparams2[1]-1)*28
 
-                    if (tparams1[0]=='complete'){
+                    if (tparams1[1]=='complete'){
 
                         target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_state:已完成'
                     }else{
