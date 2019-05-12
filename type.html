@@ -56,8 +56,6 @@
 
                 var target=''
 
-                alert(params1)
-
                 if ( tparams1[0] =='page' ){
 
                     var start = (tparams1[1]-1)*28
@@ -89,6 +87,7 @@
 
             function getPage(page,pageStart,pageEnd,pageNumber,params) {
 
+                alert(params)
                 var result = ''
 
                 result+="<li class=\"disabled\"> <span>"+page+"//"+pageNumber+"</span></li>"
