@@ -68,13 +68,52 @@
                     url:'/novel/introduction.n',
                     data:{"nid":params[1]},
 
+
                     error:function(){
                         alert("请求出错.")
                     },
                     success:function(data){
 
                         data = eval(data)
-                        alert(data.novelName+" "+data.introduction)
+                        var result =''
+                        result+="<li><a href='/' title='笔趣阁'><i class='fa fa-home fa-fw'></i>首页</a></li>"
+                        result+="<li><a href='/type.html?page=1&type='"+data.type+" target='_blank' title='"+data.type+"'>"+data.type+"</a></li>"
+                        result+="<li class='active'>"+data.novelName+"</li>"
+                        $('#introductionHead').append(result)
+
+                        result=''
+                        result+="<div class='col-md-2 col-xs-4 hidden-xs'>"
+                        result+="<img class='img-thumbnail' alt='"+data.novelName+"' src='"+data.image+"' title='"+data.novelName+"' width='140' height='180'>"
+                        result+="</div>"
+                        result+="<div class='col-md-10'>"
+                        result+="<h1 class='bookTitle'>"+data.novelName+"</h1>"
+                        result+="<p class='booktag'>"
+                        result+="<a class='red' href='/search.html?page=1&key='"+data.author+" target='_blank' title='作者："+data.author+"'>"+data.author+"</a>"
+                        result+="<a class='red' href='/type.html?page=1&type='"+data.type+" target='_blank' title='"+data.type+"'>"+data.type+"</a>"
+                        result+="<span class='blue'>阅读数："+data.readCount+"</span>"
+                        result+="<span class='blue'>"+data.state+"</span>"
+                        result+="</p>"
+                        result+="<p>"
+                        result+="最新章节：<a href='#' title='获得章节的时候再构造....'>无</a>"
+                        result+="<span class='hidden-xs'>（获得章节的时候再构造....）</span>"
+                        result+="</p>"
+                        result+="<div class='row'>"
+                        result+="<span class='col-md-8'>"
+                        result+="<button class='btn btn-sm btn-info' type='button'>"
+                        result+="<i class='fa fa-thumbs-up fa-fw'></i>投票推荐"
+                        result+="</button>"
+                        result+="<button class='btn btn-sm btn-success' type='button'>"
+                        result+="<i class='fa fa-plus fa-fw'></i>加入书架"
+                        result+="</button>"
+                        result+="<a class='errorlink btn btn-sm btn-warning' href='#' target='_blank' rel='nofollow'>"
+                        result+="<i class='fa fa-comments fa-fw'></i>留言反馈</a></span>"
+                        result+="<div class='clear'></div></div><hr>"
+                        result+="<p class='text-muted' id='bookIntro' style=''>"
+                        result+="<img class='img-thumbnail pull-left visible-xs' style='margin:0 5px 0 0' alt='"+data.novelName+"' src='"+data.image+"' title='"+data.novelName+"' width='80' height='120'>"
+                        result+=""+data.introduction+""
+                        result+="</p></div><div class='clear'><br></div>"
+                        $('#novelIntroduction').append(result)
+
                     },
                     type:'GET'
                 });
@@ -123,17 +162,18 @@
 </div>
 
 <div class="container body-content">
-    <ol class="breadcrumb hidden-xs">
-        <li><a href="https://www.biqukan.cc/" title="笔趣阁"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <ol class="breadcrumb hidden-xs" id="introductionHead">
+        <!--<li><a href="https://www.biqukan.cc/" title="笔趣阁"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li><a href="https://www.biqukan.cc/fenlei1/1.html" target="_blank" title="玄幻魔法">玄幻魔法</a></li>
-        <li class="active">极拳暴君</li>
+        <li class="active">极拳暴君</li>-->
     </ol>
 
     <div class="panel panel-default">
         <div class="panel-body">
-            <div class="row">
-                <div class="col-md-2 col-xs-4 hidden-xs">
-                    <img class="img-thumbnail" alt="极拳暴君" src="#" title="极拳暴君" width="140" height="180"></div>
+            <div class="row" id="novelIntroduction">
+               <!-- <div class="col-md-2 col-xs-4 hidden-xs">
+                    <img class="img-thumbnail" alt="极拳暴君" src="#" title="极拳暴君" width="140" height="180">
+                </div>
                 <div class="col-md-10">
                     <h1 class="bookTitle">极拳暴君</h1>
                     <p class="booktag">
@@ -169,8 +209,10 @@
                         &nbsp;&nbsp;陈冲知道，在这崩坏的世界，拳即是权，唯有拳头在先，道理才能深入人心！<br>
                     </p>
                 </div>
-                <div class="clear"></div>
+                <div class="clear"></div>-->
             </div>
+
+
 
             <!-- 自适应 -->
             <ins class="adsbygoogle" style="display: block; height: 90px;" data-ad-client="ca-pub-4699940173522722"
@@ -190,6 +232,8 @@
             </ins>
         </div>
     </div>
+
+
     <div class="panel panel-danger">
         <div class="panel-heading">
             <i class="fa fa-history fa-fw"></i>
