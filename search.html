@@ -54,6 +54,10 @@
                 }
             }
 
+            function getPage(pageStart,pageEnd) {
+
+            }
+
             function ajaxType(page,key) {
 
                 var start = (page-1)*15
@@ -77,9 +81,31 @@
                         /* 查询到的 总数量*/
                         var numFound = jsonObject.response.numFound
 
+                        // 页数      一页15 个小说信息  显示十页
+                        var pageNumber = 1
+                        var pageStart = 1
+                        var pageEnd = 2
+
                         if(numFound>0){
 
                             // 进行分页
+                            if(numFound%15==0)
+                                pageNumber=numFound/15
+                            else
+                                pageNumber=numFound/15 + 1
+
+                            // page  为当前页   5
+                            if(pageNumber>10){
+
+                                if( (page - 5)>1 ){
+
+                                    pageStart = page -5
+                                    pageEnd = pageStart + 10
+
+                                    getPage(pageStart,pageEnd)
+                                }
+                            }
+
                             alert(numFound)
                         }
 

@@ -68,7 +68,7 @@
                         target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+tparams2[1]
                     }
 
-                    ajaxType(target,tparams1[1])
+                    ajaxType(target,tparams1[1],params2)
                 }else{
 
                     var start = (tparams2[1]-1)*28
@@ -81,11 +81,44 @@
                         target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+tparams1[1]
                     }
 
-                    ajaxType(target,tparams2[1])
+                    ajaxType(target,tparams2[1],params1)
                 }
             }
 
-            function ajaxType(target,page) {
+            function getPage(page,pageStart,pageEnd,pageNumber,params) {
+
+                var result = ''
+
+                result+="<li class=\"disabled\"> <span>"+page+"//"+pageNumber+"</span></li>"
+
+                result+="<li><a href=\"/type.html?page=1&"+params+"\" class=\"first\">1</a></li>"
+
+                var lastPage =1
+                if(page !=1)
+                    lastPage = page-1
+
+                result+="<li><a href=\"/type.html?page="+lastPage+"&"+params+"\" class=\"prev\"></a></li>"
+
+                for (var i = pageStart ; i < pageEnd ; i++ ){
+
+                    if(i==page)
+                        result+="<li class=\"active\"><span>"+page+"</span></li>"
+                    else
+                        result+="<li><a href=\"/type.html?page="+i+"&"+params+"\">"+i+"</a></li>"
+
+                }
+
+                var nextPage = page+1
+                if(page==pageNumber)
+                    nextPage=page
+
+                result+="<li><a href=\"/type.html?page="+nextPage+"&"+params+"\" class=\"next\">&gt;</a></li>"
+                result+"<li><a href=\"/type.html?page="+pageNumber+"&"+params+"\" class=\"last\">"+pageNumber+"</a></li>"
+
+                $('#pagelink').append(result)
+
+            }
+            function ajaxType(target,page,params) {
 
                  $.ajax({
                     url:target,
@@ -101,10 +134,41 @@
                         /* 查询到的 总数量*/
                         var numFound = jsonObject.response.numFound
 
+                        // 页数      一页15 个小说信息  显示十页
+                        var pageNumber = 1
+                        var pageStart = 1
+                        var pageEnd = 2
+
                         if(numFound>0){
 
                             // 进行分页
+                            if(numFound%15==0)
+                                pageNumber=numFound/15
+                            else
+                                pageNumber=numFound/15 + 1
 
+                            // page  为当前页   5
+                            if(pageNumber>10){
+
+                                if( (page - 5)>1 ){
+
+                                    pageStart = page -5
+                                    pageEnd = pageStart + 10
+
+                                    getPage(page,pageStart,pageEnd,pageNumber,params)
+                                }else{
+                                    pageStart = 1
+                                    pageEnd =11
+                                    getPage(page,pageStart,pageEnd,params)
+                                }
+                            }else{
+
+                                pageStart = 1
+                                pageEnd = pageNumber+1
+                                getPage(page,pageStart,pageEnd,pageNumber,params)
+                            }
+
+                            alert(numFound)
                         }
 
                        var docs= jsonObject.response.docs
@@ -234,54 +298,15 @@
                 </table>
             </div>
             <ul class="pagination" id="pagelink">
-                <li class="disabled">
-                    <span>1/172</span>
-                </li>
-                <li>
-                    <a href="https://www.biqukan.cc/fenlei1/1.html" class="first">1</a>
-                </li>
-                <li>
-                    <a href="https://www.biqukan.cc/fenlei1/1.html" class="pgroup">&lt;&lt;</a>
-                </li>
-                <li class="active">
-                    <span>1</span>
-                </li>
-                <li>
-                    <a href="https://www.biqukan.cc/fenlei1/2.html">2</a>
-                </li>
-                <li>
-                    <a href="https://www.biqukan.cc/fenlei1/3.html">3</a>
-                </li>
-                <li>
-                    <a href="https://www.biqukan.cc/fenlei1/4.html">4</a>
-                </li>
-                <li>
-                    <a href="https://www.biqukan.cc/fenlei1/5.html">5</a>
-                </li>
-                <li>
-                    <a href="https://www.biqukan.cc/fenlei1/6.html">6</a>
-                </li>
-                <li>
-                    <a href="https://www.biqukan.cc/fenlei1/7.html">7</a>
-                </li>
-                <li>
-                    <a href="https://www.biqukan.cc/fenlei1/8.html">8</a>
-                </li>
-                <li>
-                    <a href="https://www.biqukan.cc/fenlei1/9.html">9</a>
-                </li>
-                <li>
-                    <a href="https://www.biqukan.cc/fenlei1/10.html">10</a>
-                </li>
-                <li>
-                    <a href="https://www.biqukan.cc/fenlei1/2.html" class="next">&gt;</a>
-                </li>
-                <li>
-                    <a href="https://www.biqukan.cc/fenlei1/16.html" class="ngroup">&gt;&gt;</a>
-                </li>
-                <li>
-                    <a href="https://www.biqukan.cc/fenlei1/172.html" class="last">172</a>
-                </li>
+
+
+                <!--<li class="disabled"> <span>1/172</span></li>
+                <li><a href="https://www.biqukan.cc/fenlei1/1.html" class="first">1</a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="https://www.biqukan.cc/fenlei1/2.html">2</a></li>
+                <li><a href="https://www.biqukan.cc/fenlei1/2.html" class="next">&gt;</a></li>
+                <li><a href="https://www.biqukan.cc/fenlei1/172.html" class="last">172</a></li>-->
+
             </ul>
         </div>
     </div>
