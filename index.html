@@ -39,7 +39,36 @@
             else
                  window.location.href="/search.html?page=1&key="+data2
         }
+
+
         $(function () {
+
+            $.ajax({
+                url:'solr/collection1/select?q=*%3A*&sort=novel_updateTimes+desc&rows=30&wt=json&indent=true',
+                error:function(){
+                    alert("请求出错.")
+                },
+                success:function(data){
+
+                    var result="";
+                    var jsonObject = eval("("+data+")")
+                    var start = jsonObject.response.start
+                    var docs= jsonObject.response.docs
+                    $(docs).each(function (index,ele) {
+
+                        "<tr><td class=\"text-muted hidden-xs\" width=\"10%\">"+ele.novel_type+"</td>"
+                        "<td><a href=\"/introduction.html?id=\"+ele.id+\" title=\""+ele.novel_name+"\">"+ele.novel_name+"</a></td>"
+                        "<td class=\"hidden-xs\">"
+                        "<a href=\"/read.html?id=\"+ele.id+\"&cid=\"+ele.novel_latestChaptersUrl+\"title=\""+ele.novel_latestChapters+"\">"+ele.novel_latestChapters+"</a></td>"
+                        "<td class=\"text-muted fs-12\" title=\""+ele.novel_author+"\">"+ele.novel_author+"</td>"
+                        var tdate = ele.novel_tdate
+                        tdate = tdate.substring( 0, tdate.lastIndexOf(':'))
+                        "<td class=\"fs-12\">"+tdate+"</td></tr>"
+                    })
+                },
+                type:'GET'
+            });
+
 
         })
     </script>
@@ -489,14 +518,12 @@
 
 
                    <!--一共   三十个  tr   -->
-                    <tr>
-                        <td class="text-muted hidden-xs" width="10%">玄幻魔法</td>
+                    <tr><td class="text-muted hidden-xs" width="10%">玄幻魔法</td>
                         <td><a href="https://www.biqukan.cc/book/1864/" title="逆剑狂神">逆剑狂神</a></td>
-                        <td class="hidden-xs"><a href="https://www.biqukan.cc/book/1864/32175716.html"
-                                                 title="第6526章 仙剑！碑！神雷！">第6526章 仙剑！碑！神雷！</a></td>
+                        <td class="hidden-xs">
+                            <a href="https://www.biqukan.cc/book/1864/32175716.html"title="第6526章 仙剑！碑！神雷！">第6526章 仙剑！碑！神雷！</a></td>
                         <td class="text-muted fs-12" title="一剑清新">一剑清新</td>
-                        <td class="fs-12">5-7 20:53</td>
-                    </tr>
+                        <td class="fs-12">5-7 20:53</td></tr>
 
 
                     </tbody>

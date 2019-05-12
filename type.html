@@ -96,8 +96,8 @@
                         alert("请求出错.")
                     },
                     success:function(data){
-                         var result="";
-                         var jsonObject = eval("("+data+")")
+                        var result="";
+                        var jsonObject = eval("("+data+")")
                        var start = jsonObject.response.start
                        var docs= jsonObject.response.docs
                        $(docs).each(function (index,ele) {
