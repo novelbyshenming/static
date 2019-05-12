@@ -54,9 +54,6 @@
 
                 var tparams2 = params2.split('=')
 
-
-                console.log()
-
                 var target=''
 
                 if ( tparams1[0] =='page' ){
@@ -71,7 +68,7 @@
                         target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+tparams2[1]
                     }
 
-                    ajaxType(target)
+                    ajaxType(target,tparams1[1])
                 }else{
 
                     var start = (tparams2[1]-1)*28
@@ -84,11 +81,11 @@
                         target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+tparams1[1]
                     }
 
-                    ajaxType(target)
+                    ajaxType(target,tparams2[1])
                 }
             }
 
-            function ajaxType(target) {
+            function ajaxType(target,page) {
 
                  $.ajax({
                     url:target,
@@ -96,10 +93,22 @@
                         alert("请求出错.")
                     },
                     success:function(data){
+
                         var result="";
+
                         var jsonObject = eval("("+data+")")
-                       var start = jsonObject.response.start
+
+                        /* 查询到的 总数量*/
+                        var numFound = jsonObject.response.numFound
+
+                        if(numFound>0){
+
+                            // 进行分页
+
+                        }
+
                        var docs= jsonObject.response.docs
+
                        $(docs).each(function (index,ele) {
 
                                result+="<tr><td><a href=\"/introduction.html?id="+ele.id+"\" title=\""+ele.novel_name+"\" target=\"_blank\">"+ele.novel_name+"</a></td>"
