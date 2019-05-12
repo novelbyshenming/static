@@ -153,7 +153,7 @@
 
                             // 进行分页
                             if(numFound%15==0)
-                                pageNumber=numFound/15
+                                pageNumber=Math.floor(numFound/15)
                             else
                                 pageNumber=Math.floor(numFound/15) + 1
 
