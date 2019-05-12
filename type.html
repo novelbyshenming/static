@@ -68,7 +68,7 @@
                         target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+params2[1]
                     }
 
-                    ajaxType(target,tparams1[1],tparams2[1],start)
+                    ajaxType(target)
                 }else{
 
                     var start = (tparams2[1]-1)*28
