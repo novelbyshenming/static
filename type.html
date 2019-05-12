@@ -52,6 +52,8 @@
 
                 var params2 = localUrl.substring(number+1)
 
+                console.log(params2)
+
                 var tparams2 = params2.split('=')
 
                 var target=''
@@ -121,6 +123,7 @@
             }
             function ajaxType(target,page,params) {
 
+                alert(params)
                  $.ajax({
                     url:target,
                     error:function(){
