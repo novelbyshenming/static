@@ -116,7 +116,7 @@
                 var nextPage = page+1
 
                 if( pageNumber>page )
-                    nextPage=page+1
+                    nextPage=eval(page+1)
                 else
                     nextPage=pageNumber
 
@@ -163,8 +163,8 @@
                                     //167  171   相差 4
 
                                     if(( page+4)<pageNumber){
-                                        pageStart = page -5
-                                        pageEnd = page + 5
+                                        pageStart = eval(page-5)
+                                        pageEnd = eval(page+5)
                                         console.log(pageEnd +  "  "+ page)
                                     }
                                     else{
@@ -181,7 +181,7 @@
                             }else{
 
                                 pageStart = 1
-                                pageEnd = pageNumber+1
+                                pageEnd =  eval(pageNumber+1)
                                 getPage(page,pageStart,pageEnd)
                             }
                         }
