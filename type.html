@@ -117,11 +117,13 @@
 
                 var nextPage = page+1
 
-                if( page==pageNumber )
-                    nextPage=page
+                if( pageNumber>page )
+                    nextPage=page+1
+                else
+                    nextPage=pageNumber
 
                 result+="<li><a href=\"/type.html?page="+nextPage+"&"+params+"\" class=\"next\">&gt;</a></li>"
-                result+"<li><a href=\"/type.html?page="+pageNumber+"&"+params+"\" class=\"last\">"+pageNumber+"</a></li>"
+                result+="<li><a href=\"/type.html?page="+pageNumber+"&"+params+"\" class=\"last\">"+pageNumber+"</a></li>"
 
                 $('#pagelink').append(result)
 
