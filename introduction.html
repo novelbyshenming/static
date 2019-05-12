@@ -48,7 +48,38 @@
     <!--[if lt IE 9]>
     <script src="/novel/js/respond.min.js"></script><![endif]-->
 
+    <script type="text/javascript">
+        $(function(){
+            /*
+            url: 请求服务器地址
+            data:请求参数
+            dataType:服务器返回数据类型
+            error请求出错执行的功能
+            success请求成功执行的功能,function(data) data服务器返回的数据.
+            type:请求方式
+            */
+            var localUrl = window.location.search
 
+            localUrl = localUrl.substring(1)
+
+            var params = localUrl.split('=')
+
+                $.ajax({
+                    url:'/novel/introduction.n',
+                    data:{"nid":params[1]},
+
+                    error:function(){
+                        alert("请求出错.")
+                    },
+                    success:function(data){
+
+                        data = eval(data)
+                        alert(data.novelName+" "+data.introduction)
+                    },
+                    type:'GET'
+                });
+        });
+    </script>
 
 </head>
 <body>
@@ -101,48 +132,42 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-2 col-xs-4 hidden-xs"><img class="img-thumbnail" alt="极拳暴君"
-                                                              src="https://www.biqukan.cc/files/article/image/47/47612/47612s.jpg"
-                                                              title="极拳暴君" width="140" height="180"></div>
+                <div class="col-md-2 col-xs-4 hidden-xs">
+                    <img class="img-thumbnail" alt="极拳暴君" src="#" title="极拳暴君" width="140" height="180"></div>
                 <div class="col-md-10">
                     <h1 class="bookTitle">极拳暴君</h1>
                     <p class="booktag">
-                        <a class="red"
-                           href="https://www.biqukan.cc/modules/article/authorarticle.php?author=%D2%B9%D3%EB%D1%A9"
-                           target="_blank" title="作者：夜与雪">夜与雪</a>
-                        <a class="red" href="https://www.biqukan.cc/fenlei1/1.html" target="_blank"
-                           title="玄幻魔法">玄幻魔法</a>
-                        <span class="blue">字数：325万</span>
+                        <a class="red" href="#" target="_blank" title="作者：夜与雪">夜与雪</a>
+                        <a class="red" href="#" target="_blank" title="玄幻魔法">玄幻魔法</a>
                         <span class="blue">阅读数：6547</span>
                         <span class="blue">连载中</span>
                     </p>
                     <p>
-                        最新章节：<a href="https://www.biqukan.cc/book/47612/32165014.html" title="正文卷 496章 狼子野心">正文卷 496章
-                        狼子野心</a><span class="hidden-xs">（2019-05-07 04:21）</span>
+                        最新章节：<a href="#" title="正文卷 496章 狼子野心">正文卷 496章 狼子野心</a>
+                        <span class="hidden-xs">（2019-05-07 04:21）</span>
                     </p>
-                    <p class="visible-xs">更新时间：2019-05-07 04:21</p>
                     <div class="row">
                             <span class="col-md-8">
-                                <button class="btn btn-sm btn-info" type="button"><i class="fa fa-thumbs-up fa-fw"></i>投票推荐</button>
-                                <button class="btn btn-sm btn-success" type="button"><i class="fa fa-plus fa-fw"></i>加入书架</button>
-                                <a class="errorlink btn btn-sm btn-warning"
-                                   href="https://www.biqukan.cc/newmessage.php?tosys=1&amp;title=%A1%B6%BC%AB%C8%AD%B1%A9%BE%FD%A1%B7%B4%DF%B8%FC%B1%A8%B4%ED&amp;content=https://www.biqukan.cc/book/47612/"
-                                   target="_blank" rel="nofollow"><i class="fa fa-comments fa-fw"></i>留言反馈</a>
+                                <button class="btn btn-sm btn-info" type="button">
+                                    <i class="fa fa-thumbs-up fa-fw"></i>投票推荐
+                                </button>
+                                <button class="btn btn-sm btn-success" type="button">
+                                    <i class="fa fa-plus fa-fw"></i>加入书架
+                                </button>
+                                <a class="errorlink btn btn-sm btn-warning" href="#" target="_blank" rel="nofollow">
+                                    <i class="fa fa-comments fa-fw"></i>留言反馈</a>
                             </span>
                         <div class="clear"></div>
                     </div>
                     <hr>
                     <p class="text-muted" id="bookIntro" style="">
-
                         <img class="img-thumbnail pull-left visible-xs" style="margin:0 5px 0 0" alt="极拳暴君"
                              src="https://www.biqukan.cc/files/article/image/47/47612/47612s.jpg" title="极拳暴君"
                              width="80" height="120">
                         &nbsp;&nbsp;黑暗笼罩，秩序崩溃，人性沦丧......哀嚎奏响死亡，绝望与恐怖降临！<br>
                         &nbsp;&nbsp;地狱空荡荡，魔鬼在人间。<br>
                         &nbsp;&nbsp;陈冲知道，在这崩坏的世界，拳即是权，唯有拳头在先，道理才能深入人心！<br>
-
                     </p>
-
                 </div>
                 <div class="clear"></div>
             </div>
@@ -163,8 +188,6 @@
                     </ins>
                 </ins>
             </ins>
-
-
         </div>
     </div>
     <div class="panel panel-danger">
