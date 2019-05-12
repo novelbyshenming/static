@@ -168,8 +168,8 @@
                                         console.log(pageEnd +  "  "+ page)
                                     }
                                     else{
-                                        pageEnd = pageNumber
-                                        pageStart =pageEnd-8
+                                        pageEnd = parseInt(pageNumber)+1
+                                        pageStart =pageEnd-10
                                     }
 
                                     getPage(page,pageStart,pageEnd)
