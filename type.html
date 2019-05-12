@@ -190,8 +190,8 @@
 
                        $(docs).each(function (index,ele) {
 
-                               result+="<tr><td><a href=\"/introduction.html?id="+ele.id+"\" title=\""+ele.novel_name+"\" target=\"_blank\">"+ele.novel_name+"</a></td>"
-                               result+="<td class=\"hidden-xs\"><a class=\"text-muted\" href=\"/read.html?id="+ele.id+"&cid="+ele.novel_latestChaptersUrl+"\" target=\"_blank\">"+ele.novel_latestChapters+"</a></td>"
+                               result+="<tr><td><a href=\"/introduction.html?nid="+ele.id+"\" title=\""+ele.novel_name+"\" target=\"_blank\">"+ele.novel_name+"</a></td>"
+                               result+="<td class=\"hidden-xs\"><a class=\"text-muted\" href=\"/read.html?nid="+ele.id+"&cid="+ele.novel_latestChaptersUrl+"\" target=\"_blank\">"+ele.novel_latestChapters+"</a></td>"
                                result+="<td class=\"text-muted\">"+ele.novel_author+"</td>"
                                var tdate = ele.novel_tdate
                                tdate = tdate.substring( 0, tdate.lastIndexOf(':'))
