@@ -54,6 +54,9 @@
 
                 var tparams2 = params2.split('=')
 
+
+                console.log()
+
                 var target=''
 
                 if ( tparams1[0] =='page' ){
@@ -65,8 +68,7 @@
                         target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_state:已完成'
                     }else{
 
-                        alert(params2[1])
-                        target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+params2[1]
+                        target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+tparams2[1]
                     }
 
                     ajaxType(target)
@@ -79,7 +81,7 @@
                         target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_state:已完成'
                     }else{
 
-                        target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+params1[1]
+                        target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+tparams1[1]
                     }
 
                     ajaxType(target)
