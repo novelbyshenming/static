@@ -36,6 +36,8 @@
     <script type="text/javascript">
         $(function () {
 
+            var params=''
+
             var localUrl = window.location.href;
 
             var number = localUrl.lastIndexOf('?')
@@ -70,7 +72,8 @@
                         target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+tparams2[1]
                     }
 
-                    ajaxType(target,tparams1[1],params2)
+                    params = params2
+                    ajaxType(target,tparams1[1])
                 }else{
 
                     var start = (tparams2[1]-1)*28
@@ -83,13 +86,14 @@
                         target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+tparams1[1]
                     }
 
-                    ajaxType(target,tparams2[1],params1)
+                    params = params1
+                    ajaxType(target,tparams2[1])
                 }
             }
 
-            function getPage(page,pageStart,pageEnd,pageNumber,params) {
+            function getPage(page,pageStart,pageEnd,pageNumber) {
 
-                alert(params)
+                alert("getPage    "+params)
                 var result = ''
 
                 result+="<li class=\"disabled\"> <span>"+page+"//"+pageNumber+"</span></li>"
@@ -112,7 +116,8 @@
                 }
 
                 var nextPage = page+1
-                if(page==pageNumber)
+                
+                if( page==pageNumber )
                     nextPage=page
 
                 result+="<li><a href=\"/type.html?page="+nextPage+"&"+params+"\" class=\"next\">&gt;</a></li>"
@@ -121,9 +126,9 @@
                 $('#pagelink').append(result)
 
             }
-            function ajaxType(target,page,params) {
+            function ajaxType(target,page) {
 
-                alert(params)
+                 alert("ajaxType  "+ params)
                  $.ajax({
                     url:target,
                     error:function(){
@@ -159,17 +164,17 @@
                                     pageStart = page -5
                                     pageEnd = pageStart + 10
 
-                                    getPage(page,pageStart,pageEnd,pageNumber,params)
+                                    getPage(page,pageStart,pageEnd,pageNumber)
                                 }else{
                                     pageStart = 1
                                     pageEnd =11
-                                    getPage(page,pageStart,pageEnd,params)
+                                    getPage(page,pageStart,pageEnd)
                                 }
                             }else{
 
                                 pageStart = 1
                                 pageEnd = pageNumber+1
-                                getPage(page,pageStart,pageEnd,pageNumber,params)
+                                getPage(page,pageStart,pageEnd,pageNumber)
                             }
                         }
 
