@@ -151,18 +151,28 @@
 
                             // 进行分页
                             if(numFound%15==0)
-                                pageNumber=Math.floor(numFound/15)
+                                pageNumber=Math.floor(numFound/28)
                             else
-                                pageNumber=Math.floor(numFound/15) + 1
+                                pageNumber=Math.floor(numFound/28) + 1
 
                             alert(pageNumber)
                             // page  为当前页   5
                             if(pageNumber>10){
 
-                                if( (page - 5)>1 ){
+                                if( (page - 5)>1){
 
-                                    pageStart = page -5
-                                    pageEnd = pageStart + 10
+                                    //167  171   相差 4
+
+                                    if(( page+4)<pageNumber){
+
+                                        pageEnd = pageStart + 4
+                                        pageStart = page -5
+                                    }
+
+                                    else{
+                                        pageEnd = pageEnd
+                                        pageStart =pageEnd-9
+                                    }
 
                                     getPage(page,pageStart,pageEnd)
                                 }else{
