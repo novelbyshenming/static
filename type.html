@@ -37,6 +37,7 @@
         $(function () {
 
             var params=''
+            var pageNumber
 
             var localUrl = window.location.href;
 
@@ -53,8 +54,6 @@
                 var tparams1 = params1.split('=')
 
                 var params2 = localUrl.substring(number+1)
-
-                console.log(params2)
 
                 var tparams2 = params2.split('=')
 
@@ -91,7 +90,7 @@
                 }
             }
 
-            function getPage(page,pageStart,pageEnd,pageNumber) {
+            function getPage(page,pageStart,pageEnd) {
 
                 alert("getPage    "+params+ "  pageNumber  "+pageNumber)
                 var result = ''
@@ -146,7 +145,7 @@
                         var numFound = jsonObject.response.numFound
 
                         // 页数      一页15 个小说信息  显示十页
-                        var pageNumber = 1
+                        pageNumber = 1
                         var pageStart = 1
                         var pageEnd = 2
 
@@ -166,7 +165,7 @@
                                     pageStart = page -5
                                     pageEnd = pageStart + 10
 
-                                    getPage(page,pageStart,pageEnd,pageNumber)
+                                    getPage(page,pageStart,pageEnd)
                                 }else{
                                     pageStart = 1
                                     pageEnd =11
@@ -176,7 +175,7 @@
 
                                 pageStart = 1
                                 pageEnd = pageNumber+1
-                                getPage(page,pageStart,pageEnd,pageNumber)
+                                getPage(page,pageStart,pageEnd)
                             }
                         }
 
