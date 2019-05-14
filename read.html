@@ -29,7 +29,84 @@
 <!--
     <link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=www.biqukan.cc" as="script">
     <link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/r20190501/r20190131/show_ads_impl.js" as="script">-->
-   
+
+<script type="text/javascript">
+$(function(){
+	/*
+	url: 请求服务器地址
+	data:请求参数
+	dataType:服务器返回数据类型
+	error请求出错执行的功能
+	success请求成功执行的功能,function(data) data服务器返回的数据.
+	type:请求方式
+	*/
+
+	     var localUrl = location.search
+
+	     localUrl = localUrl.substring(1)
+
+	     var params = localUrl.split('&')
+
+	     var params1 =params[0].split('=')
+
+	     var params2 = params[1].split('=')
+
+	     var nid
+	     var cid
+
+	     if(params1[0] =='nid'){
+
+	         nid = params1[1]
+	         cid = params2[1]
+	     }else{
+
+	         nid = params2[1]
+	         cid = params1[1]
+	     }
+
+	     $.ajax({
+
+             url:'/novel/introduction.n',
+             data:{"nid":nid},
+             error:function(){
+                 alert("请求出错.")
+             },
+             success:function(data){
+
+                 var result =''
+                 data = eval(data)
+                 result+="<h1 class='readTitle'>"+data.novelName+"</h1>"
+                 result+="<p class='text-center booktag'>"
+                 result+="<a class='blue' href='#'><i class='fa fa-list fa-fw'></i>斗罗大陆4终极斗罗</a>"
+                 result+="<a class='blue' href='/search.html?page=1&key='"+data.author+" target='_blank' title='"+data.author+"'>作者："+data.author+"</a>"
+                 result+="<a class='blue' rel='nofollow'><i class='fa fa-thumbs-up fa-fw'></i>投票推荐</a>"
+                 result+="<a class='red' rel='nofollow'><i class='fa fa-bookmark fa-fw'></i>加入书签</a>"
+                 result+="<a href='#' class='red errorlink' target='_blank'>"
+                 result+="<i class='fa fa-comments fa-fw'></i>留言反馈</a></p>"
+
+                 $('#novelChapterTitle').append(result)
+             },
+             type:'GET'
+         });
+
+		$.ajax({
+
+			url:'/novel/readNovelChapter.n',
+			data:{"nid":nid,"cid":cid},
+			error:function(){
+				alert("请求出错.")
+			},
+			success:function(data){
+
+				$('#htmlContent').append(data.context)
+
+			},
+			type:'GET'
+		});
+
+});
+</script>
+
 </head>
 <body>
 <div class="navbar navbar-inverse" id="header">
@@ -60,10 +137,12 @@
 </div>
 <div class="container body-content read-container">
     <ol class="breadcrumb hidden-xs">
+    <p id="novelNews">
         <li><a href="/" title="笔趣阁"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li><a href="https://www.biqukan.cc/fenlei1/1.html" target="_blank" title="玄幻魔法">玄幻魔法</a></li>
         <li><a href="https://www.biqukan.cc/book/50783/">斗罗大陆4终极斗罗</a></li>
         <li class="active">第二百九十四章 樱落红</li>
+    </p>
         <span class="pull-right"><select name="bcolor" id="bcolor">
             <option style="background-color: #E9FAFF" value="#E9FAFF">底色</option>
             <option style="background-color: #E9FAFF" value="#E9FAFF">默认</option>
@@ -105,16 +184,8 @@
             </select></span>
     </ol>
     <div class="panel panel-default panel-readcontent" id="content" style="background-color: rgb(233, 250, 255);">
-        <div class="page-header text-center">
-            <h1 class="readTitle">第二百九十四章 樱落红 <small>(1/2)</small></h1>
-            <p class="text-center booktag">
-                <a class="blue" href="https://www.biqukan.cc/book/50783/"><i class="fa fa-list fa-fw"></i>斗罗大陆4终极斗罗</a>
-                <a class="blue" href="https://www.biqukan.cc/modules/article/authorarticle.php?author=%CC%C6%BC%D2%C8%FD%C9%D9" target="_blank" title="作者：唐家三少">作者：唐家三少</a>
-                <a class="blue" rel="nofollow"><i class="fa fa-thumbs-up fa-fw"></i>投票推荐</a>
-                <a class="red" rel="nofollow"><i class="fa fa-bookmark fa-fw"></i>加入书签</a>
-                <a href="https://www.biqukan.cc/newmessage.php?tosys=1&amp;title=%A1%B6%B6%B7%C2%DE%B4%F3%C2%BD4%D6%D5%BC%AB%B6%B7%C2%DE%A1%B7%B4%DF%B8%FC%B1%A8%B4%ED&amp;content=https://www.biqukan.cc/book/50783/32183769.html" class="red errorlink" target="_blank">
-                    <i class="fa fa-comments fa-fw"></i>留言反馈</a>
-            </p>
+        <div class="page-header text-center" id="novelChapterTitle">
+
         </div>
 
         <div class="row hidden-xs">
@@ -155,39 +226,10 @@
                         </ins>
                     </ins>
                 </ins>
-
             </div>
         </div>
-        <div class="panel-body" id="htmlContent" style="font-size: 24px;">
-            一秒记住【笔趣阁 www.biqukan.cc】，更新快，无弹窗，免费读！<br><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;“我叫樱落红，是史莱克学院外院的院长。首先，我代表史莱克学院欢迎你们的加入。”<br>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;外院院长！一听眼前这位看上去不过三十岁左右的大美女竟然是外院院长，所有的学员们都不自觉的站直了身体。<br>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;樱落红微微一笑，道：“在你们之中，估计很多人都认为，史莱克学院作为联邦第一学院一定会非常的严格，学业也会非常的辛苦。而事实上，可能会和你们的想法有一些偏差。史莱克会比你们想象中更容易。当然，前提是你想要什么。”<br>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;“在这里，没有严苛的老师会天天监督你们学习和修炼，所有的一切都是自愿的。只要你进入了这里，想怎么学是你们自己的事。每年才会有一次集中性的考核。考核的科目其实连我也不知道，因为每次都是考核前一个月，学院才会决定。我唯一可以告诉你们的是，如果考核不合格，不好意思，那你们就要从哪里来回哪里去了。而想要通过考核，除了实力之外，你们可能还需要很多其他东西。”<br>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;“但我可以向你们保证的是，只要你们愿意学，在这里就一定有人来教导你们。至于你们想要获得资源，也需要通过你们自己的努力。就像之前你们在综合考核上获取的史莱克徽章，在史莱克学院，徽章是万能的，前提是，你有足够的数量。哪怕是我们这些老师，也是拿徽章当工资的。想要额外的徽章，就需要额外的贡献，完成额外的任务，没有人可以例外。”<br>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;“所以，我要告诉你们的是，史莱克是一个公平的地方，一个有无限可能的地方。至于这个无限有多大，就需要你们自己来探寻了。最后，再次欢迎你们加入史莱克学院。希望在第一学年考核之后，我还能看到你们所有人。就这样。”<br>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;说完这番话，向这些新生们点了点头，樱落红转身而去。<br>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;肖启道：“稍候你们将会被分配宿舍，同时领取入学材料。你们就是外院新的一年级一班。公共课统一上，在你们个人考核的时候，你们已经选好了自己的系，专业课将跟随各系导师来上。相信你们都见过考核时的老师，以后有关专业课的知识向他们请教。课表会在你们的入学材料之中。下面教务处老师将带领你们完成这些。”<br>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;“什么？单人宿舍，一个月需要一枚白级徽章？免费的只有单人帐篷？”<br>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;很快，学员们就知道什么叫坑了。<br>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;领取入学材料，需要一枚白级徽章。最让他们吃惊的是，学院的宿舍竟然也要支付白级徽章。宿舍是单人的，条件倒是挺好的。可是，根据蓝轩宇的了解，这白级徽章的价值也是相当高昂的啊！<br>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;教务处老师是一位中年男性，坐在桌子后面，懒洋洋的道：“学院这也是为了培养你们不要不劳而获。从小就养成自力更生的好习惯，都是为了你们着想。你们在综合考核的时候不是都有收获么？以后要是没了白级徽章可以去接任务。譬如扫海神广场这种，一个月也有一枚白级徽章，足够当住宿费了。好了，想住单人帐篷也没问题。赶快办理了。”<br>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;“老师，自己的宿舍可以请其他人来住吗？”蓝轩宇问出了一个现实问题。<br>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;“当然不行。每个人的宿舍只能自己住宿。别怪我没提醒你们啊！有些钱是不能省的。宿舍会配备有咱们史莱克学院所独有的修炼室。你们别以为一枚白级徽章吃亏了，事实上，学院付出的，远比你们要多的多。”
-            --&gt;&gt;<p class="text-danger text-center mg0">本章未完，点击下一页继续阅读</p>
+        <div class="panel-body" id="htmlContent" style="font-size: 24px;" a>
+            小说内容
         </div>
 
         <!-- 自适应 -->
@@ -199,28 +241,21 @@
             </ins>
             </ins>
         </ins>
-
-
         <p class="text-center readPager">
             <a id="linkPrev" class="btn btn-default" href="https://www.biqukan.cc/book/50783/32179973.html"><i class="fa fa-arrow-circle-left fa-fw"></i>上一章</a>
             <a id="linkIndex" class="btn btn-default" href="https://www.biqukan.cc/book/50783/"><i class="fa fa-list fa-fw"></i>章节目录</a>
             <a id="linkNext" class="btn btn-default" href="https://www.biqukan.cc/book/50783/32183769_2.html">下一页<i class="fa fa-arrow-circle-right fa-fw"></i></a>
         </p>
-
         <p class="fs-12 text-muted text-center hidden-xs">温馨提示：按 回车[Enter]键 返回书目，按 ←键 返回上一页， 按 →键 进入下一页，加入书签方便您下次继续阅读。</p>
     </div>
     <p><a href="https://www.biqukan.cc/book/50783/" title="斗罗大陆4终极斗罗">斗罗大陆4终极斗罗</a>所有内容均来自互联网，笔趣阁只为原作者唐家三少的小说进行宣传。欢迎各位书友支持唐家三少并收藏<a href="https://www.biqukan.cc/book/50783/" title="斗罗大陆4终极斗罗">斗罗大陆4终极斗罗最新章节</a>。</p>
     <footer>
         <p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请 <a href="https://www.biqukan.cc/newmessage.php?tosys=1" style="text-decoration: underline;">联系我们</a>，我们会尽快处理。</p>
-        <p>Copyright &#169; 2019 <a href="https://www.biqukan.cc/">笔趣阁</a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
+        <p>Copyright &#169; 2019 <a href="/">笔趣阁</a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
     </footer>
     <div class="back-to-top" id="back-to-top" title="返回顶部" style="left: 1254.5px; display: none;"><i class="fa fa-chevron-up"></i></div>
 
 </div>
-
-
-
-
 
 <iframe id="google_osd_static_frame_4932137064403" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;">
 
