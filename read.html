@@ -77,7 +77,7 @@ $(function(){
                  data = eval(data)
                  result+="<h1 class='readTitle'>"+data.novelName+"</h1>"
                  result+="<p class='text-center booktag'>"
-                 result+="<a class='blue' href='#'><i class='fa fa-list fa-fw'></i>斗罗大陆4终极斗罗</a>"
+                 result+="<a class='blue' href='#'><i class='fa fa-list fa-fw'></i>name</a>"
                  result+="<a class='blue' href='/search.html?page=1&key='"+data.author+" target='_blank' title='"+data.author+"'>作者："+data.author+"</a>"
                  result+="<a class='blue' rel='nofollow'><i class='fa fa-thumbs-up fa-fw'></i>投票推荐</a>"
                  result+="<a class='red' rel='nofollow'><i class='fa fa-bookmark fa-fw'></i>加入书签</a>"
@@ -85,6 +85,15 @@ $(function(){
                  result+="<i class='fa fa-comments fa-fw'></i>留言反馈</a></p>"
 
                  $('#novelChapterTitle').append(result)
+
+                 result=''
+
+
+                 result+="<a id='linkPrev' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.lastChapter+"'><i class='fa fa-arrow-circle-left fa-fw'></i>上一章</a>"
+                 result+="<a id='linkIndex' class='btn btn-default' href='#'><i class='fa fa-list fa-fw'></i>章节目录</a>"
+                 result+="<a id='linkNext' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.nextChapter+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
+
+
              },
              type:'GET'
          });
@@ -241,14 +250,13 @@ $(function(){
             </ins>
             </ins>
         </ins>
-        <p class="text-center readPager">
-            <a id="linkPrev" class="btn btn-default" href="https://www.biqukan.cc/book/50783/32179973.html"><i class="fa fa-arrow-circle-left fa-fw"></i>上一章</a>
+        <p class="text-center readPager" id="novelTS">
+            <!--<a id="linkPrev" class="btn btn-default" href="https://www.biqukan.cc/book/50783/32179973.html"><i class="fa fa-arrow-circle-left fa-fw"></i>上一章</a>
             <a id="linkIndex" class="btn btn-default" href="https://www.biqukan.cc/book/50783/"><i class="fa fa-list fa-fw"></i>章节目录</a>
-            <a id="linkNext" class="btn btn-default" href="https://www.biqukan.cc/book/50783/32183769_2.html">下一页<i class="fa fa-arrow-circle-right fa-fw"></i></a>
+            <a id="linkNext" class="btn btn-default" href="https://www.biqukan.cc/book/50783/32183769_2.html">下一页<i class="fa fa-arrow-circle-right fa-fw"></i></a> -->
         </p>
-        <p class="fs-12 text-muted text-center hidden-xs">温馨提示：按 回车[Enter]键 返回书目，按 ←键 返回上一页， 按 →键 进入下一页，加入书签方便您下次继续阅读。</p>
     </div>
-    <p><a href="https://www.biqukan.cc/book/50783/" title="斗罗大陆4终极斗罗">斗罗大陆4终极斗罗</a>所有内容均来自互联网，笔趣阁只为原作者唐家三少的小说进行宣传。欢迎各位书友支持唐家三少并收藏<a href="https://www.biqukan.cc/book/50783/" title="斗罗大陆4终极斗罗">斗罗大陆4终极斗罗最新章节</a>。</p>
+    <p><a href="/" title="斗罗大陆4终极斗罗">斗罗大陆4终极斗罗</a>所有内容均来自互联网，笔趣阁只为原作者唐家三少的小说进行宣传。欢迎各位书友支持唐家三少并收藏<a href="/" title="斗罗大陆4终极斗罗">斗罗大陆4终极斗罗最新章节</a>。</p>
     <footer>
         <p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请 <a href="https://www.biqukan.cc/newmessage.php?tosys=1" style="text-decoration: underline;">联系我们</a>，我们会尽快处理。</p>
         <p>Copyright &#169; 2019 <a href="/">笔趣阁</a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
