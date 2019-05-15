@@ -107,6 +107,7 @@ $(function(){
              result+="<a id='linkIndex' class='btn btn-default' href='/introduction.html?nid="+nid+"'><i class='fa fa-list fa-fw'></i>章节目录</a>"
              result+="<a id='linkNext' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.nextChapter+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
              $('#novelTS').append(result)
+             alert(data.novelChapterName)
              $('#novelChapterName').append(data.novelChapterName)
 			},
 			type:'GET'
