@@ -34,10 +34,22 @@
             var data1 = document.getElementById("bdcsMain1").value
             var data2 = document.getElementById("bdcsMain2").value
 
+            if (!(data1!='' ||data2!=''))
+                return
+
+
             if(data1 != null && data1 !='')
                  window.location.href="/search.html?page=1&key="+data1
             else
                  window.location.href="/search.html?page=1&key="+data2
+        }
+
+
+        document.onkeydown = function(e){
+            if(e.keyCode == 13){
+
+                search()
+            }
         }
 
 
@@ -103,22 +115,6 @@
                         <li><a href="/type.html?page=1&type=其他类型" title="其他类型">其他类型</a></li>
                     </ul>
                 </li>
-                <!--<li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">排行榜<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#" title="点击总榜">点击总榜</a></li>
-                        <li><a href="https://www.biqukan.cc/topallvote/1.html" title="推荐总榜">推荐总榜</a></li>
-                        <li><a href="https://www.biqukan.cc/topmonthvisit/1.html" title="点击月榜">点击月榜</a></li>
-                        <li><a href="https://www.biqukan.cc/topmonthvote/1.html" title="推荐月榜">推荐月榜</a></li>
-                        <li><a href="https://www.biqukan.cc/topweekvisit/1.html" title="周排行榜">周排行榜</a></li>
-                        <li><a href="https://www.biqukan.cc/topweekvote/1.html" title="周推荐榜">周推荐榜</a></li>
-                        <li><a href="https://www.biqukan.cc/topgoodnum/1.html" title="总收藏榜">总收藏榜</a></li>
-                        <li><a href="https://www.biqukan.cc/toptoptime/1.html" title="本站推荐">本站推荐</a></li>
-                        <li><a href="https://www.biqukan.cc/topsize/1.html" title="字数排行">字数排行</a></li>
-                        <li><a href="https://www.biqukan.cc/toplastupdate/1.html" title="最近更新">最近更新</a></li>
-                        <li><a href="https://www.biqukan.cc/toppostdate/1.html" title="最新入库">最新入库</a></li>
-                    </ul>
-                </li>-->
                 <li><a href="/type.html?page=1&state=complete" title="完本小说">完本小说</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
