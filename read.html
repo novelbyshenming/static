@@ -75,9 +75,8 @@ $(function(){
 
                  var result =''
                  data = eval(data)
-                 result+="<h1 class='readTitle'>"+data.novelName+"</h1>"
                  result+="<p class='text-center booktag'>"
-                 result+="<a class='blue' href='#'><i class='fa fa-list fa-fw'></i>name</a>"
+                 result+="<a class='blue' href='/introduction.html?nid="+nid+"'><i class='fa fa-list fa-fw'></i>"+data.novelName+"</a>"
                  result+="<a class='blue' href='/search.html?page=1&key="+data.author+"' target='_blank' title='"+data.author+"'>作者："+data.author+"</a>"
                  result+="<a class='blue' rel='nofollow'><i class='fa fa-thumbs-up fa-fw'></i>投票推荐</a>"
                  result+="<a class='red' rel='nofollow'><i class='fa fa-bookmark fa-fw'></i>加入书签</a>"
@@ -86,8 +85,9 @@ $(function(){
 
                  $('#novelChapterTitle').append(result)
 
-
-
+                 $('#novelLi1').append("<a href='/type.html?page=1&key="+data.type+"' target='_blank' title='"+data.type+"'>"+data.type+"</a>")
+                 $('#novelLi2').append("<a href='/introduction.html?nid="+nid+"'>"+data.novelName+"</a>")
+                 $('#novelFoot').append("<a href='/introduction.html?nid="+nid+"' title='"+data.novelName+"'>"+data.novelName+"</a>所有内容均来自互联网，笔趣阁只为原作者 "+data.author+" 的小说进行宣传。欢迎各位书友支持 "+data.author+" 并收藏")
              },
              type:'GET'
          });
@@ -100,16 +100,14 @@ $(function(){
 				alert("请求出错.")
 			},
 			success:function(data){
-
-				$('#htmlContent').append(data.context)
-
+             $("#novelLi3").append(data.novelChapterName)
+			 $('#htmlContent').append(data.context)
              var result =''
              result+="<a id='linkPrev' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.lastChapter+"'><i class='fa fa-arrow-circle-left fa-fw'></i>上一章</a>"
              result+="<a id='linkIndex' class='btn btn-default' href='/introduction.html?nid="+nid+"'><i class='fa fa-list fa-fw'></i>章节目录</a>"
              result+="<a id='linkNext' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.nextChapter+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
-
              $('#novelTS').append(result)
-
+             $('#novelChapterName').append(data.novelChapterName)
 			},
 			type:'GET'
 		});
@@ -131,12 +129,22 @@ $(function(){
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
             <ul class="nav navbar-nav">
-                <li><a href="/type.html?page=1&type=玄幻" title="玄幻魔法">玄幻魔法</a></li>
-                <li><a href="/type.html?page=1&type=修真" title="武侠修真">武侠修真</a></li>
-                <li><a href="/type.html?page=1&type=都市" title="都市言情">都市言情</a></li>
-                <li><a href="/type.html?page=1&type=穿越" title="历史军事">历史军事</a></li>
-                <li><a href="/type.html?page=1&type=科幻" title="侦探推理">侦探推理</a></li>
-                <li><a href="/type.html?page=1&type=网游" title="网游动漫">网游动漫</a></li>
+                <li><a href="/type.html?page=1&type=玄幻魔法" title="玄幻魔法">玄幻魔法</a></li>
+                                <li><a href="/type.html?page=1&type=武侠修真" title="武侠修真">武侠修真</a></li>
+                                <li><a href="/type.html?page=1&type=都市言情" title="都市言情">都市言情</a></li>
+                                <li><a href="/type.html?page=1&type=历史军事" title="历史军事">历史军事</a></li>
+                                <li><a href="/type.html?page=1&type=侦探推理" title="侦探推理">侦探推理</a></li>
+                                <li><a href="/type.html?page=1&type=网游动漫" title="网游动漫">网游动漫</a></li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown">更多分类<span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="/type.html?page=1&type=科幻小说" title="科幻小说">科幻小说</a></li>
+                                        <li><a href="/type.html?page=1&type=恐怖灵异" title="恐怖灵异">恐怖灵异</a></li>
+                                        <li><a href="/type.html?page=1&type=穿越小说" title="穿越小说">穿越小说</a></li>
+                                        <li><a href="/type.html?page=1&type=其他类型" title="其他类型">其他类型</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/type.html?page=1&state=complete" title="完本小说">完本小说</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/login.html">登录</a></li><li><a href="/login.html">免费注册</a></li>
@@ -147,12 +155,12 @@ $(function(){
 </div>
 <div class="container body-content read-container">
     <ol class="breadcrumb hidden-xs">
-    <p id="novelNews">
         <li><a href="/" title="笔趣阁"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li><a href="https://www.biqukan.cc/fenlei1/1.html" target="_blank" title="玄幻魔法">玄幻魔法</a></li>
-        <li><a href="https://www.biqukan.cc/book/50783/">斗罗大陆4终极斗罗</a></li>
-        <li class="active">第二百九十四章 樱落红</li>
-    </p>
+        <li id="novelLi1"></li>
+        <li id="novelLi2"></li>
+        <li id="novelLi3" class="active"></li>
+
+
         <span class="pull-right"><select name="bcolor" id="bcolor">
             <option style="background-color: #E9FAFF" value="#E9FAFF">底色</option>
             <option style="background-color: #E9FAFF" value="#E9FAFF">默认</option>
@@ -195,7 +203,7 @@ $(function(){
     </ol>
     <div class="panel panel-default panel-readcontent" id="content" style="background-color: rgb(233, 250, 255);">
         <div class="page-header text-center" id="novelChapterTitle">
-
+               <h1 class='readTitle' id="novelChapterName"></h1>
         </div>
 
         <div class="row hidden-xs">
@@ -257,7 +265,7 @@ $(function(){
             <a id="linkNext" class="btn btn-default" href="https://www.biqukan.cc/book/50783/32183769_2.html">下一页<i class="fa fa-arrow-circle-right fa-fw"></i></a> -->
         </p>
     </div>
-    <p><a href="/" title="斗罗大陆4终极斗罗">斗罗大陆4终极斗罗</a>所有内容均来自互联网，笔趣阁只为原作者唐家三少的小说进行宣传。欢迎各位书友支持唐家三少并收藏<a href="/" title="斗罗大陆4终极斗罗">斗罗大陆4终极斗罗最新章节</a>。</p>
+    <p id="novelFoot"></p>
     <footer>
         <p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请 <a href="https://www.biqukan.cc/newmessage.php?tosys=1" style="text-decoration: underline;">联系我们</a>，我们会尽快处理。</p>
         <p>Copyright &#169; 2019 <a href="/">笔趣阁</a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
