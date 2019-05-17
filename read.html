@@ -31,6 +31,7 @@
     <link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/r20190501/r20190131/show_ads_impl.js" as="script">-->
 
 <script type="text/javascript">
+
 $(function(){
 	/*
 	url: 请求服务器地址
@@ -50,6 +51,10 @@ $(function(){
 	     var params1 =params[0].split('=')
 
 	     var params2 = params[1].split('=')
+
+	     var params3 = params[2].split('=')
+
+	     var uid = params3[1]
 
 	     var nid
 	     var cid
@@ -79,12 +84,11 @@ $(function(){
                  result+="<a class='blue' href='/introduction.html?nid="+nid+"'><i class='fa fa-list fa-fw'></i>"+data.novelName+"</a>"
                  result+="<a class='blue' href='/search.html?page=1&key="+data.author+"' target='_blank' title='"+data.author+"'>作者："+data.author+"</a>"
                  result+="<a class='blue' rel='nofollow'><i class='fa fa-thumbs-up fa-fw'></i>投票推荐</a>"
-                 result+="<a class='red' rel='nofollow'><i class='fa fa-bookmark fa-fw'></i>加入书签</a>"
+                 result+="<a id='shuqian' class='red' rel='nofollow'><i class='fa fa-bookmark fa-fw'></i>加入书签</a>"
                  result+="<a href='#' class='red errorlink' target='_blank'>"
                  result+="<i class='fa fa-comments fa-fw'></i>留言反馈</a></p>"
 
                  $('#novelChapterTitle').append(result)
-
                  $('#novelLi1').append("<a href='/type.html?page=1&key="+data.type+"' target='_blank' title='"+data.type+"'>"+data.type+"</a>")
                  $('#novelLi2').append("<a href='/introduction.html?nid="+nid+"'>"+data.novelName+"</a>")
                  $('#novelFoot').append("<a href='/introduction.html?nid="+nid+"' title='"+data.novelName+"'>"+data.novelName+"</a>所有内容均来自互联网，笔趣阁只为原作者 "+data.author+" 的小说进行宣传。欢迎各位书友支持 "+data.author+" 并收藏")
@@ -95,7 +99,7 @@ $(function(){
 		$.ajax({
 
 			url:'/novel/readNovelChapter.n',
-			data:{"nid":nid,"cid":cid},
+			data:{"nid":nid,"cid":cid,"uid":uid},
 			error:function(){
 				alert("请求出错.")
 			},
