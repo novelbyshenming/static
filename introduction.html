@@ -66,7 +66,7 @@
 
             var params = urlParams[0].split('=')
 
-            var params1 = urlParams[1].split('=')
+            // var params1 = urlParams[1].split('=')
 
                 $.ajax({
                     url:'/novel/introduction.n',
@@ -125,7 +125,7 @@
 
             $.ajax({
                     url:'/novel/novelChapters.n',
-                    data:{"nid":params[1],"uid":params1[1]},
+                    data:{"nid":params[1]},
                     error:function(){
                         alert("请求出错.")
                     },
