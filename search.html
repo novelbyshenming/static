@@ -78,7 +78,11 @@
 
                 localUrl = localUrl.substring(number+1)
 
-                number = localUrl.lastIndexOf('&')
+                number = localUrl.lastIndexOf('&uid')
+
+                if(number<=0){
+                    number = localUrl.lastIndexOf('&')
+                }
 
                 var params1 = localUrl.substring(0,number)
 
