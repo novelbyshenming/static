@@ -78,13 +78,12 @@
 
                 localUrl = localUrl.substring(number+1)
 
-                number = localUrl.lastIndexOf('&uid')
+                var t = localUrl.split('&')
+                var t1 = t[0].split('=')
+                var t2 = t[1].split('=')
 
-                if(number<=0){
-                    number = localUrl.lastIndexOf('&')
-                }
 
-                var params1 = localUrl.substring(0,number)
+               /* var params1 = localUrl.substring(0,number)
 
                 var tparams1 = params1.split('=')
 
@@ -94,10 +93,11 @@
 
                 if ( tparams1[0] =='page' ){
 
-                    ajaxType(tparams1[1],tparams2[1])
+
                 }else{
-                    ajaxType(tparams2[1],tparams1[1])
-                }
+                    ajaxType(t1[1],t[1])
+                }*/
+                ajaxType(t1[1],t2[1])
             }
 
             function getPage(pageStart,pageEnd) {
