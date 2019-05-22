@@ -103,17 +103,17 @@ $(function(){
                  var result =''
                  data = eval(data)
                  result+="<p class='text-center booktag'>"
-                 result+="<a class='blue' href='/novel/introduction.html?nid="+nid+url+"'><i class='fa fa-list fa-fw'></i>"+data.novelName+"</a>"
-                 result+="<a class='blue' href='/novel/search.html?page=1&key="+data.author+url+"' target='_blank' title='"+data.author+"'>作者："+data.author+"</a>"
+                 result+="<a class='blue' href='/introduction.html?nid="+nid+url+"'><i class='fa fa-list fa-fw'></i>"+data.novelName+"</a>"
+                 result+="<a class='blue' href='/search.html?page=1&key="+data.author+url+"' target='_blank' title='"+data.author+"'>作者："+data.author+"</a>"
                  result+="<a class='blue' rel='nofollow'><i class='fa fa-thumbs-up fa-fw'></i>投票推荐</a>"
                  result+="<a class='red' id='' onclick=''rel='nofollow'><i class='fa fa-bookmark fa-fw'></i>加入书签</a>"
                  result+="<a href='#' class='red errorlink' target='_blank'>"
                  result+="<i class='fa fa-comments fa-fw'></i>留言反馈</a></p>"
 
                  $('#novelChapterTitle').append(result)
-                 $('#novelLi1').append("<a href='/novel/type.html?page=1&key="+data.type+url+"' target='_blank' title='"+data.type+"'>"+data.type+"</a>")
-                 $('#novelLi2').append("<a href='/novel/introduction.html?nid="+nid+url+"'>"+data.novelName+"</a>")
-                 $('#novelFoot').append("<a href='/novel/introduction.html?nid="+nid+url+"' title='"+data.novelName+"'>"+data.novelName+"</a>所有内容均来自互联网，笔趣阁只为原作者 "+data.author+" 的小说进行宣传。欢迎各位书友支持 "+data.author+" 并收藏")
+                 $('#novelLi1').append("<a href='/type.html?page=1&key="+data.type+url+"' target='_blank' title='"+data.type+"'>"+data.type+"</a>")
+                 $('#novelLi2').append("<a href='/introduction.html?nid="+nid+url+"'>"+data.novelName+"</a>")
+                 $('#novelFoot').append("<a href='/introduction.html?nid="+nid+url+"' title='"+data.novelName+"'>"+data.novelName+"</a>所有内容均来自互联网，笔趣阁只为原作者 "+data.author+" 的小说进行宣传。欢迎各位书友支持 "+data.author+" 并收藏")
              },
              type:'GET'
          });
@@ -128,9 +128,9 @@ $(function(){
              $("#novelLi3").append(data.novelChapterName)
 			 $('#htmlContent').append("<br>"+data.context+"<br><br><br>")
              var result =''
-             result+="<a id='linkPrev' class='btn btn-default' href='/novel/read.html?nid="+nid+"&cid="+data.lastChapter+url+"'><i class='fa fa-arrow-circle-left fa-fw'></i>上一章</a>"
-             result+="<a id='linkIndex' class='btn btn-default' href='/novel/introduction.html?nid="+nid+url+"'><i class='fa fa-list fa-fw'></i>章节目录</a>"
-             result+="<a id='linkNext' class='btn btn-default' href='/novel/read.html?nid="+nid+"&cid="+data.nextChapter+url+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
+             result+="<a id='linkPrev' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.lastChapter+url+"'><i class='fa fa-arrow-circle-left fa-fw'></i>上一章</a>"
+             result+="<a id='linkIndex' class='btn btn-default' href='/introduction.html?nid="+nid+url+"'><i class='fa fa-list fa-fw'></i>章节目录</a>"
+             result+="<a id='linkNext' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.nextChapter+url+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
              $('#novelTS').append(result)
              $('#novelChapterName').append(data.novelChapterName)
 			},
@@ -155,21 +155,21 @@ $(function(){
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
             <ul class="nav navbar-nav">
                 <li><a href="/novel/type.html?page=1&type=玄幻魔法" title="玄幻魔法">玄幻魔法</a></li>
-                                <li><a href="/novel/type.html?page=1&type=武侠修真" title="武侠修真">武侠修真</a></li>
-                                <li><a href="/novel/type.html?page=1&type=都市言情" title="都市言情">都市言情</a></li>
-                                <li><a href="/novel/type.html?page=1&type=历史军事" title="历史军事">历史军事</a></li>
-                                <li><a href="/novel/type.html?page=1&type=侦探推理" title="侦探推理">侦探推理</a></li>
-                                <li><a href="/novel/type.html?page=1&type=网游动漫" title="网游动漫">网游动漫</a></li>
+                                <li><a href="/type.html?page=1&type=武侠修真" title="武侠修真">武侠修真</a></li>
+                                <li><a href="/type.html?page=1&type=都市言情" title="都市言情">都市言情</a></li>
+                                <li><a href="/type.html?page=1&type=历史军事" title="历史军事">历史军事</a></li>
+                                <li><a href="/type.html?page=1&type=侦探推理" title="侦探推理">侦探推理</a></li>
+                                <li><a href="/type.html?page=1&type=网游动漫" title="网游动漫">网游动漫</a></li>
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown">更多分类<span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="/novel/type.html?page=1&type=科幻小说" title="科幻小说">科幻小说</a></li>
-                                        <li><a href="/novel/type.html?page=1&type=恐怖灵异" title="恐怖灵异">恐怖灵异</a></li>
-                                        <li><a href="/novel/type.html?page=1&type=穿越小说" title="穿越小说">穿越小说</a></li>
-                                        <li><a href="/novel/type.html?page=1&type=其他类型" title="其他类型">其他类型</a></li>
+                                        <li><a href="/type.html?page=1&type=科幻小说" title="科幻小说">科幻小说</a></li>
+                                        <li><a href="/type.html?page=1&type=恐怖灵异" title="恐怖灵异">恐怖灵异</a></li>
+                                        <li><a href="/type.html?page=1&type=穿越小说" title="穿越小说">穿越小说</a></li>
+                                        <li><a href="/type.html?page=1&type=其他类型" title="其他类型">其他类型</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="/novel/type.html?page=1&state=complete" title="完本小说">完本小说</a></li>
+                                <li><a href="/type.html?page=1&state=complete" title="完本小说">完本小说</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/login.html">登录</a></li><li><a href="/register.html">免费注册</a></li>
