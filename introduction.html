@@ -49,28 +49,82 @@
     <script src="/novel/js/respond.min.js"></script><![endif]-->
 
     <script type="text/javascript">
+
+     var localUrl = window.location.search
+
+    var tUrl = localUrl
+
+    localUrl = localUrl.substring(1)
+
+    var urlParams = localUrl.split('&')
+
+    var params = urlParams[0].split('=')
+
+    var nid = params[1]
+
+    var uid
+
+    var vip
+
+    var url=''
+
+    var introductionUrlMapping='/novel/novelChapters.n?nid='+nid
+
+     /*
+       在此判断   是否为  用户 访问  用户是否为  vip用户
+     */
+    var userIndex = localUrl.indexOf('uid')
+
+    if(userIndex>0){
+
+        // 代表用户登陆
+        var vipIndex = localUrl.indexOf('vip')
+
+        if(vipIndex>0){
+            // 代表 vip用户登陆
+
+            uid = urlParams[1].split('=')[1]
+            vip = urlParams[2].split('=')[1]
+            url ='&uid='+uid+'&vip='+vip
+            introductionUrlMapping='/novel/vipNovelChapters.n'+tUrl
+        }else{
+            // 代表 普通用户登陆
+            uid = urlParams[1].split('=')[1]
+            url = '&uid='+uid
+            introductionUrlMapping='/novel/userNovelChapters.n'+tUrl
+        }
+
+    }else{
+          // 游客登录
+    }
+
+               var result = ''
+               result+="<li><a href='/novel/type.html?page=1&type=玄幻魔法"+url+"' title='玄幻魔法'>玄幻魔法</a></li>"
+                result+="<li><a href='/novel/type.html?page=1&type=武侠修真"+url+"' title='武侠修真'>武侠修真</a></li>"
+                result+= "<li><a href='/novel/type.html?page=1&type=都市言情"+url+"' title='都市言情'>都市言情</a></li>"
+                result+="<li><a href='/novel/type.html?page=1&type=历史军事"+url+"' title='历史军事'>历史军事</a></li>"
+                result+="<li><a href='/novel/type.html?page=1&type=侦探推理"+url+"' title='侦探推理'>侦探推理</a></li>"
+                result+="<li><a href='/novel/type.html?page=1&type=网游动漫"+url+"' title='网游动漫'>网游动漫</a></li>"
+                result+="<li class='dropdown'>"
+                result+="<a class='dropdown-toggle' data-toggle='dropdown'>更多分类<span class='caret'></span></a>"
+                result+="<ul class='dropdown-menu' role='menu'>"
+                result+="<li><a href='/novel/type.html?page=1&type=科幻小说"+url+"' title='科幻小说'>科幻小说</a></li>"
+                result+="<li><a href='/novel/type.html?page=1&type=恐怖灵异"+url+"' title='恐怖灵异'>恐怖灵异</a></li>"
+                result+="<li><a href='/novel/type.html?page=1&type=穿越小说"+url+"' title='穿越小说'>穿越小说</a></li>"
+                result+="<li><a href='/novel/type.html?page=1&type=其他类型"+url+"' title='其他类型'>其他类型</a></li>"
+                result+="</ul>"
+                result+="</li>"
+                result+="<li><a href='/novel/type.html?page=1&state=complete"+url+"' title='完本小说'>完本小说</a></li>"
+
         $(function(){
-            /*
-            url: 请求服务器地址
-            data:请求参数
-            dataType:服务器返回数据类型
-            error请求出错执行的功能
-            success请求成功执行的功能,function(data) data服务器返回的数据.
-            type:请求方式
-            */
-            var localUrl = window.location.search
 
-            localUrl = localUrl.substring(1)
-
-            var urlParams = localUrl.split('&')
-
-            var params = urlParams[0].split('=')
+            $('#titleLi').append(result)
 
             // var params1 = urlParams[1].split('=')
 
                 $.ajax({
                     url:'/novel/introduction.n',
-                    data:{"nid":params[1]},
+                    data:{"nid":nid},
                     error:function(){
                         alert("请求出错.")
                     },
@@ -83,7 +137,7 @@
                         $('#novelNewChapter').append("<strong>《"+data.novelName+"》最新章节</strong>")
                         var result =''
                         result+="<li><a href='/' title='笔趣阁'><i class='fa fa-home fa-fw'></i>首页</a></li>"
-                        result+="<li><a href='/type.html?page=1&type='"+data.type+" target='_blank' title='"+data.type+"'>"+data.type+"</a></li>"
+                        result+="<li><a href='/novel/type.html?page=1&type="+data.type+url+"' target='_blank' title='"+data.type+"'>"+data.type+"</a></li>"
                         result+="<li class='active'>"+data.novelName+"</li>"
                         $('#introductionHead').append(result)
 
@@ -94,8 +148,8 @@
                         result+="<div class='col-md-10'>"
                         result+="<h1 class='bookTitle'>"+data.novelName+"</h1>"
                         result+="<p class='booktag'>"
-                        result+="<a class='red' href='/search.html?page=1&key='"+data.author+" target='_blank' title='作者："+data.author+"'>"+data.author+"</a>"
-                        result+="<a class='red' href='/type.html?page=1&type="+data.type+"' target='_blank' title='"+data.type+"'>"+data.type+"</a>"
+                        result+="<a class='red' href='/novel/search.html?page=1&key="+data.author+url+"' target='_blank' title='作者："+data.author+"'>"+data.author+"</a>"
+                        result+="<a class='red' href='/novel/type.html?page=1&type="+data.type+url+"' target='_blank' title='"+data.type+"'>"+data.type+"</a>"
                         result+="<span class='blue'>阅读数："+data.readCount+"</span>"
                         result+="<span class='blue'>"+data.state+"</span>"
                         result+="</p>"
@@ -124,8 +178,7 @@
                 });
 
             $.ajax({
-                    url:'/novel/novelChapters.n',
-                    data:{"nid":params[1]},
+                    url:introductionUrlMapping,
                     error:function(){
                         alert("请求出错.")
                     },
@@ -145,7 +198,7 @@
                             for (var i =chapterNumber-1;i>=0;i--){
 
                                 result+= "<dd class='col-md-3'>"
-                                result+= "<a href='/read.html?nid="+params[1]+"&cid="+chapters[i].url+"' title='"+chapters[i].title+"'>"+chapters[i].title+"</a></dd>"
+                                result+= "<a href='/novel/read.html?nid="+nid+"&cid="+chapters[i].url+url+"' title='"+chapters[i].title+"'>"+chapters[i].title+"</a></dd>"
                             }
 
                         }else{
@@ -153,7 +206,7 @@
                             for (var i =chapterNumber-1;i>=chapterNumber-12;i--){
 
                                 result+= "<dd class='col-md-3'>"
-                                result+= "<a href='/read.html?nid="+params[1]+"&cid="+chapters[i].url+"' title='"+chapters[i].title+"'>"+chapters[i].title+"</a></dd>"
+                                result+= "<a href='/novel/read.html?nid="+nid+"&cid="+chapters[i].url+url+"' title='"+chapters[i].title+"'>"+chapters[i].title+"</a></dd>"
                             }
                         }
                         novelNewChapterList.append(result)
@@ -163,7 +216,7 @@
                          $(chapters).each(function (index,ele) {
 
                           result+="<dd class='col-md-3'>"
-                          result+="<a href='/read.html?nid="+params[1]+"&cid="+ele.url+"'  title='"+ele.title+"'>"+ele.title+"</a></dd>"
+                          result+="<a href='/novel/read.html?nid="+nid+"&cid="+ele.url+url+"'  title='"+ele.title+"'>"+ele.title+"</a></dd>"
                          })
 
                         $('#chapterList').append(result)
@@ -189,23 +242,8 @@
             <a href="/" class="navbar-brand logo" title="笔趣阁">笔趣阁</a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
-            <ul class="nav navbar-nav">
-                <li><a href="/type.html?page=1&type=玄幻魔法" title="玄幻魔法">玄幻魔法</a></li>
-                <li><a href="/type.html?page=1&type=武侠修真" title="武侠修真">武侠修真</a></li>
-                <li><a href="/type.html?page=1&type=都市言情" title="都市言情">都市言情</a></li>
-                <li><a href="/type.html?page=1&type=历史军事" title="历史军事">历史军事</a></li>
-                <li><a href="/type.html?page=1&type=侦探推理" title="侦探推理">侦探推理</a></li>
-                <li><a href="/type.html?page=1&type=网游动漫" title="网游动漫">网游动漫</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">更多分类<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="/type.html?page=1&type=科幻小说" title="科幻小说">科幻小说</a></li>
-                        <li><a href="/type.html?page=1&type=恐怖灵异" title="恐怖灵异">恐怖灵异</a></li>
-                        <li><a href="/type.html?page=1&type=穿越小说" title="穿越小说">穿越小说</a></li>
-                        <li><a href="/type.html?page=1&type=其他类型" title="其他类型">其他类型</a></li>
-                    </ul>
-                </li>
-                <li><a href="/type.html?page=1&state=complete" title="完本小说">完本小说</a></li>
+            <ul class="nav navbar-nav" id="titleLi">
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/login.html">登录</a></li>
