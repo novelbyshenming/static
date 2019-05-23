@@ -63,7 +63,7 @@
         }
     }
 
-    var result = ''
+        var result = ''
         result+="<li><a href='/type.html?page=1&type=玄幻魔法"+url+"' title='玄幻魔法'>玄幻魔法</a></li>"
         result+="<li><a href='/type.html?page=1&type=武侠修真"+url+"' title='武侠修真'>武侠修真</a></li>"
         result+= "<li><a href='/type.html?page=1&type=都市言情"+url+"' title='都市言情'>都市言情</a></li>"
@@ -108,35 +108,20 @@
 
                 var target=''
 
-                if ( tparams1[0] =='page' ){
+                var start = (tparams1[1]-1)*28
 
-                    var start = (tparams1[1]-1)*28
+                $('#typeName').append("<i class='fa fa-fire fa-fw'></i>"+tparams2[1]+"热门推荐 ")
 
-                    if (tparams2[1]=='complete'){
+                if (tparams2[1]=='complete'){
 
-                        target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_state:已完成'
-                    }else{
-
-                        target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+tparams2[1]
-                    }
-
-                    params = params2
-                    ajaxType(target,tparams1[1])
+                    target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_state:已完成'
                 }else{
 
-                    var start = (tparams2[1]-1)*28
-
-                    if (tparams1[1]=='complete'){
-
-                        target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_state:已完成'
-                    }else{
-
-                        target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+tparams1[1]
-                    }
-
-                    params = params1
-                    ajaxType(target,tparams2[1])
+                    target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+tparams2[1]
                 }
+
+                params = params2
+                ajaxType(target,tparams1[1])
             }
 
             function getPage(page,pageStart,pageEnd) {
@@ -253,14 +238,14 @@
                 });
             }
         })
-function indexUrl() {
-       if (url==''){
-           window.location.href = '/index.html'
-       }else{
-           window.location.href = '/index.html?'+url.substring(1)
-       }
+        function indexUrl() {
+             if (url==''){
+               window.location.href = '/index.html'
+           }else{
+               window.location.href = '/index.html?'+url.substring(1)
+           }
 
-   }
+        }
     </script>
 
 
@@ -296,7 +281,7 @@ function indexUrl() {
     <div class="row">
         <div class="col-md-4">
             <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-fire fa-fw"></i>玄幻魔法热门推荐  </div>
+                <div class="panel-heading" id="typeName"><!--<i class="fa fa-fire fa-fw"></i>玄幻魔法热门推荐  --></div>
                 <div class="list-group list-top" id="searchList" >
 
                     <li class="list-group-item">
