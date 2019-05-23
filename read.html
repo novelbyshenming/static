@@ -51,8 +51,27 @@
        }
    }
 
+   var result = ''
+   result+="<li><a href='/type.html?page=1&type=玄幻魔法"+url+"' title='玄幻魔法'>玄幻魔法</a></li>"
+   result+="<li><a href='/type.html?page=1&type=武侠修真"+url+"' title='武侠修真'>武侠修真</a></li>"
+   result+= "<li><a href='/type.html?page=1&type=都市言情"+url+"' title='都市言情'>都市言情</a></li>"
+   result+="<li><a href='/type.html?page=1&type=历史军事"+url+"' title='历史军事'>历史军事</a></li>"
+   result+="<li><a href='/type.html?page=1&type=侦探推理"+url+"' title='侦探推理'>侦探推理</a></li>"
+   result+="<li><a href='/type.html?page=1&type=网游动漫"+url+"' title='网游动漫'>网游动漫</a></li>"
+   result+="<li class='dropdown'>"
+   result+="<a class='dropdown-toggle' data-toggle='dropdown'>更多分类<span class='caret'></span></a>"
+   result+="<ul class='dropdown-menu' role='menu'>"
+   result+="<li><a href='/type.html?page=1&type=科幻小说"+url+"' title='科幻小说'>科幻小说</a></li>"
+   result+="<li><a href='/type.html?page=1&type=恐怖灵异"+url+"' title='恐怖灵异'>恐怖灵异</a></li>"
+   result+="<li><a href='/type.html?page=1&type=穿越小说"+url+"' title='穿越小说'>穿越小说</a></li>"
+   result+="<li><a href='/type.html?page=1&type=其他类型"+url+"' title='其他类型'>其他类型</a></li>"
+   result+="</ul>"
+   result+="</li>"
+   result+="<li><a href='/type.html?page=1&state=complete"+url+"' title='完本小说'>完本小说</a></li>"
+
 
 $(function(){
+    $('#titleLi').append(result)
 	/*
 	url: 请求服务器地址
 	data:请求参数
@@ -153,23 +172,8 @@ $(function(){
             <a href="/" class="navbar-brand logo" title="笔趣阁">笔趣阁</a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
-            <ul class="nav navbar-nav">
-                <li><a href="/type.html?page=1&type=玄幻魔法" title="玄幻魔法">玄幻魔法</a></li>
-                                <li><a href="/type.html?page=1&type=武侠修真" title="武侠修真">武侠修真</a></li>
-                                <li><a href="/type.html?page=1&type=都市言情" title="都市言情">都市言情</a></li>
-                                <li><a href="/type.html?page=1&type=历史军事" title="历史军事">历史军事</a></li>
-                                <li><a href="/type.html?page=1&type=侦探推理" title="侦探推理">侦探推理</a></li>
-                                <li><a href="/type.html?page=1&type=网游动漫" title="网游动漫">网游动漫</a></li>
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown">更多分类<span class="caret"></span></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="/type.html?page=1&type=科幻小说" title="科幻小说">科幻小说</a></li>
-                                        <li><a href="/type.html?page=1&type=恐怖灵异" title="恐怖灵异">恐怖灵异</a></li>
-                                        <li><a href="/type.html?page=1&type=穿越小说" title="穿越小说">穿越小说</a></li>
-                                        <li><a href="/type.html?page=1&type=其他类型" title="其他类型">其他类型</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="/type.html?page=1&state=complete" title="完本小说">完本小说</a></li>
+            <ul class="nav navbar-nav" id="titleLi">
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/login.html">登录</a></li><li><a href="/register.html">免费注册</a></li>
