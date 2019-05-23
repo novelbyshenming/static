@@ -126,6 +126,9 @@
                     tTarget='http://47.106.110.16/solr/collection1/select?q=novel_type:'+decodeURI(tparams2[1])+'&start=0&rows=30&wt=json&indent=true'
                     target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+tparams2[1]
                 }
+
+
+                <!--  ===============推荐榜   ========================  -->
                 var tresult = ''
                 $.ajax({
                         url:tTarget,
@@ -147,6 +150,8 @@
                         },
                         type:'GET'
                 		});
+
+                <!--  =======================================                       -->
 
 
                 params = params2
