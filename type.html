@@ -89,25 +89,20 @@
             var params=''
             var pageNumber
 
-            var localUrl = window.location.href;
+            var localUrl = window.location.search;
 
-            var number = localUrl.lastIndexOf('?')
-
-            if (number >0 ){
+            var number = localUrl.indexOf('?')
+            if (number >=0 ){
 
                 localUrl = localUrl.substring(number+1)
-               if(url==''){
-                    number = localUrl.lastIndexOf('&')
-                }else{
-                    number =localUrl.indexOf('uid=')
-                }
-              
 
-                var params1 = localUrl.substring(0,number)
+                var t = localUrl.split('&')
+
+                var params1 = t[0]
 
                 var tparams1 = params1.split('=')
 
-                var params2 = localUrl.substring(number+1)
+                var params2 = t[1]
 
                 var tparams2 = params2.split('=')
 
