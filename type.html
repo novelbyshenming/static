@@ -110,13 +110,13 @@
 
                 var start = (tparams1[1]-1)*28
 
-                $('#typeName').append("<i class='fa fa-fire fa-fw'></i>"+tparams2[1]+"热门推荐 ")
+
 
                 if (tparams2[1]=='complete'){
-
+                    $('#typeName').append("<i class='fa fa-fire fa-fw'></i>"+完本小说+"热门推荐 ")
                     target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_state:已完成'
                 }else{
-
+                    $('#typeName').append("<i class='fa fa-fire fa-fw'></i>"+tparams2[1]+"热门推荐 ")
                     target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+tparams2[1]
                 }
 
