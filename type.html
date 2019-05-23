@@ -113,10 +113,12 @@
 
 
                 if (tparams2[1]=='complete'){
+                    $('#typeName1').append("最新完本小说")
                     $('#title').append('好看的完本小说_2019完本小说排行榜_嘿 ! 污')
                     $('#typeName').append("<i class='fa fa-fire fa-fw'></i>完本小说热门推荐 ")
                     target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_state:已完成'
                 }else{
+                    $('#typeName1').append(decodeURI(tparams2[1])+"最新更新")
                     $('#title').append("好看的"+decodeURI(tparams2[1]) +"_2019 "+decodeURI(tparams2[1])+"排行榜_嘿 ! 污")
                     $('#typeName').append("<i class='fa fa-fire fa-fw'></i>"+decodeURI(tparams2[1])+"热门推荐 ")
                     target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+tparams2[1]
@@ -319,7 +321,7 @@
         </div>
         <div class="col-md-8">
             <div class="panel panel-default">
-                <div class="panel-heading"><h1 class="fs-16 mg0"><i class="fa fa-list fa-fw"></i>玄幻魔法最新更新</h1></div>
+                <div class="panel-heading" id="typeName1"><h1 class="fs-16 mg0"><i class="fa fa-list fa-fw"></i></h1></div>
                 <table class="table" id="typeTable">
                     <tbody>
                     <tr>
