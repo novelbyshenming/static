@@ -124,7 +124,6 @@
                     var start = jsonObject.response.start
                     var docs= jsonObject.response.docs
                     $(docs).each(function (index,ele) {
-						alert();
                         result+="<tr><td class=\"text-muted hidden-xs\" width=\"10%\">"+ele.novel_type+"</td>"
                         result+="<td><a href=\"/introduction.html?nid="+ele.id+url+"\" title=\""+ele.novel_name+"\">"+ele.novel_name+"</a></td>"
                         result+="<td class=\"hidden-xs\">"
