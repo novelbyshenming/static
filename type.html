@@ -136,7 +136,6 @@
                             var jsonObject = eval("("+data+")")
                              var docs= jsonObject.response.docs
                              $(docs).each(function(index,ele) {
-                                alert(ele.novel_author)
                                tresult+="<li class='list-group-item'>"
                               tresult+="<i class='topNum'>"+(index+1)+"</i>"
                               tresult+="<a href='/introduction.html?nid="+ele.id+url+"' title='"+ele.novel_name+"'>"+ele.novel_name+"</a>"
