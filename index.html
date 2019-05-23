@@ -83,11 +83,35 @@
             }
         }
 
+        novelMemorys = function(nid){
+    		console.info("123");
+    		var userUrl = window.location.search.substr(1);
 
+    			$.ajax({
+    				type:'GET',
+    				url:'memory.u',
+    				data:{'nid':nid},
+    				success:function(data){
+    					if(data == "-1"){//session_uid存在  数据库没记录
+    						window.location.href="/introduction.html?nid="+nid+"&uid="+userUrl;
+    					}else if(data == "0"){//session_uid不存在   通过套取uid登录 
+    						window.location.href="/introduction.html?nid="+nid;
+    					}else{//返回的data为小说章节cid   session_uid存在  数据库有记录
+    						window.location.href="/read.html?nid="+nid+"&cid="+data+"&uid="+userUrl;
+    					}
+    				},
+    				error:function(){
+    					alert("系统繁忙，请稍后再试！");
+    				}
+    			});
+    			
+    			
+    			
+    	};
+        
         $(function () {
 
             $('#titleLi').append(result)
-
             $.ajax({
                 url:'solr/collection1/select?q=*%3A*&sort=novel_updateTimes+desc&rows=30&wt=json&indent=true',
                 error:function(){
@@ -100,7 +124,7 @@
                     var start = jsonObject.response.start
                     var docs= jsonObject.response.docs
                     $(docs).each(function (index,ele) {
-
+						alert();
                         result+="<tr><td class=\"text-muted hidden-xs\" width=\"10%\">"+ele.novel_type+"</td>"
                         result+="<td><a href=\"/introduction.html?nid="+ele.id+url+"\" title=\""+ele.novel_name+"\">"+ele.novel_name+"</a></td>"
                         result+="<td class=\"hidden-xs\">"
@@ -117,11 +141,13 @@
 
 
         })
+        
     </script>
 
 </head>
 <body>
 <div class="navbar navbar-inverse" id="header">
+	<input type="hidden" id="inputHidden" value="$(user.uid)">
     <div class="container">
         <div class="navbar-header">
             <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
@@ -169,7 +195,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="col-md-3 col-xs-6 mb10 mt10">
-                        <a class="thumbnail"
+                        <a class="thumbnail novelMemory"
                                                                 href="#"
                                                                 title="斗罗大陆IV终极斗罗"><img
                             src="#" alt="斗罗大陆IV终极斗罗"
@@ -250,7 +276,9 @@
                     </a>
                     </div>
                     <div class="col-md-3 col-xs-6 mb10 mt10">
+
                         <a class="thumbnail" href="#"  title="开天录">
+
                         <img  src="https://www.biqukan.cc/files/article/image/47/47583/47583s.jpg" alt="开天录"  style="height:182px;">
                         <div class="caption"><strong>开天录</strong><br><span
                                 class="text-muted fs-12">血红 / 著</span><br><span
@@ -259,9 +287,8 @@
                     </a>
                     </div>
                     <div class="col-md-3 col-xs-6 mb10 mt10">
-                        <a class="thumbnail"
-                                                                href="#"
-                                                                title="好想住你隔壁">
+
+                        <a class="thumbnail" href="#" title="好想住你隔壁">
                             <img
                             src="https://www.biqukan.cc/files/article/image/50/50793/50793s.jpg" alt="好想住你隔壁"
                             style="height:182px;">
@@ -311,7 +338,7 @@
                     <ul class="list-group list-top">
                         <li class="list-group-item">
                             <i class="topNum">1</i>
-                            <a href="https://www.biqukan.cc/book/7377/"
+                            <a href="https://www.biqukan.cc/book/7377/" class="novelMemory"
                                title="我不喜欢这世界，我只喜欢你">我不喜欢这世界，我只喜欢你</a>
                             <small class="text-muted">/ 乔一</small>
                             <span class="pull-right text-muted">27876</span>
@@ -319,7 +346,7 @@
 
                         <li class="list-group-item">
                             <i class="topNum">2</i>
-                            <a href="https://www.biqukan.cc/book/35344/"
+                            <a href="https://www.biqukan.cc/book/35344/" class="novelMemory"
                                                                               title="神级龙卫">神级龙卫</a>
                             <small class="text-muted">/ 花幽山月</small>
                             <span class="pull-right text-muted">27456</span>
@@ -327,7 +354,7 @@
 
                         <li class="list-group-item">
                             <i class="topNum">3</i>
-                            <a href="https://www.biqukan.cc/book/27689/"
+                            <a href="https://www.biqukan.cc/book/27689/" class="novelMemory"
                                                                               title="总裁爹地超给力">总裁爹地超给力</a>
                             <small class="text-muted">/ 席宝儿</small>
                             <span class="pull-right text-muted">5747</span>
@@ -335,7 +362,7 @@
 
                         <li class="list-group-item">
                             <i class="topNum">4</i>
-                            <a href="https://www.biqukan.cc/book/43323/"
+                            <a href="https://www.biqukan.cc/book/43323/" class="novelMemory"
                                                                               title="医圣仁心叶皓轩">医圣仁心叶皓轩</a>
                             <small class="text-muted">/ 一念</small>
                             <span class="pull-right text-muted">4953</span>
@@ -343,7 +370,7 @@
 
                         <li class="list-group-item">
                             <i class="topNum">5</i>
-                            <a href="https://www.biqukan.cc/book/53495/"
+                            <a href="https://www.biqukan.cc/book/53495/" class="novelMemory"
                                                                               title="财运天降">财运天降</a>
                             <small class="text-muted">/ 陆原居</small>
                             <span class="pull-right text-muted">4141</span>
@@ -360,7 +387,7 @@
 
                         <li class="list-group-item">
                             <i class="topNum">1</i>
-                            <a href="https://www.biqukan.cc/book/16691/"
+                            <a href="https://www.biqukan.cc/book/16691/" class="novelMemory"
                                                                               title="夺舍之停不下来">夺舍之停不下来</a>
                             <small class="text-muted">/ bigsun</small>
                             <span class="pull-right text-muted">1014</span>
@@ -369,59 +396,59 @@
 
 
                         <li class="list-group-item"><i class="topNum">2</i><a href="https://www.biqukan.cc/book/37390/"
-                                                                              title="总裁爹地惹不起">总裁爹地惹不起</a>
+                             class="novelMemory"                                                 title="总裁爹地惹不起">总裁爹地惹不起</a>
                             <small class="text-muted">/ 上官娆</small>
                             <span class="pull-right text-muted">603</span></li>
                         <li class="list-group-item"><i class="topNum">3</i><a href="https://www.biqukan.cc/book/35344/"
-                                                                              title="神级龙卫">神级龙卫</a>
+                                     class="novelMemory"                                         title="神级龙卫">神级龙卫</a>
                             <small class="text-muted">/ 花幽山月</small>
                             <span class="pull-right text-muted">275</span></li>
                         <li class="list-group-item"><i class="topNum">4</i><a href="https://www.biqukan.cc/book/6853/"
-                                                                              title="覆手繁华">覆手繁华</a>
+                                    class="novelMemory"                                          title="覆手繁华">覆手繁华</a>
                             <small class="text-muted">/ 云霓</small>
                             <span class="pull-right text-muted">195</span></li>
                         <li class="list-group-item"><i class="topNum">5</i><a href="https://www.biqukan.cc/book/7188/"
-                                                                              title="锦桐">锦桐</a>
+                                    class="novelMemory"                                          title="锦桐">锦桐</a>
                             <small class="text-muted">/ 闲听落花</small>
                             <span class="pull-right text-muted">194</span></li>
                         <li class="list-group-item"><i class="topNum">6</i><a href="https://www.biqukan.cc/book/23932/"
-                                                                              title="蜜爱100分：不良鲜妻有点甜">蜜爱100分：不良鲜妻有点甜</a>
+                                    class="novelMemory"                                          title="蜜爱100分：不良鲜妻有点甜">蜜爱100分：不良鲜妻有点甜</a>
                             <small class="text-muted">/ 囧囧有妖</small>
                             <span class="pull-right text-muted">192</span></li>
                         <li class="list-group-item"><i class="topNum">7</i><a href="https://www.biqukan.cc/book/11051/"
-                                                                              title="元尊">元尊</a>
+                                    class="novelMemory"                                          title="元尊">元尊</a>
                             <small class="text-muted">/ 天蚕土豆</small>
                             <span class="pull-right text-muted">169</span></li>
                         <li class="list-group-item"><i class="topNum">8</i><a href="https://www.biqukan.cc/book/7153/"
-                                                                              title="圣墟">圣墟</a>
+                                    class="novelMemory"                                          title="圣墟">圣墟</a>
                             <small class="text-muted">/ 辰东</small>
                             <span class="pull-right text-muted">157</span></li>
                         <li class="list-group-item"><i class="topNum">9</i><a href="https://www.biqukan.cc/book/20216/"
-                                                                              title="飞剑问道">飞剑问道</a>
+                                    class="novelMemory"                                          title="飞剑问道">飞剑问道</a>
                             <small class="text-muted">/ 我吃西红柿</small>
                             <span class="pull-right text-muted">151</span></li>
                         <li class="list-group-item"><i class="topNum">10</i><a href="https://www.biqukan.cc/book/8805/"
-                                                                               title="好色小姨">好色小姨</a>
+                                   class="novelMemory"                                            title="好色小姨">好色小姨</a>
                             <small class="text-muted">/ 孤寂之狼</small>
                             <span class="pull-right text-muted">128</span></li>
                         <li class="list-group-item"><i class="topNum">11</i><a href="https://www.biqukan.cc/book/17657/"
-                                                                               title="春闺密事">春闺密事</a>
+                                   class="novelMemory"                                            title="春闺密事">春闺密事</a>
                             <small class="text-muted">/ 秦兮</small>
                             <span class="pull-right text-muted">118</span></li>
                         <li class="list-group-item"><i class="topNum">12</i><a href="https://www.biqukan.cc/book/1493/"
-                                                                               title="慕南枝">慕南枝</a>
+                                   class="novelMemory"                                            title="慕南枝">慕南枝</a>
                             <small class="text-muted">/ 吱吱</small>
                             <span class="pull-right text-muted">116</span></li>
                         <li class="list-group-item"><i class="topNum">13</i><a href="https://www.biqukan.cc/book/1038/"
-                                                                               title="一念永恒">一念永恒</a>
+                                   class="novelMemory"                                            title="一念永恒">一念永恒</a>
                             <small class="text-muted">/ 耳根</small>
                             <span class="pull-right text-muted">83</span></li>
                         <li class="list-group-item"><i class="topNum">14</i><a href="https://www.biqukan.cc/book/128/"
-                                                                               title="龙王传说">龙王传说</a>
+                                    class="novelMemory"                                           title="龙王传说">龙王传说</a>
                             <small class="text-muted">/ 唐家三少</small>
                             <span class="pull-right text-muted">79</span></li>
                         <li class="list-group-item"><i class="topNum">15</i><a href="https://www.biqukan.cc/book/10420/"
-                                                                               title="凤回巢">凤回巢</a>
+                                 class="novelMemory"                                              title="凤回巢">凤回巢</a>
                             <small class="text-muted">/ 寻找失落的爱情</small>
                             <span class="pull-right text-muted">73</span></li>
                     </ul>
@@ -431,7 +458,7 @@
                         <li class="list-group-item">
                             <i class="topNum">1</i>
                             <a href="https://www.biqukan.cc/book/4671/"
-                                                                              title="逆战仙魔">逆战仙魔</a>
+                                    class="novelMemory"                                          title="逆战仙魔">逆战仙魔</a>
                             <small class="text-muted">/ 观云海</small>
                             <span class="pull-right text-muted">8587</span>
                         </li>
@@ -439,7 +466,7 @@
                         <li class="list-group-item">
                             <i class="topNum">2</i>
                             <a href="https://www.biqukan.cc/book/16691/"
-                                                                              title="夺舍之停不下来">夺舍之停不下来</a>
+                                    class="novelMemory"                                          title="夺舍之停不下来">夺舍之停不下来</a>
                             <small class="text-muted">/ bigsun</small>
                             <span class="pull-right text-muted">6671</span>
                         </li>
@@ -447,7 +474,7 @@
                         <li class="list-group-item">
                             <i class="topNum">3</i>
                             <a href="https://www.biqukan.cc/book/26276/"
-                                                                              title="盛妻凌人：封少，别太坏！">盛妻凌人：封少，别太坏！</a>
+                                     class="novelMemory"                                         title="盛妻凌人：封少，别太坏！">盛妻凌人：封少，别太坏！</a>
                             <small class="text-muted">/ 恩很宅</small>
                             <span class="pull-right text-muted">6594</span>
                         </li>
@@ -455,7 +482,7 @@
                         <li class="list-group-item">
                             <i class="topNum">4</i>
                             <a href="https://www.biqukan.cc/book/23932/"
-                                                                              title="蜜爱100分：不良鲜妻有点甜">蜜爱100分：不良鲜妻有点甜</a>
+                                      class="novelMemory"                                        title="蜜爱100分：不良鲜妻有点甜">蜜爱100分：不良鲜妻有点甜</a>
                             <small class="text-muted">/ 囧囧有妖</small>
                             <span class="pull-right text-muted">6280</span>
                         </li>
@@ -463,7 +490,7 @@
                         <li class="list-group-item">
                             <i class="topNum">5</i>
                             <a href="https://www.biqukan.cc/book/7488/"
-                                                                              title="敛财人生[综].">敛财人生[综].</a>
+                                       class="novelMemory"                                       title="敛财人生[综].">敛财人生[综].</a>
                             <small class="text-muted">/ 林木儿</small>
                             <span class="pull-right text-muted">3803</span>
                         </li>
@@ -471,45 +498,45 @@
                         <li class="list-group-item">
                             <i class="topNum">6</i>
                             <a href="https://www.biqukan.cc/book/37390/"
-                                                                              title="总裁爹地惹不起">总裁爹地惹不起</a>
+                                      class="novelMemory"                                        title="总裁爹地惹不起">总裁爹地惹不起</a>
                             <small class="text-muted">/ 上官娆</small>
                             <span class="pull-right text-muted">3488</span>
                         </li>
 
                         <li class="list-group-item"><i class="topNum">7</i><a href="https://www.biqukan.cc/book/8783/"
-                                                                              title="未来天王">未来天王</a>
+                                      class="novelMemory"                                        title="未来天王">未来天王</a>
                             <small class="text-muted">/ 陈词懒调</small>
                             <span class="pull-right text-muted">3366</span></li>
                         <li class="list-group-item"><i class="topNum">8</i><a href="https://www.biqukan.cc/book/7497/"
-                                                                              title="敛财人生[综]">敛财人生[综]</a>
+                                   class="novelMemory"                                           title="敛财人生[综]">敛财人生[综]</a>
                             <small class="text-muted">/ 林木儿</small>
                             <span class="pull-right text-muted">2623</span></li>
                         <li class="list-group-item"><i class="topNum">9</i><a href="https://www.biqukan.cc/book/35000/"
-                                                                              title="快穿之宠爱">快穿之宠爱</a>
+                                   class="novelMemory"                                           title="快穿之宠爱">快穿之宠爱</a>
                             <small class="text-muted">/ 飞翼</small>
                             <span class="pull-right text-muted">2203</span></li>
                         <li class="list-group-item"><i class="topNum">10</i><a href="https://www.biqukan.cc/book/36427/"
-                                                                               title="盛华">盛华</a>
+                                    class="novelMemory"                                           title="盛华">盛华</a>
                             <small class="text-muted">/ 闲听落花</small>
                             <span class="pull-right text-muted">2156</span></li>
                         <li class="list-group-item"><i class="topNum">11</i><a href="https://www.biqukan.cc/book/29905/"
-                                                                               title="威武不能娶">威武不能娶</a>
+                                    class="novelMemory"                                           title="威武不能娶">威武不能娶</a>
                             <small class="text-muted">/ 玖拾陆</small>
                             <span class="pull-right text-muted">2117</span></li>
                         <li class="list-group-item"><i class="topNum">12</i><a href="https://www.biqukan.cc/book/44476/"
-                                                                               title="首长夫人这职业">首长夫人这职业</a>
+                                       class="novelMemory"                                        title="首长夫人这职业">首长夫人这职业</a>
                             <small class="text-muted">/ 小喵妖娆</small>
                             <span class="pull-right text-muted">1993</span></li>
                         <li class="list-group-item"><i class="topNum">13</i><a href="https://www.biqukan.cc/book/1493/"
-                                                                               title="慕南枝">慕南枝</a>
+                                     class="novelMemory"                                          title="慕南枝">慕南枝</a>
                             <small class="text-muted">/ 吱吱</small>
                             <span class="pull-right text-muted">1900</span></li>
                         <li class="list-group-item"><i class="topNum">14</i><a href="https://www.biqukan.cc/book/23693/"
-                                                                               title="与天同兽">与天同兽</a>
+                                      class="novelMemory"                                         title="与天同兽">与天同兽</a>
                             <small class="text-muted">/ 雾矢翊</small>
                             <span class="pull-right text-muted">1711</span></li>
                         <li class="list-group-item"><i class="topNum">15</i><a href="https://www.biqukan.cc/book/14798/"
-                                                                               title="秦楼春">秦楼春</a>
+                                     class="novelMemory"                                          title="秦楼春">秦楼春</a>
                             <small class="text-muted">/ Loeva</small>
                             <span class="pull-right text-muted">1507</span></li>
                     </ul>
@@ -559,7 +586,7 @@
 
                     <tr>
                         <td class="text-muted">都市</td>
-                        <td><a href="#" title="我是校霸他亲妈">我是校霸他亲妈</a></td>
+                        <td><a href="#" class="novelMemory" title="我是校霸他亲妈">我是校霸他亲妈</a></td>
                         <td class="text-muted fs-12" title="墨西柯">墨西柯</td>
                     </tr>
 
