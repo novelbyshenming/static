@@ -110,19 +110,37 @@
 
                 var start = (tparams1[1]-1)*28
 
-
+                var tTarget = ''
 
                 if (tparams2[1]=='complete'){
                     $('#typeName1').append("最新完本小说")
                     $('#title').append('好看的完本小说_2019完本小说排行榜_嘿 ! 污')
                     $('#typeName').append("<i class='fa fa-fire fa-fw'></i>完本小说热门推荐 ")
+                    tTarget='http://47.106.110.16/solr/collection1/select?q=novel_state:已完成&start=0&rows=30&wt=json&indent=true'
                     target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_state:已完成'
                 }else{
                     $('#typeName1').append(decodeURI(tparams2[1])+"最新更新")
                     $('#title').append("好看的"+decodeURI(tparams2[1]) +"_2019 "+decodeURI(tparams2[1])+"排行榜_嘿 ! 污")
                     $('#typeName').append("<i class='fa fa-fire fa-fw'></i>"+decodeURI(tparams2[1])+"热门推荐 ")
+                    tTarget='http://47.106.110.16/solr/collection1/select?q=novel_type:'+decodeURI(tparams2[1])+'&start=0&rows=30&wt=json&indent=true'
                     target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+tparams2[1]
                 }
+                var tresult = ''
+                $.ajax({
+                        url:tTarget,
+                        error:function(){
+                            alert("请求出错.")
+                        },
+                        success:function(data){
+                           tresult+="<li class='list-group-item'>"
+                           tresult+="<i class='topNum'>1</i>"
+                           tresult+="<a href='#' title='极拳暴君'>极拳暴君</a>"
+                           tresult+="<small class='text-muted'>/ 夜与雪</small>"
+                           tresult+="<span class='pull-right text-muted'>1745</span></li>"
+                        },
+                        type:'GET'
+                		});
+                 $('#searchList').append(tresult)
 
                 params = params2
                 ajaxType(target,tparams1[1])
@@ -288,33 +306,13 @@
                 <div class="panel-heading" id="typeName"><!--<i class="fa fa-fire fa-fw"></i>玄幻魔法热门推荐  --></div>
                 <div class="list-group list-top" id="searchList" >
 
-                    <li class="list-group-item">
+                   <!-- <li class="list-group-item">
                         <i class="topNum">1</i>
                         <a href="#" title="极拳暴君">极拳暴君</a>
                         <small class="text-muted">/ 夜与雪</small>
                         <span class="pull-right text-muted">1745</span>
-                    </li>
+                    </li>  -->
 
-                    <li class="list-group-item">
-                        <i class="topNum">2</i>
-                        <a href="#" title="元尊">元尊</a>
-                        <small class="text-muted">/ 天蚕土豆</small>
-                        <span class="pull-right text-muted">1489</span>
-                    </li>
-
-                    <li class="list-group-item">
-                        <i class="topNum">3</i>
-                        <a href="https://www.biqukan.cc/book/26095/" title="开棺有喜：冥夫求放过">开棺有喜：冥夫求放过</a>
-                        <small class="text-muted">/ 吞鬼的女孩</small>
-                        <span class="pull-right text-muted">1175</span>
-                    </li>
-
-                    <li class="list-group-item">
-                        <i class="topNum">4</i>
-                        <a href="https://www.biqukan.cc/book/35766/" title="伏天氏">伏天氏</a>
-                        <small class="text-muted">/ 净无痕</small>
-                        <span class="pull-right text-muted">1040</span>
-                    </li>
 
                 </div>
             </div>
