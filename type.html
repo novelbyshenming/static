@@ -132,11 +132,18 @@
                             alert("请求出错.")
                         },
                         success:function(data){
-                           tresult+="<li class='list-group-item'>"
-                           tresult+="<i class='topNum'>1</i>"
-                           tresult+="<a href='#' title='极拳暴君'>极拳暴君</a>"
-                           tresult+="<small class='text-muted'>/ 夜与雪</small>"
-                           tresult+="<span class='pull-right text-muted'>1745</span></li>"
+
+                            var jsonObject = eval("("+data+")")
+                             var docs= jsonObject.response.docs
+                             $(docs).each(function(index,ele) {
+
+                               tresult+="<li class='list-group-item'>"
+                              tresult+="<i class='topNum'>"+(index+1)+"</i>"
+                              tresult+="<a href='/introduction.html?nid="+ele.id+url+"' title='"+ele.novel_name+"'>"+ele.novel_name+"</a>"
+                              tresult+="<small class='text-muted'>/ "+ele.novel_author+"</small>"
+                              tresult+="<span class='pull-right text-muted'>1745</span></li>"
+                             })
+
                         },
                         type:'GET'
                 		});
