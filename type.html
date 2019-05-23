@@ -114,7 +114,7 @@
 
                 if (tparams2[1]=='complete'){
                     $('#title').append('好看的完本小说_2019完本小说排行榜_嘿 ! 污')
-                    $('#typeName').append("<i class='fa fa-fire fa-fw'></i>"+完本小说+"热门推荐 ")
+                    $('#typeName').append("<i class='fa fa-fire fa-fw'></i>完本小说热门推荐 ")
                     target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_state:已完成'
                 }else{
                     $('#title').append("好看的"+decodeURI(tparams2[1]) +"_2019 "+decodeURI(tparams2[1])+"排行榜_嘿 ! 污")
