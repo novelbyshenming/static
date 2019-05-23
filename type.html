@@ -143,11 +143,11 @@
                               tresult+="<small class='text-muted'>/ "+ele.novel_author+"</small>"
                               tresult+="<span class='pull-right text-muted'>1745</span></li>"
                              })
-
+                             $('#searchList').append(tresult)
                         },
                         type:'GET'
                 		});
-                       $('#searchList').append(tresult)
+
 
                 params = params2
                 ajaxType(target,tparams1[1])
