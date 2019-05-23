@@ -149,7 +149,12 @@ $(function(){
              var result =''
              result+="<a id='linkPrev' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.lastChapter+url+"'><i class='fa fa-arrow-circle-left fa-fw'></i>上一章</a>"
              result+="<a id='linkIndex' class='btn btn-default' href='/introduction.html?nid="+nid+url+"'><i class='fa fa-list fa-fw'></i>章节目录</a>"
-             result+="<a id='linkNext' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.nextChapter+url+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
+             if( data.nextChapter =='-1' ){
+                 result+="<a id='linkNext' class='btn btn-default' href='javascript:return false'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
+             }else{
+                  result+="<a id='linkNext' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.nextChapter+url+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
+             }
+
              $('#novelTS').append(result)
              $('#novelChapterName').append(data.novelChapterName)
 			},
