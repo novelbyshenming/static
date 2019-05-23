@@ -86,6 +86,11 @@
 
             $('#titleLi').append(result)
 
+            var child = $('#titleLi').children
+            $(child).each(function(index,ele) {
+                alert(ele.html)
+            })
+
             var params=''
             var pageNumber
 
