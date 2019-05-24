@@ -36,9 +36,14 @@
 
     if (localUrl==null ||localUrl==''){
 
+
+        $('#login').append("<a href='/login.html' >登录</a>")
+        $('#register').append("<a href='/register.html' >登录</a>")
     }else{
         url = localUrl.substring(1)
         url = '&'+url
+         $('#login').append("<a href='/userbooks.html"+url.substring(1)+"' >我的书架</a>")
+         $('#register').append("<a href='#' ></a>")
     }
 
 
@@ -182,8 +187,8 @@
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login.html">登录</a></li>
-                <li><a href="/register.html">免费注册</a></li>
+                <li id="login"></li>
+                <li id="register"></li>
             </ul>
         </nav>
     </div>
