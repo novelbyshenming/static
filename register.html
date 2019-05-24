@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-    <title>笔趣阁</title>
+    <title>嘿 ! 污 </title>
 
-    <meta name="keywords" content="笔趣阁,笔趣看">
+    <meta name="keywords" content="嘿 ! 污 ,笔趣看">
 
     <meta name="description" content="">
 
@@ -16,14 +16,61 @@
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
 
-    <link href="/novel/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/novel/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/novel/css/site.css" rel="stylesheet">
+    <link href="/noveluser/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/noveluser/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/noveluser/css/site.css" rel="stylesheet">
+    <script src="/noveluser/js/jquery-1.7.2.min.js"></script>
    <!-- <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">-->
-    <meta name="apple-mobile-web-app-title" content="笔趣阁">
-    <script src="/novel/js/register.js"></script>
-    <script src="/novel/js/jquery-1.7.2.min.js"></script>
-    <!--[if lt IE 9]><script src="/novel/js/respond.min.js"></script><![endif]-->
+    <meta name="apple-mobile-web-app-title" content="嘿 ! 污 ">
+    <script src="/noveluser/js/register.js"></script>
+    <script type="text/javascript">
+	$(function(){
+		var Name = /^[a-zA-Z][a-zA-Z0-9]{3,15}$/;
+		var Pwd = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
+		var Email = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+		$('#name').blur(function(){
+			var ex = $("#name").val();
+			
+			if(ex.match(Name)){
+				$("#errorSpan").text("");
+			}else{
+				$("#errorSpan").text("用户名格式不正确，或者用户名为空");
+			}
+		});
+		
+		$('#pwd').blur(function(){
+			 var ex1 = $("#pwd").val();
+			 
+			 if(ex1.match(Pwd)){
+			 	$("#errorSpan1").text("");
+			 }else{
+				$("#errorSpan1").text("密码格式不正确，或者密码为空");
+			 }
+		});
+		
+		$('#repwd').blur(function(){
+			var ex1 = $("#pwd").val();
+			var ex2 = $("#repwd").val();
+			if(ex1 == ex2){
+				$("#errorSpan2").text("");
+			}else{
+				$("#errorSpan2").text("两次密码输入不一致!");
+			}
+		
+		});
+		
+		$('#email').blur(function(){
+			var ex3= $("#email").val();
+			if(ex3.match(Email)){
+				$("#errorSpan3").text("");
+			}else{
+				$("#errorSpan3").text("邮箱格式不正确");
+			}
+		});
+	});
+	</script>
+  
+    <!--[if lt IE 9]><script src="/noveluser/js/respond.min.js"></script><![endif]-->
 
 </head>
 <body>
@@ -35,20 +82,20 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/" class="navbar-brand logo" title="笔趣阁">笔趣阁</a>
+            <a href="/" class="navbar-brand logo" title="嘿 ! 污 ">嘿 ! 污 </a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
             <ul class="nav navbar-nav">
                 <li><a href="/type.html?page=1&type=玄幻" title="玄幻魔法">玄幻魔法</a></li>
-                <li><a href="/type.html?page=1&type=修真" title="武侠修真">武侠修真</a></li>
+                <li><a href="/type.html?page=1&type=武侠" title="武侠修真">武侠修真</a></li>
                 <li><a href="/type.html?page=1&type=都市" title="都市言情">都市言情</a></li>
                 <li><a href="/type.html?page=1&type=穿越" title="历史军事">历史军事</a></li>
                 <li><a href="/type.html?page=1&type=科幻" title="侦探推理">侦探推理</a></li>
                 <li><a href="/type.html?page=1&type=网游" title="网游动漫">网游动漫</a></li>
+                <li><a href="#" title="完本小说">完本小说</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login.html">登录</a></li><li><a href="/register.html">免费注册</a></li>
-
+                <li><a href="/noveluser/html/login.html">登录</a></li><li><a href="/noveluser/html/register.html">免费注册</a></li>
             </ul>
         </nav>
     </div>
@@ -56,37 +103,37 @@
 <div class="container body-content">
     <div class="row mt20 mb20">
         <div class="col-md-6 col-md-offset-3">
+        <input type="hidden" value=${msg} id="msg" />
             <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-user fa-fw"></i>用户注册
-                    <a href="https://www.biqukan.cc/login.php" class="pull-right">已有用户？立即登录</a></div>
+                <div class="panel-heading"><i class="fa fa-userfa-fw"></i>用户注册
+                    <a href="/noveluser/html/login.html" class="pull-right">已有用户？立即登录</a></div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="post" action="/noveluser/register.u">
                         <div class="form-group mt10">
                             <label class="col-md-3 control-label">用户名(必填)</label>
                             <div class="col-md-9">
-                                <input type="text" name="username" class="form-control" placeholder="请输入用户名">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="请输入用户名"><span id="errorSpan" style="color:red"></span>
                             </div>
                         </div>
                         <div class="form-group mt20">
                             <label class="col-md-3 control-label">密码(必填)</label>
                             <div class="col-md-9">
-                                <input type="password" name="password" class="form-control" placeholder="请输入密码">
+                                <input type="password" name="pwd" class="form-control" id="pwd" placeholder="请输入密码" ><span id="errorSpan1" style="color:red"></span>
                             </div>
                         </div>
                         <div class="form-group mt20">
                             <label class="col-md-3 control-label">重复密码(必填)</label>
                             <div class="col-md-9">
-                                <input type="password" name="repassword" class="form-control" placeholder="请再次输入密码">
+                                <input type="password" name="repwd" class="form-control" id="repwd" placeholder="请再次输入密码" ><span id="errorSpan2" style="color:red"></span>
                             </div>
                         </div>
                         <div class="form-group mt10">
                             <label class="col-md-3 control-label">邮箱(必填)</label>
                             <div class="col-md-9">
-                                <input type="text" name="email" class="form-control" placeholder="请输入邮箱">
+                                <input type="text" name="email" class="form-control"  id="email" placeholder="请输入邮箱"><span id="errorSpan3" style="color:red"></span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label">性别</label>
+                            <label class="col-md-3 control-label" >性别</label>
                             <div class="col-md-9">
                                 <div class="radio">
                                     <label class="mr10"><input type="radio" name="usecookie" value="1"> 男</label>
@@ -99,20 +146,47 @@
                         <div class="form-group">
                             <div class="col-md-offset-3 col-md-9">
 
-                                <button type="submit" class="btn btn-primary">立即注册</button>
+                                <button type="button" class="btn btn-primary" onclick="register()" id="button">立即注册</button>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
     <footer>
         <p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请 <a href="https://www.biqukan.cc/newmessage.php?tosys=1" style="text-decoration: underline;">联系我们</a>，我们会尽快处理。</p>
-        <p>Copyright &#169; 2019 <a href="/">笔趣阁</a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
+        <p>Copyright &#169; 2019 <a href="/">嘿 ! 污 </a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
     </footer>
     <div class="back-to-top" id="back-to-top" title="返回顶部" style="left: 1263px;"><i class="fa fa-chevron-up"></i></div>
-
+	
 </div>
+</body>
+  <script type="text/javascript">
+  var flag = true;
+    	function register(){
+    		$("#button").attr("disabled","true");
+    		var data = {
+    			name:$("#name").val(),
+    			pwd:$("#pwd").val(),
+    			email:$("#email").val(),
+    			sex:$("input[name='usecookie']:checked").val()
+    		};
+    		$.post(
+    			"/noveluser/register.u",
+    			data,
+    			function(data){
+    				console.info(data);
+    				if(data.result != -1){
+    						alert(data.msg);
+    						window.location.href = "/noveluser/login.html"
+    					
+    				}else{
+    					alert(data.msg);
+    					$("#button").removeAttr("disabled");
+    				}
 
-</body></html>
+    			});
+    }
+    </script>
+</html>
+
