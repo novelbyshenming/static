@@ -112,6 +112,15 @@
     	};
         
         $(function () {
+            if (localUrl==null ||localUrl==''){
+
+
+                    $('#login').append("<a href='/login.html' >登录</a>")
+                    $('#register').append("<a href='/register.html' >登录</a>")
+                }else{
+                     $('#login').append("<a href='/userbooks.html"+url.substring(1)+"' >我的书架</a>")
+                     $('#register').append("<a href='#' ></a>")
+                }
 
             $('#titleLi').append(result)
             $.ajax({
