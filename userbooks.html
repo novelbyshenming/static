@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+<title>嘿 ! 污 </title>
+
+
+<meta name="keywords" content="嘿 ! 污 ,笔趣看">
+
+
+<meta name="description" content="">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <script src="/noveluser/js/jquery-1.7.2.min.js"></script>
+    <link href="/noveluser/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/noveluser/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/noveluser/css/site.css" rel="stylesheet">
+    <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">
+    <meta name="apple-mobile-web-app-title" content="嘿 ! 污 ">
+	<script type="text/javascript">
+	 var localUrl = window.location.search
+
+        var url =''
+
+        if (localUrl==null ||localUrl==''){
+
+        }else{
+            url = localUrl.substring(1)
+            url = '&'+url
+        }
+
+
+            var result = ''
+            result+="<li><a href='/type.html?page=1&type=玄幻魔法"+url+"' title='玄幻魔法'>玄幻魔法</a></li>"
+            result+="<li><a href='/type.html?page=1&type=武侠修真"+url+"' title='武侠修真'>武侠修真</a></li>"
+            result+= "<li><a href='/type.html?page=1&type=都市言情"+url+"' title='都市言情'>都市言情</a></li>"
+            result+="<li><a href='/type.html?page=1&type=历史军事"+url+"' title='历史军事'>历史军事</a></li>"
+            result+="<li><a href='/type.html?page=1&type=侦探推理"+url+"' title='侦探推理'>侦探推理</a></li>"
+            result+="<li><a href='/type.html?page=1&type=网游动漫"+url+"' title='网游动漫'>网游动漫</a></li>"
+            result+="<li class='dropdown'>"
+            result+="<a class='dropdown-toggle' data-toggle='dropdown'>更多分类<span class='caret'></span></a>"
+            result+="<ul class='dropdown-menu' role='menu'>"
+            result+="<li><a href='/type.html?page=1&type=科幻小说"+url+"' title='科幻小说'>科幻小说</a></li>"
+            result+="<li><a href='/type.html?page=1&type=恐怖灵异"+url+"' title='恐怖灵异'>恐怖灵异</a></li>"
+            result+="<li><a href='/type.html?page=1&type=穿越小说"+url+"' title='穿越小说'>穿越小说</a></li>"
+            result+="<li><a href='/type.html?page=1&type=其他类型"+url+"' title='其他类型'>其他类型</a></li>"
+            result+="</ul>"
+            result+="</li>"
+            result+="<li><a href='/type.html?page=1&state=complete"+url+"' title='完本小说'>完本小说</a></li>"
+
+		$(function(){
+		    $('#titleLi').append(result)
+
+		 var tLocalUrl = window.location.search
+		 tLocalUrl = tLocalUrl.substring(1)
+		 var uid = ""
+		 var t = tLocalUrl.split("=")
+		 var i = 0
+		 uid = t[1]
+	 	 if(uid == undefined){
+				 alert("请先登录!");
+				 window.location.href ="/noveluser/login.html"
+		 }else{
+				$.ajax({
+					url:'/noveluser/search.u',
+					data:{"uid":uid},
+					error:function(){
+						alert("请求出错")	;
+					},
+					success:function(data){
+						var result = ''
+						var last = ''
+						var num = ''
+						last += " <tr><td colspan=\"6\">选中项目<select name=\"newclassid\" id=\"newclassid\" class=\"select\">"
+                        last += " <option value=\"-1\" selected=\"selected\">移出书架</option><option value=\"0\">移到默认书架</option>"
+                        last += " <option value=\"1\">移到第1组书架</option><option value=\"2\">移到第2组书架</option><option value=\"3\">移到第3组书架</option>"
+                        last += " <option value=\"4\">移到第4组书架</option><option value=\"5\">移到第5组书架</option></select><input name=\"btnsubmit\" type=\"button\" value=\"确认\"onclick=\"remBook()\" class=\"btn btn-sm btn-primary\"></td></tr>"
+						$(data).each(function (index,ele) {
+							result += "<tr><td class=\"hidden-xs\"><input type=\"checkbox\" id=\"checkid["+index+"]\" name=\"checkid[]\" value=\"33449\"></td>"
+							result += "<td class=\"even\"><a href=\"http://localhost/novel/introduction.html?nid="+ele.nid+"&uid="+ele.uid+"&vip=true\" target=\"_blank\">"+ele.name+"</a> <span class=\"text-red fs-12\">New</span></td>"
+							result += "<td class=\"odd\"><a href=\"http://localhost/novel/read.html?nid="+ele.nid+"&cid="+ele.cid+"&uid="+ele.uid+"&vip=true\" target=\"_blank\">"+ele.nid+"</a></td>"
+							result += "<td class=\"even\"><a href=\"http://localhost/novel/read.html?nid="+ele.nid+"&cid="+ele.cid+"&uid="+ele.uid+"&vip=true\" target=\"_blank\">"+ele.chapName+"</a></td>"
+							result += "<td class=\"hidden-xs\" align=\"center\">"+ele.ctimes+" </td>"
+							result += "<td class=\"text-danger\" align=\"center\"><a class=\"text-danger\"><a class=\"text-danger\" href=\"javascript:if(confirm('确实要将本书移出书架么？')) document.location='/noveluser/userbooks.html?uid="+ele.uid+"'\"><i class=\"fa fa-times-circle fa-fw\"></i></a></td></tr>"
+							i++
+                     	})
+                     	num += "<div class=\"panel-heading\"><i class=\"fa fa-book fa-fw\"></i>我的书架 <small>您的书架可收藏 20 本，已收藏 "+i+" 本，本组有 "+i+" 本。</small>"
+                     	num += "<select name=\"classlist\" class=\"pull-right\"><option value=\"0\" selected=\"selected\">默认书架</option> <option value=\"1\">第1组书架</option>"
+                     	num += "<option value=\"2\">第2组书架</option><option value=\"3\">第3组书架</option><option value=\"4\">第4组书架</option><option value=\"5\">第5组书架</option></select>"
+                      	$("#num").append(num);
+                     	$("#collect").append(result);
+                       	$("#collect").append(last);
+					},
+					type:"POST"
+				});
+		  }
+		});
+
+	    function check_confirm(){
+	        var checkform = document.getElementById('checkform');
+	        var checknum = 0;
+	        for (var i=0; i < checkform.elements.length; i++){
+	            if (checkform.elements[i].name == 'checkid[]' && checkform.elements[i].checked == true) checknum++;
+	        }
+	        if(checknum == 0){
+	            alert('请先选择要操作的书目！');
+	            return false;
+	        }
+	        var newclassid = document.getElementById('newclassid');
+	        if(newclassid.value == -1){
+	            if(confirm('确实要将选中书目移出书架么？')) return true;
+	            else return false;
+	        }else{
+	            return true;
+	        }
+	    }
+
+	    function readit(url) {
+	        $.get(url);
+	    }
+
+
+	 function indexUrl() {
+        if (url==''){
+            window.location.href = '/index.html'
+        }else{
+            window.location.href = '/index.html?'+url.substring(1)
+        }
+
+    }
+
+	</script>
+
+
+    <!--[if lt IE 9]><script src="/novel/js/respond.min.js"></script><![endif]-->
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse" id="header">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a onclick="indexUrl()" href="javascript:void(0)" class="navbar-brand logo" title="嘿 ! 污 ">嘿 ! 污 </a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
+            <ul class="nav navbar-nav" id="titleLi">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://www.biqukan.cc/modules/article/bookcase.php" title="我的书架"><i class="fa fa-book fa-fw"></i>我的书架</a></li>
+<li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i>jiuhao<span class="caret"></span></a> <ul class="dropdown-menu" role="menu">
+<li><a href="https://www.biqukan.cc/userdetail.php" title="个人资料"><i class="fa fa-info fa-fw"></i>个人资料</a></li>
+<li><a href="https://www.biqukan.cc/message.php" title="站内消息"><i class="fa fa-envelope fa-fw"></i>站内消息</a></li>
+<li><a href="https://www.biqukan.cc/logout.php" title="退出登录"><i class="fa fa-power-off fa-fw"></i>退出登录</a></li>
+</ul></li>
+
+            </ul>
+        </nav>
+    </div>
+</div>
+    <div class="container body-content">
+
+
+
+<div class="row">
+    <div class="col-md-3 hidden-xs">
+        <div class="list-group">
+    <a class="list-group-item" href="/userinfo.html"><i class="fa fa-user fa-fw"></i>会员信息</a>
+    <a class="list-group-item" href="/userbooks.html"><i class="fa fa-book fa-fw"></i>我的书架</a>
+    <a class="list-group-item" href="/useredit.html"><i class="fa fa-edit fa-fw"></i>修改资料</a>
+    <a class="list-group-item" href="/passedit.html"><i class="fa fa-key fa-fw"></i>修改密码</a>
+    <a class="list-group-item" href="/userboxes.html"><i class="fa fa-envelope fa-fw"></i>收件箱</a>
+    <a class="list-group-item" href="/userboxes.html"><i class="fa fa-envelope fa-fw"></i>发件箱</a>
+    <a class="list-group-item" href="/sendmessage.html"><i class="fa fa-envelope fa-fw"></i>发信息给管理员</a>
+    <a class="list-group-item" href="#"><i class="fa fa-power-off fa-fw"></i>退出登录</a>
+</div>
+    </div>
+    <div class="col-md-9">
+            <div class="panel panel-default" id="num">
+                </div>
+                <table class="table" id="collect">
+                    <tbody><tr align="center" >
+                        <th width="5%" class="hidden-xs">
+                        <input type="checkbox" id="checkall" name="checkall" value="checkall" onclick="javascript: for (var i=0;i<this.form.elements.length;i++){ if (this.form.elements[i].name != 'checkkall') this.form.elements[i].checked = form.checkall.checked; }"></th>
+                        <th width="21%">文章名称</th>
+                        <th width="30%">小说id</th>
+                        <th width="30%">书签</th>
+                        <th width="7%" class="hidden-xs">更新</th>
+                        <th width="7%">操作</th>
+                    </tr>
+
+                    <tr >
+                    <td class="text-danger" align="center"></td>
+                        <!-- <td class="hidden-xs">
+                            <input type="checkbox" id="checkid[]" name="checkid[]" value="33449">    </td>
+                        <td class="even"><a href="https://www.biqukan.cc/book/50686/" target="_blank">都市逍遥仙帝</a> <span class="text-red fs-12">New</span></td>
+                        <td class="odd"><a href="https://www.biqukan.cc/book/50686/32339123.html" target="_blank">第九百六十四章 小老弟，有何指教！</a>
+
+                        </td>
+                        <td class="even"><a href="https://www.biqukan.cc/book/50686/32329734.html" target="_blank">第九百五十九章 紫金葫芦</a></td>
+                        <td class="hidden-xs" align="center">05-15
+                            </td>
+                        <td class="text-danger" align="center"><a class="text-danger"><i class="fa fa-times-circle fa-fw"></i></a></td> -->
+                    </tr>
+
+                   
+                </tbody></table>
+            </div>
+    </div>
+    <footer>
+<p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请 <a href="https://www.biqukan.cc/newmessage.php?tosys=1" style="text-decoration: underline;">联系我们</a>，我们会尽快处理。</p>
+<p>Copyright &#169; 2019 <a onclick="indexUrl()" href="javascript:void(0)">嘿 ! 污 </a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
+</footer>
+</div>
+
+<div class="back-to-top" id="back-to-top" title="返回顶部" style="left: 1263px;"><i class="fa fa-chevron-up"></i></div>
+
+    </div>
+
+</body></html>
