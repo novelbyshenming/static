@@ -18,11 +18,11 @@
     <meta name="applicable-device" content="pc,mobile">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <script src="/novel/js/jquery-1.7.2.min.js"></script>
-    <link href="/novel/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/novel/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/novel/css/site.css" rel="stylesheet">
-    <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">
+    <script src="/js/jquery-1.7.2.min.js"></script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/site.css" rel="stylesheet">
+    <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/images/apple-touch-icon-precomposed.png">
     <meta name="apple-mobile-web-app-title" content="嘿 ! 污 ">
 	<script type="text/javascript">
 	 var localUrl = window.location.search
@@ -84,9 +84,9 @@
                         last += " <option value=\"4\">移到第4组书架</option><option value=\"5\">移到第5组书架</option></select><input name=\"btnsubmit\" type=\"button\" value=\"确认\"onclick=\"remBook()\" class=\"btn btn-sm btn-primary\"></td></tr>"
 						$(data).each(function (index,ele) {
 							result += "<tr><td class=\"hidden-xs\"><input type=\"checkbox\" id=\"checkid["+index+"]\" name=\"checkid[]\" value=\"33449\"></td>"
-							result += "<td class=\"even\"><a href=\"http://localhost/novel/introduction.html?nid="+ele.nid+"&uid="+ele.uid+"&vip=true\" target=\"_blank\">"+ele.name+"</a> <span class=\"text-red fs-12\">New</span></td>"
-							result += "<td class=\"odd\"><a href=\"http://localhost/novel/read.html?nid="+ele.nid+"&cid="+ele.cid+"&uid="+ele.uid+"&vip=true\" target=\"_blank\">"+ele.nid+"</a></td>"
-							result += "<td class=\"even\"><a href=\"http://localhost/novel/read.html?nid="+ele.nid+"&cid="+ele.cid+"&uid="+ele.uid+"&vip=true\" target=\"_blank\">"+ele.chapName+"</a></td>"
+							result += "<td class=\"even\"><a href=\"http://localhost/introduction.html?nid="+ele.nid+"&uid="+ele.uid+"&vip=true\" target=\"_blank\">"+ele.name+"</a> <span class=\"text-red fs-12\">New</span></td>"
+							result += "<td class=\"odd\"><a href=\"http://localhost/read.html?nid="+ele.nid+"&cid="+ele.cid+"&uid="+ele.uid+"&vip=true\" target=\"_blank\">"+ele.nid+"</a></td>"
+							result += "<td class=\"even\"><a href=\"http://localhost/read.html?nid="+ele.nid+"&cid="+ele.cid+"&uid="+ele.uid+"&vip=true\" target=\"_blank\">"+ele.chapName+"</a></td>"
 							result += "<td class=\"hidden-xs\" align=\"center\">"+ele.ctimes+" </td>"
 							result += "<td class=\"text-danger\" align=\"center\"><a class=\"text-danger\"><a class=\"text-danger\" href=\"javascript:if(confirm('确实要将本书移出书架么？')) document.location='/noveluser/userbooks.html?uid="+ele.uid+"'\"><i class=\"fa fa-times-circle fa-fw\"></i></a></td></tr>"
 							i++
@@ -139,7 +139,7 @@
 	</script>
 
 
-    <!--[if lt IE 9]><script src="/novel/js/respond.min.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="/js/respond.min.js"></script><![endif]-->
 
 
 </head>
