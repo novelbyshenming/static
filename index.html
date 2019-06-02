@@ -124,7 +124,7 @@
 
             $('#titleLi').append(result)
             $.ajax({
-                url:'solr/collection1/select?q=*%3A*&sort=novel_updateTimes+desc&rows=30&wt=json&indent=true',
+                url:'/solr/collection1/select?q=*%3A*&sort=novel_updateTimes+desc&rows=30&wt=json&indent=true',
                 error:function(){
                     alert("请求出错.")
                 },
