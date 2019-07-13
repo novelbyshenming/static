@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html id="auto-id-1560676702649">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>在线客服</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="访客系统 - 在线客服">
+<meta name="keywords" content="访客系统 - 在线客服">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet"
+	href="https://qiyukf.nosdn.127.net/sdk/tr/t_trade_index_m0_386885c9fea45476a2e376115b6fae72.css">
+<script src="/js/jquery-1.9.1.min.js" ></script>
+<style>
+/**
+* ===========================
+* 访客端-皮肤变量主题色-公共布局
+* ===========================
+*/
+/* trade */
+.g-mask {
+	background-color: #46be8a;
+}
+
+.g-slide .slide_hd {
+	background-color: #46be8a;
+}
+
+.g-body .body_hd {
+	background-color: #46be8a;
+}
+
+.head-minsize {
+	background-color: #46be8a;
+}
+
+.m-msglist .msg_right .bot .arrow {
+	border-left-color: #46be8a;
+}
+
+.m-msglist .msg_right .bot .text+.arrow:before {
+	border-left-color: #46be8a;
+}
+
+.m-msglist .msg_right .bot .bot-bd {
+	border-color: #46be8a;
+}
+/* trade end */
+.g-hd {
+	background-color: #46be8a;
+}
+
+.g-td.now_robot .u-btn, .g-td.now_robot .u-btn:link, .g-td.now_robot .u-btn:hover,
+	.g-td.now_robot .u-btn:active {
+	background-color: #46be8a;
+	-moz-opacity: 0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;
+}
+
+.g-td.now_robot .form_cnt_send .u-btn {
+	background-color: #46be8a;
+}
+
+.g-td.now_robot .form_cnt_send .u-btn:link {
+	background-color: #46be8a;
+	-moz-opacity: 0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;
+}
+
+.g-td.now_robot .form_cnt_send .u-btn:hover {
+	background-color: #46be8a;
+	-moz-opacity: 0.8;
+	-khtml-opacity: 0.8;
+	opacity: 0.8;
+}
+
+.g-td.now_robot .form_cnt_send .u-btn:active {
+	background-color: #46be8a;
+	-moz-opacity: 0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;
+}
+/**
+* ==================
+* 模块
+* ==================
+*/
+.m-msglist .msg_right .text, .m-msglist .msg_right .image, .m-msglist .msg_right .qa,
+	.m-msglist .msg_right .qa-list, .m-msglist .msg_right .action,
+	.m-msglist .msg_right .rich, .m-msglist .msg_right .question {
+	background-color: #46be8a;
+	border-color: #46be8a;
+}
+
+.m-msglist .msg_right .un-read {
+	color: #46be8a
+}
+
+.m-msglist .msg_right .text .arrow, .m-msglist .msg_right .text .arrow:before,
+	.m-msglist .msg_right .image .arrow, .m-msglist .msg_right .image .arrow:before,
+	.m-msglist .msg_right .qa .arrow, .m-msglist .msg_right .qa .arrow:before,
+	.m-msglist .msg_right .qa-list .arrow, .m-msglist .msg_right .qa-list .arrow:before,
+	.m-msglist .msg_right .action .arrow, .m-msglist .msg_right .action .arrow:before,
+	.m-msglist .msg_right .rich .arrow, .m-msglist .msg_right .rich .arrow:before,
+	.m-msglist .msg_right .question .arrow, .m-msglist .msg_right .question .arrow:before,
+	.m-msglist .msg_right .audio .audio-wrap .arrow, .m-msglist .msg_right .audio .audio-wrap .arrow:before,
+	.m-msglist .msg_right .crm-thirdorder .arrow {
+	border-left-color: #46be8a;
+}
+
+.m-msglist .msg_right .crm-thirdorder .text+.arrow:before {
+	border-left-color: #46be8a;
+}
+
+.m-msglist .msg_right .crm-thirdorder-bd {
+	border-color: #46be8a;
+}
+
+.m-msglist .msg_right .productinfo .product-wrap {
+	border: 1px solid #46be8a;
+}
+
+.m-msglist .msg_right .productinfo .product-wrap .arrow {
+	border-left-color: #46be8a;
+}
+
+.m-msglist .msg_left .u-icon-avater {
+	background-color: #fff;
+}
+
+.m-msglist .msg_right .u-icon-avater {
+	background-color: #46be8a;
+}
+
+.m-msglist .msg_right .audio .audio-wrap, /* botfaq融合模版-消息-web版 */
+	.m-msglist .msg_right .crm-thirdorder .qiyu_template_mixReply .crm-thirdorder-bd
+	{
+	border-color: #46be8a;
+	background-color: #46be8a;
+	color: #fff;
+}
+
+.m-msglist .msg_right .qiyu_template_mixReply+.arrow {
+	border-left-color: transparent;
+}
+
+.m-msglist .msg_right .qiyu_template_mixReply+.arrow:before {
+	border-left-color: #46be8a;
+}
+/* botfaq融合模版-消息-web版-trade适配 */
+.m-msglist .msg_right .qiyu_template_mixReply .bot-bd {
+	border-color: #46be8a;
+	background-color: #46be8a;
+	color: #fff;
+}
+/* botfaq融合模版-消息-mobile版 */
+.m-msglist .msg_right .crm-thirdorder .qiyu_template_mixReply .crm-thirdorder-bd+.arrow
+	{
+	border-left-color: transparent;
+}
+
+.m-msglist .msg_right .crm-thirdorder .qiyu_template_mixReply .crm-thirdorder-bd+.arrow:before
+	{
+	border-left-color: #46be8a;
+}
+
+.m-modal .modal_hd {
+	border-bottom: 1px solid #46be8a;
+}
+
+.m-modal-confirmphoto .modal_ft {
+	border-top: 1px solid #46be8a;
+}
+
+.m-modal-confirmphoto .ok {
+	background-color: #46be8a;
+}
+
+.m-modal-confirmphoto .ok:hover {
+	background-color: #46be8a;
+	-moz-opacity: 0.8;
+	-khtml-opacity: 0.8;
+	opacity: 0.8;
+}
+
+.m-modal-confirmphoto .ok:active {
+	background-color: #46be8a;
+	-moz-opacity: 0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;
+}
+
+.m-modal-filetrans .ok {
+	background-color: #46be8a;
+}
+
+.m-modal-filetrans .ok:hover {
+	background-color: #46be8a;
+	-moz-opacity: 0.8;
+	-khtml-opacity: 0.8;
+	opacity: 0.8;
+}
+
+.m-modal-filetrans .ok:active {
+	background-color: #46be8a;
+	-moz-opacity: 0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;
+}
+
+.m-comment .comment_btn {
+	background-color: #46be8a;
+}
+
+.m-comment .comment_btn:hover {
+	background-color: #46be8a;
+	-moz-opacity: 0.8;
+	-khtml-opacity: 0.8;
+	opacity: 0.8;
+}
+
+.m-comment .comment_btn:active {
+	background-color: #46be8a;
+	-moz-opacity: 0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;
+}
+
+.m-botentry li {
+	border-color: #46be8a;
+	color: #46be8a
+}
+/**
+* ==================
+* 元件
+* ==================
+*/
+.z-disabled button, .z-disabled button:link, .z-disabled button:hover,
+	.z-disabled button:active {
+	background-color: #46be8a;
+	-moz-opacity: 0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;
+}
+/* 按钮相关 */
+.u-btn, .u-btn:link, .u-btn:hover {
+	background-color: #46be8a;
+}
+
+.u-btn:active, .u-btn.z-disabled, .u-btn.z-disabled:hover, .u-btn.z-disabled:active,
+	.u-btn.z-disabled:link {
+	background-color: #46be8a;
+	-moz-opacity: 0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;
+}
+
+.u-btn-disabled, .u-btn-disabled:link, .u-btn-disabled:hover,
+	.u-btn-disabled:active {
+	background-color: #46be8a;
+	-moz-opacity: 0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;
+}
+</style>
+<style type="text/css">
+::-webkit-scrollbar {
+	width: 7px;
+	height: 7px;
+}
+
+::-webkit-scrollbar-button {
+	display: none;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 3px;
+	background: #dddfe0;
+}
+
+::-webkit-scrollbar-track {
+	width: 7px;
+	height: 7px;
+}
+
+::-webkit-scrollbar-track-piece {
+	background: transparent;
+}
+</style>
+<!--[if lt IE 10]>
+<style>
+.m-msglist .file .progress-size{
+display: none
+}
+.m-msglist .file .progress-bar{
+display: none;
+}
+.m-msglist .file .abort{
+display: none;
+}
+.m-modal-filetrans .icon{
+display: none;
+}
+.m-modal-filetrans .size{
+display: none;
+}
+</style>
+<![endif]-->
+<!--[if lte IE 8]>
+<style>
+.m-modal-filetrans .modal_dialog{
+width: 245px;
+top: 115px;
+margin-left: -122px;
+}
+.m-msglist .msg .bot .icon{
+display: none;
+}
+</style>
+<![endif]-->
+<style type="text/css">
+.auto-1560676702403 {
+	font-size: 12px;
+	line-height: 160%;
+}
+
+.auto-1560676702403 a {
+	margin: 0 2px;
+	padding: 2px 8px;
+	color: #333;
+	border: 1px solid #aaa;
+	text-decoration: none;
+}
+
+.auto-1560676702403 .js-disabled {
+	cursor: default;
+}
+
+.auto-1560676702403 .js-selected {
+	cursor: default;
+	background-color: #bbb;
+}
+
+.auto-1560676702418 {
+	position: absolute;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+
+.auto-1560676702419-parent {
+	position: relative;
+}
+
+.m-check-item {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	height: 26px;
+	line-height: 16px;
+	width: 120px;
+	font-size: 14px;
+	color: #333333;
+	border: 1px solid #e8e8e8;
+	border-radius: 2px;
+	padding: 4px 20px;
+	box-sizing: border-box;
+	text-align: center;
+	margin-top: 10px;
+	margin-right: 9px;
+}
+
+.m-check-item:last-child {
+	margin-right: 0px;
+}
+
+.m-check-item.checked {
+	border-color: #5092e1;
+}
+
+.m-check-item>input {
+	display: inline-block\9;
+	position: absolute;
+	left: 5px;
+	top: 3px;
+}
+
+.m-check-item>span {
+	display: inline-block;
+	width: 100%;
+	overflow: hidden;
+	word-wrap: normal;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.m-check-item>i {
+	position: absolute;
+	display: none;
+	top: 6px;
+	right: 4px;
+}
+
+.m-check-item.checked>i {
+	border-color: #5092e1;
+	display: block;
+}
+</style>
+</head>
+<body id="auto-id-1560676702648">
+	<!--[if lte IE 8]>
+<div class="u-browser-tip" id="browser-tip">
+<p>当前浏览器无法获得最佳显示效果，推荐使用现代浏览器访问</p>
+<span class="close" onclick="document.getElementById('browser-tip').style.display='none'"></span>
+</div>
+<![endif]-->
+	<table class="g-table" id="auto-id-1560676702647">
+		<tbody id="auto-id-1560676702646">
+			<tr id="auto-id-1560676702645">
+				<td id="auto-id-1560676702644">
+					<div class="g-main g-main-visitor hasCorpInfo" id="ysf-client">
+						<div class="g-mask f-dn"></div>
+						<div class="g-mnc" id="auto-id-1560676702643">
+							<div class="j-flag g-slide"></div>
+							<div class="j-flag g-body" id="auto-id-1560676702642">
+								<div class="j-show" id="auto-id-1560676702587">
+									<div class="body_hd">
+										<div class="j-flag-tlt right">
+											<div class="u-bd-corp">
+												<button class="u-contact" data-action="applyKf"
+													data-bid="-1" data-sid="3776735583">
+													<span>人工客服</span>
+												</button>
+											</div>
+										</div>
+										<div class="j-flag-tlt left">
+											<div class="u-bd-title">
+												<span class="name">heiwu小说网-客服</span>
+											</div>
+										</div>
+									</div>
+									<div class="body_bd" id="auto-id-1560676702641">
+										<div class="j-flag g-chat j-chat" id="auto-id-1560676702640">
+											<div class="g-chat-body haslogo" id="auto-id-1560676702526">
+												<div class="chat_show j-chat-show"
+													id="auto-id-1560676702639">
+													<div class="chat_show_tip j-tip u-headtip"></div>
+													<div class="chat_show_loading u-errtip j-loading f-hide">
+														<img
+															src="https://qiyukf.nosdn.127.net/sdk/res/default/loading_3782900ab9d04a1465e574a7d50af408.gif">
+														正在连接，请稍等...
+													</div>
+													<div class="chat_show_msg j-chat" id="auto-id-1560676702509"
+														style="bottom: 150px;">
+													<div class="msg-upscroll j-upscroll"></div>
+													<div class="m-msglist j-list" id="auto-id-1560676702507">
+														<!-- macro start -->
+														<!-- 文件消息 -->
+														<!-- bot消息 -->
+														<!-- 消息入口 -->
+														<!-- 评价选择begin -->
+														<div class="sys-info" id="15606767026281560676702405">
+															<h3>&nbsp;云妞为您服务</h3>
+														</div>
+														<!-- 评价选择begin -->
+														<!-- 消息展示 判断是否需要分多条展示 -->
+														<div
+															id="3776735583#5623ab14ffc64525a16b4b9341dafc8a1560676702405"
+															class="msg msg_left f-cb">
+															<div class="msg_main ">
+																<i class="u-icon-avater"> <img
+																	src="https://ysf.nosdn.127.net/B726658D1C8976CF8C9ACAEB2C1F9854?imageView&amp;type=png|imageView&amp;thumbnail=76y76&amp;axis=5"
+																	alt="在线客服头像">
+																</i>
+																<div class="rich msg_bubble    ">
+																	<div class="arrow"></div>
+																	<div class="p" data-action="richContentDelegate">
+																		<p>您好，我是云妞，请问有什么可以帮助您的？</p>
+																		<p>您也可以发送问题的关键词，如“忘记账号”等，云妞会尽全力帮您解答哦~</p>
+																	</div>
+																</div>
+															</div>
+															<!-- transhwords -->
+														</div>
+														<!-- 消息相关end -->
+														<!-- 评价选择begin -->
+														<!-- 消息展示 判断是否需要分多条展示 -->
+														<div
+															id="3776735583#0d376db8d0a24931af8cfd9d32083c3a1560676702405"
+															class="msg msg_left f-cb">
+															<div class="msg_main ">
+																<i class="u-icon-avater"> <img
+																	src="https://ysf.nosdn.127.net/B726658D1C8976CF8C9ACAEB2C1F9854?imageView&amp;type=png|imageView&amp;thumbnail=76y76&amp;axis=5"
+																	alt="在线客服头像">
+																</i>
+																<div class="qa-list msg_bubble    ">
+																	<!-- 机器人问题列表 -->
+																	<div class="arrow"></div>
+																	<div class="p">
+																		<div class="qa_label"
+																			data-action="richContentDelegate">常见问题</div>
+																		<ul>
+																			<li><a data-id="8831849"
+																				data-msgidclient="3776735583#0d376db8d0a24931af8cfd9d32083c3a"
+																				data-action="selRobot">如何联系老师</a></li>
+																			<li><a data-id="3042993"
+																				data-msgidclient="3776735583#0d376db8d0a24931af8cfd9d32083c3a"
+																				data-action="selRobot">课程有效期是多久</a></li>
+																			<li><a data-id="3004034"
+																				data-msgidclient="3776735583#0d376db8d0a24931af8cfd9d32083c3a"
+																				data-action="selRobot">购买的课程不见了</a></li>
+																			<li><a data-id="3498078"
+																				data-msgidclient="3776735583#0d376db8d0a24931af8cfd9d32083c3a"
+																				data-action="selRobot">iOS端充值失败</a></li>
+																			<li><a data-id="3004069"
+																				data-msgidclient="3776735583#0d376db8d0a24931af8cfd9d32083c3a"
+																				data-action="selRobot">课程审核</a></li>
+																			<li><a data-id="2119211"
+																				data-msgidclient="3776735583#0d376db8d0a24931af8cfd9d32083c3a"
+																				data-action="selRobot">如何入驻云课堂</a></li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+															<!-- transhwords -->
+														</div>
+														<!-- 消息相关end -->
+														<!-- 评价选择begin -->
+														<!-- 消息展示 判断是否需要分多条展示 -->
+														<div
+															id="3776735583#206ce8881dec5862cec010a2f7584aa11560676702405"
+															class="msg msg_right f-cb">
+															<div class="msg_main ">
+																<i class="u-icon-avater"> <img
+																	src="https://qiyukf.com/sdk/res/skin/default/ico-kefu@2x.png?imageView&amp;type=png|imageView&amp;thumbnail=76y76&amp;axis=5"
+																	alt="">
+																</i>
+																<div class="text msg_bubble    ">
+																	<!-- 文本 -->
+																	<div class="arrow"></div>
+																	<p>哈哈哈</p>
+																</div>
+															</div>
+															<!-- transhwords -->
+														</div>
+														<!-- 消息相关end -->
+														<!-- 评价选择begin -->
+														<!-- 消息展示 判断是否需要分多条展示 -->
+														<div id="3776735583#fcb947cd8c1f4ad39250dc2dd4e5ca3c1560676702405"
+															class="msg msg_left f-cb">
+															<div class="msg_main ">
+																<i class="u-icon-avater"> <img
+																	src="https://ysf.nosdn.127.net/B726658D1C8976CF8C9ACAEB2C1F9854?imageView&amp;type=png|imageView&amp;thumbnail=76y76&amp;axis=5"
+																	alt="在线客服头像">
+																</i>
+																<div class="qa msg_bubble    ">
+																	<!-- 机器人问题 -->
+																	<div class="arrow"></div>
+																	<div class="p">
+																		<div class="qa_label"
+																			data-action="richContentDelegate">你开心就是我开心，因为我是你的小助手啊。</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<!-- 消息相关end -->
+														<!-- 评价选择begin -->
+														<!-- 消息展示 判断是否需要分多条展示 -->
+														<div
+															id="3776735583#e684288efc524c0e8941e1a4526dcf891560676702405"
+															class="msg msg_left f-cb">
+															<div class="msg_main ">
+																<i class="u-icon-avater"> <img
+																	src="https://ysf.nosdn.127.net/B726658D1C8976CF8C9ACAEB2C1F9854?imageView&amp;type=png|imageView&amp;thumbnail=76y76&amp;axis=5"
+																	alt="在线客服头像">
+																</i>
+																<div class="rich msg_bubble    ">
+																	<div class="arrow"></div>
+																	<div class="p" data-action="richContentDelegate">
+																		<p>您好，我是云妞，请问有什么可以帮助您的？</p>
+																		<p>您也可以发送问题的关键词，如“忘记账号”等，云妞会尽全力帮您解答哦~</p>
+																	</div>
+																</div>
+															</div>
+															<!-- transhwords -->
+														</div>
+														<!-- 消息相关end -->
+														<!-- macro start -->
+														<!-- 文件消息 -->
+														<!-- bot消息 -->
+														<!-- 消息入口 -->
+														<!-- 评价选择begin -->
+														<!-- 消息展示 判断是否需要分多条展示 -->
+														<div
+															id="3776735583#75d142221f7e4de097cee4732d9f837a1560676702405"
+															class="msg msg_left f-cb">
+															<div class="msg_main ">
+																<i class="u-icon-avater"> <img
+																	src="https://ysf.nosdn.127.net/B726658D1C8976CF8C9ACAEB2C1F9854?imageView&amp;type=png|imageView&amp;thumbnail=76y76&amp;axis=5"
+																	alt="在线客服头像">
+																</i>
+																<div class="qa-list msg_bubble    ">
+																	<!-- 机器人问题列表 -->
+																	<div class="arrow"></div>
+																	<div class="p">
+																		<div class="qa_label"
+																			data-action="richContentDelegate">常见问题</div>
+																		<ul>
+																			<li><a data-id="8831849"
+																				data-msgidclient="3776735583#75d142221f7e4de097cee4732d9f837a"
+																				data-action="selRobot">如何联系老师</a></li>
+																			<li><a data-id="3042993"
+																				data-msgidclient="3776735583#75d142221f7e4de097cee4732d9f837a"
+																				data-action="selRobot">课程有效期是多久</a></li>
+																			<li><a data-id="3004034"
+																				data-msgidclient="3776735583#75d142221f7e4de097cee4732d9f837a"
+																				data-action="selRobot">购买的课程不见了</a></li>
+																			<li><a data-id="3498078"
+																				data-msgidclient="3776735583#75d142221f7e4de097cee4732d9f837a"
+																				data-action="selRobot">iOS端充值失败</a></li>
+																			<li><a data-id="3004069"
+																				data-msgidclient="3776735583#75d142221f7e4de097cee4732d9f837a"
+																				data-action="selRobot">课程审核</a></li>
+																			<li><a data-id="2119211"
+																				data-msgidclient="3776735583#75d142221f7e4de097cee4732d9f837a"
+																				data-action="selRobot">如何入驻云课堂</a></li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+															<!-- transhwords -->
+														</div>
+														<!-- 消息相关end -->
+														<!-- macro start -->
+														<!-- 文件消息 -->
+														<!-- bot消息 -->
+														<!-- 消息入口 -->
+														<!-- 评价选择begin -->
+														<!-- 消息展示 判断是否需要分多条展示 -->
+														<!-- macro start -->
+														<!-- 文件消息 -->
+														<!-- bot消息 -->
+														<!-- 消息入口 -->
+														<!-- 评价选择begin -->
+														<!-- 消息展示 判断是否需要分多条展示 -->
+														<div id="auto-15606767026291560676702405"
+															class="msg msg_right f-cb">
+															<div class="msg_main ">
+																<i class="u-icon-avater"> <img
+																	src="https://qiyukf.com/sdk/res/skin/default/ico-kefu@2x.png?imageView&amp;type=png|imageView&amp;thumbnail=76y76&amp;axis=5"
+																	alt="">
+																</i>
+																<div class="text msg_bubble    ">
+																	<!-- 文本 -->
+																	<div class="arrow"></div>
+																	<p>滚滚滚</p>
+																</div>
+															</div>
+															<!-- transhwords -->
+														</div>
+														<!-- 消息相关end -->
+														<!-- 消息相关end -->
+														<!-- macro start -->
+														<!-- 文件消息 -->
+														<!-- bot消息 -->
+														<!-- 消息入口 -->
+														<!-- 评价选择begin -->
+														<!-- 消息展示 判断是否需要分多条展示 -->
+														<div
+															id="3776735583#682b78b7cf124966aaae1fd6c6bb59541560676702405"
+															class="msg msg_left f-cb">
+															<div class="msg_main ">
+																<i class="u-icon-avater"> <img
+																	src="https://ysf.nosdn.127.net/B726658D1C8976CF8C9ACAEB2C1F9854?imageView&amp;type=png|imageView&amp;thumbnail=76y76&amp;axis=5"
+																	alt="在线客服头像">
+																</i>
+																<div class="qa msg_bubble    ">
+																	<!-- 机器人问题 -->
+																	<div class="arrow"></div>
+																	<div class="p">
+																		<div class="qa_label"
+																			data-action="richContentDelegate">
+																			亲亲，如果我有什么说的不对的，请不要生气哦~</div>
+																	</div>
+																</div>
+															</div>
+															<!-- transhwords -->
+														</div>
+
+														<!-- 消息相关end -->
+														<!-- macro start -->
+														<!-- 文件消息 -->
+														<!-- bot消息 -->
+														<!-- 消息入口 -->
+														<!-- 评价选择begin -->
+														<!-- 消息展示 判断是否需要分多条展示 -->
+														<!-- macro start -->
+														<!-- 文件消息 -->
+														<!-- bot消息 -->
+														<!-- 消息入口 -->
+														<!-- 评价选择begin -->
+														<!-- 消息展示 判断是否需要分多条展示 -->
+														<div id="auto-15606767026321560676702405"
+															class="msg msg_right f-cb">
+															<div class="msg_main ">
+																<i class="u-icon-avater"> <img
+																	src="https://qiyukf.com/sdk/res/skin/default/ico-kefu@2x.png?imageView&amp;type=png|imageView&amp;thumbnail=76y76&amp;axis=5"
+																	alt="">
+																</i>
+																<div class="text msg_bubble    ">
+																	<!-- 文本 -->
+																	<div class="arrow"></div>
+																	<p>www</p>
+																</div>
+															</div>
+															<!-- transhwords -->
+														</div>
+														<!-- 消息相关end -->
+														<!-- 消息相关end -->
+														<!-- macro start -->
+														<!-- 文件消息 -->
+														<!-- bot消息 -->
+														<!-- 消息入口 -->
+														<!-- 评价选择begin -->
+														<!-- 消息展示 判断是否需要分多条展示 -->
+														<div id="15606767026331560676702405"
+															class="msg msg_left f-cb">
+															<div class="msg_main " id="auto-id-1560676702638">
+																<i class="u-icon-avater"> <img
+																	src="https://ysf.nosdn.127.net/B726658D1C8976CF8C9ACAEB2C1F9854?imageView&amp;type=png|imageView&amp;thumbnail=76y76&amp;axis=5"
+																	alt="在线客服头像">
+																</i>
+																<div class="rich msg_bubble    ">
+																	<div class="arrow"></div>
+																	<div class="p" data-action="richContentDelegate">您好，云妞的知识有限，您的问题我暂时无法解答，您可以发送具体问题至邮箱：study@service.netease.com进行处理。（云妞正在努力充电中，让自己赶紧UP
+																		UP UP，以便更好地为您服务）</div>
+																</div>
+															</div>
+															<!-- transhwords -->
+														</div>
+														<!-- 消息相关end -->
+														<!-- macro start -->
+														<!-- 文件消息 -->
+														<!-- bot消息 -->
+														<!-- 消息入口 -->
+														<!-- 评价选择begin -->
+														<!-- 消息展示 判断是否需要分多条展示 -->
+														<!-- macro start -->
+														<!-- 文件消息 -->
+														<!-- bot消息 -->
+														<!-- 消息入口 -->
+														<!-- 评价选择begin -->
+														<!-- 消息展示 判断是否需要分多条展示 -->
+														<div id="auto-15606767026351560676702405"
+															class="msg msg_right f-cb">
+															<div class="msg_main ">
+																<i class="u-icon-avater"> <img
+																	src="https://qiyukf.com/sdk/res/skin/default/ico-kefu@2x.png?imageView&amp;type=png|imageView&amp;thumbnail=76y76&amp;axis=5"
+																	alt="">
+																</i>
+																<div class="text msg_bubble    ">
+																	<!-- 文本 -->
+																	<div class="arrow"></div>
+																	<p>搜索斗罗大陆</p>
+																</div>
+															</div>
+															<!-- transhwords -->
+														</div>
+														<!-- 消息相关end -->
+														<!-- 消息相关end -->
+														<!-- macro start -->
+														<!-- 文件消息 -->
+														<!-- bot消息 -->
+														<!-- 消息入口 -->
+														<!-- 评价选择begin -->
+														<!-- 消息展示 判断是否需要分多条展示 -->
+														<div id="15606767026361560676702405"
+															class="msg msg_left f-cb">
+															<div class="msg_main ">
+																<i class="u-icon-avater"> <img
+																	src="https://ysf.nosdn.127.net/B726658D1C8976CF8C9ACAEB2C1F9854?imageView&amp;type=png|imageView&amp;thumbnail=76y76&amp;axis=5"
+																	alt="在线客服头像">
+																</i>
+																<div class="rich msg_bubble    ">
+																	<div class="arrow"></div>
+																	<div class="p" data-action="richContentDelegate">您好，云妞的知识有限，您的问题我暂时无法解答，您可以发送具体问题至邮箱：study@service.netease.com进行处理。（云妞正在努力充电中，让自己赶紧UP
+																		UP UP，以便更好地为您服务）</div>
+																</div>
+															</div>
+															<!-- transhwords -->
+														</div>
+														<!-- 消息相关end -->
+													</div>
+													</div>
+													<div class="chat_show_bot j-flag-bot"
+														style="opacity: 0; z-index: -1000;"></div>
+													<div class="chat_show_editor j-editor z-robot">
+														<div class="m-iptbox" id="auto-id-1560676702532">
+
+													<!--  发送消息框  -->
+															<textarea id="sendToServerId" name="sendToServer" style="margin-top:10px;height: 72px; width: 100%;font-size: 18px;" ></textarea>
+															<ul
+																class="m-associationques-list j-associationques u-status-robot"
+																style="display: none;">
+																<!--Regular list-->
+															</ul>
+															<button
+																class="u-btn u-btn-send j-flag u-btn-disabled"
+																id="auto-id-1560676702535" onclick="sendToServerFunction()" >发送</button>
+															<div class="disabled"></div>
+														</div>
+													</div>
+												</div>
+												<div class="chat_leave j-leave f-hide"></div>
+												<div class="chat_logo j-qiyuInfo" data-action="toqiyu">
+													<img class="taillogo"
+														src="https://qiyukf.nosdn.127.net/sdk/res/img/tailLogo@2x_51a85b19099da606135ca68d814c5d6e.png"
+														alt="heiwu闲鱼提供服务支持">
+												</div>
+											</div>
+										</div>
+										<div class="j-flag g-tab j-tab">
+											<div class="tab_info j-flag">
+												<div class="bd_right j-companyinfo-right j-flag"
+													id="auto-id-1560676702579">
+													<div class="m-announce j-announceinfo ">
+														<div class="announce_pic">
+															<a data-action="pictureHref"
+																data-href="http://mooc.study.163.com/smartSpec/detail/1001268002.htm"
+																class="u-conpanyLogo"><img
+																src="https://www.800txt.net/files/article/image/110/110869/110869s.jpg"
+																alt=""> </a>
+														</div>
+													</div>
+													<div class="m-comquestions j-comquestions"
+														style="height: 491px;">
+														<h1>常见问题</h1>
+														<div>
+															<ul class="j-comquestions bd">
+																<li class="itm" data-id="1300090">
+																	<h2 class="title j-question" data-action="questionlist"
+																		id="auto-id-1560676702580">
+																		好看的小说？<i class="j-icon u-icon-infodown"> </i>
+																	</h2>
+																	<p class="answer f-dn"
+																		data-action="richContentDelegate">网易技术，产品运营，设计等。</p>
+																</li>
+																<li class="itm" data-id="1300091">
+																	<h2 class="title j-question" data-action="questionlist"
+																		id="auto-id-1560676702581">
+																		怎么还不更新啊！<i class="j-icon u-icon-infodown"></i>
+																	</h2>
+																	<p class="answer f-dn"
+																		data-action="richContentDelegate">会员群互助答疑，还有专家直播答疑。
+																	</p>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="f-dn pc_portrait auto-1560676702419-parent"
+							id="auto-id-1560676702541">
+							<div class="j-flag portrait_cnt" id="auto-id-1560676702551">
+								<div class="portrait_wapper">
+									<div class="protrait_header portrait-hide-old-sdk">
+										<p class="protrait_header_tab default_emoji tab_active"
+											data-action="showDefault">
+											<img
+												src="https://qiyukf.nosdn.127.net/sdk/res/img/emoji_icon_3b5918ef8e661857f9125df60a295f98.png"
+												alt="">
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="u-scrollbar auto-1560676702419 m-scrollbar"
+								id="auto-id-1560676702548" style="visibility: hidden;">
+								<span class="thumb" id="auto-id-1560676702562"
+									style="height: 0px; top: 0px;">&nbsp;</span>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+
+	<div style="display: none" id="umi://trade/session/pc/index.html">
+		<textarea id="session-body" name="txt">&lt;div class="j-sess"&gt;
+&lt;div class="slide_hd m-info"&gt;
+&lt;div class="info_tlt"&gt;
+会话列表
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="slide_bd" &gt;
+&lt;ul class="j-flag m-session"&gt;&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</textarea>
+		<textarea name="js">I$("8ec78e937121e9c3e934ecdc253c77a1",function(t,e,i,n,a,s,o,r,_,c,d,f,l,u){u=t._$klass();l=u._$extend(d._$$Module);l.__doBuild=function(){this.__super()};l.__onShow=function(t){this.__super(t)};l.__onRefresh=function(t){this.__super(t)};l.__onHide=function(){this.__super()};d._$regist("sess",u)},"e4f0b0b7857ed3c1e2d0a46ba5b670d6","be567474249a271e4786c144ccf5f75a","5fb495f256a5dcde2a92e5fe919a6422","fbbf6ddc0634989027d138f4ffd4b78b","d252039c36767cb4f534ca3f91188796","d99f29446b4a4cf86c6084cb99df7ab0","aa835e6c54cfdee711ae8d0d1296fa57","e4a45dc3cf399bf73004ce111fd4b206","d67add781b37b82c1816b8c159701e56","35df4ef4567b6cd0275a1b849d2bea8c","88b788956da2767fcaa8ddc366db6d27");</textarea>
+	</div>
+
+
+	<div class="resource-preload"
+		style="visibility: hidden; position: fixed;">
+		<audio src="https://qiyukf.com/sdk/res/audio/message.mp3" autoplay=""
+			muted="" id="notify-sound-url"></audio>
+		<i class="u-icon-loading" style="display: inline;"></i> <i
+			class="u-icon-failure" style="display: inline;"></i>
+	</div>
+
+
+	<form class="auto-1560676702418 " id="auto-id-1560676702570"
+		data-id="1560676702569">
+		<input type="file" multiple="true" accept="*" contenteditable="false"
+			id="1560676702569-0">
+	</form>
+	<div class="video-modal" style="display: none;">
+		<video webkit-playsinline="" playsinline="" controlslist="nodownload"
+			controls="controls" class="video-box">
+		</video>
+		<div class="video-modal-close">
+			<i class="iconfont icon-close"></i>
+		</div>
+	</div>
+</body>
+</html>
+
+
+<script>
+    <!-- 发送消息 -->
+	function sendToServerFunction(){
+	    var message=$("#sendToServerId").val();
+	    <!-- 用户发送消息，内容写入P标签内 -->
+	    $("#auto-id-1560676702507").append("<b><div \n" +
+            "class=\"msg msg_right f-cb\">\n" +
+            "<div class=\"msg_main \">\n" +
+            "<i class=\"u-icon-avater\"> <img\n" +
+            "src=\"https://qiyukf.com/sdk/res/skin/default/ico-kefu@2x.png?imageView&amp;type=png|imageView&amp;thumbnail=76y76&amp;axis=5\"\n" +
+            "alt=\"\">\n" +
+            "</i>\n" +
+            "<div class=\"text msg_bubble    \">\n" +
+            "<div class=\"arrow\"></div>\n" +
+            "<p>搜索斗罗大陆阿萨德阿萨德爱搜爱搜爱搜打算打算爱搜爱搜打撒爱搜大声道爱搜爱搜打撒撒在风中飞</p>\n" +
+            "</div>\n" +
+            "</div>\n" +
+            "</div></b>");
+
+        <!-- 机器人回复消息 -->
+        $("#auto-id-1560676702507").append("<div class=\"msg msg_left f-cb\">\n" +
+            "<div class=\"msg_main \">\n" +
+            "<i class=\"u-icon-avater\"> <img\n" +
+            "src=\"https://ysf.nosdn.127.net/B726658D1C8976CF8C9ACAEB2C1F9854?imageView&amp;type=png|imageView&amp;thumbnail=76y76&amp;axis=5\"\n" +
+            "alt=\"在线客服头像\">\n" +
+            "</i>\n" +
+            "<div class=\"qa msg_bubble    \">\n" +
+            "<div class=\"arrow\"></div>\n" +
+            "<div class=\"p\">\n" +
+            "<div class=\"qa_label\"\n" +
+            "data-action=\"richContentDelegate\">你开心就是我开心，因为我是你的小助手啊。</div>\n" +
+            "</div>\n" +
+            "</div>\n" +
+            "</div>\n" +
+            "</div>");
+	}
+
+</script>
