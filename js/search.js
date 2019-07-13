@@ -107,7 +107,7 @@ $(function () {
 
         var t1 = t[0].split('=')
         var t2 = t[1].split('=')
-
+         alert(t1)
 
         /* var params1 = localUrl.substring(0,number)
 
