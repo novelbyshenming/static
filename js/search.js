@@ -19,8 +19,8 @@ if(tLocalUrl.indexOf('uid')>0){
     }
 }else{
     // 游客访问
+    t = tLocalUrl.split('&')
 }
-alert(t)
 function send() {
 
     if(url==''){
