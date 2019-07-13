@@ -4,12 +4,6 @@ var tLocalUrl = window.location.search
 var url =''
 var uid=''
 
-var qqqqq='123'
-
-var ssssss= $("#titleLi").val()
-
-
-
 if( tLocalUrl=='' || tLocalUrl==null ){
     //  游客访问
 
