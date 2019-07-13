@@ -54,7 +54,7 @@ result+="<li><a href='/type.html?page=1&type=其他类型"+url+"' title='其他�
 result+="</ul>"
 result+="</li>"
 result+="<li><a href='/type.html?page=1&state=complete"+url+"' title='完本小说'>完本小说</a></li>"
-
+$('#titleLi').append(result)
 function indexUrl() {
     if (url==''){
         window.location.href = '/index.html'
@@ -63,9 +63,8 @@ function indexUrl() {
     }
 }
 
-$(function () {
+$(function (){
 
-    $('#titleLi').append(result)
 
     if(uid !=''){
         $.ajax({
