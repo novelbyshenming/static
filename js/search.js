@@ -20,7 +20,7 @@ if(tLocalUrl.indexOf('uid')>0){
 }else{
     // 游客访问
 }
-alert(url)
+alert(t)
 function send() {
 
     if(url==''){
@@ -105,10 +105,8 @@ $(function () {
 
         localUrl = localUrl.substring(number+1)
 
-        alert(localUrl)
         var t1 = t[0].split('=')
         var t2 = t[1].split('=')
-         alert(t1)
 
         /* var params1 = localUrl.substring(0,number)
 
