@@ -4,10 +4,10 @@ tLocalUrl = tLocalUrl.substring(1)
 
 var url =''
 var uid=''
-
+var t
 if(tLocalUrl.indexOf('uid')>0){
     // 用户登录
-    var t = tLocalUrl.split('&')
+     t = tLocalUrl.split('&')
     if (tLocalUrl.indexOf('vip')>0){
         // vip 用户登录
         url = '&'+t[2]+'&'+t[3]
@@ -128,7 +128,7 @@ $(function () {
         if(uid!=''){
 
             $.ajax({
-                url:'http://localhost:100/user/insHistory.u?'+uid+"&key="+encodeURI(t2[1]),
+                url:'insHistory.u?'+uid+"&key="+encodeURI(t2[1]),
                 error:function(){
                     alert("请求出错.")
                 },

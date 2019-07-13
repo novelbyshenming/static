@@ -67,7 +67,6 @@ $(function () {
 
     $('#titleLi').append(result)
 
-
     if(uid !=''){
         $.ajax({
             url : "/userInfo.u?uid="+uid,
