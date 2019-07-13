@@ -19,16 +19,46 @@
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/site.css" rel="stylesheet">
-    <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/images/apple-touch-icon-precomposed.png">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet">
+    <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">
     <meta name="apple-mobile-web-app-title" content="嘿 ! 污 ">
 
-<script src="/js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery-1.7.2.min.js"></script>
 
-    <!--[if lt IE 9]><script src="/js/respond.min.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="/noveluser/js/respond.min.js"></script><![endif]-->
 <script type="text/javascript">
+
+var uid=window.location.search.substring(5,6);
+
+$(function(){
+	$.ajax({
+		url:'getuseredit.u'+window.location.search,
+		type:'post',
+		data:'',
+		success: function(result){
+			$("#nameUserEdit").html(result.obj.username);
+			$("input[name='email']").val(result.obj.email);
+			$("input[name='qq']").val(result.obj.qq);
+			$("input[name='uid']").val(result.obj.uid);
+		
+			if('0'==result.obj.sex){
+				$("input[name='sex']").eq(0).prop('checked',true);
+			}else if('1' == result.obj.sex){
+				$("input[name='sex']").eq(1).prop('checked',true);
+			}else{
+				$("input[name='sex']").eq(2).prop('checked',true);
+			}
+		}
+	})
+}) 
+
+$("#saveUserEdit").click(function () {
+    alert(0);
+});
+
+var notUrl =''
  var localUrl = window.location.search
 
     var url =''
@@ -37,9 +67,18 @@
 
     }else{
         url = localUrl.substring(1)
+        notUrl = url
         url = '&'+url
     }
 
+function send() {
+
+    	    if(url==''){
+    	        alert("请先登录")
+    	        return
+    	    }
+    	    window.location.href="sendmessage.html?"+url.substring(1)
+    	}
 
         var result = ''
         result+="<li><a href='/type.html?page=1&type=玄幻魔法"+url+"' title='玄幻魔法'>玄幻魔法</a></li>"
@@ -59,8 +98,56 @@
         result+="</li>"
         result+="<li><a href='/type.html?page=1&state=complete"+url+"' title='完本小说'>完本小说</a></li>"
 
+      
+        
+        var html='';
+        html+='<a class="list-group-item" href="userinfo.html?'+notUrl+'"><i class="fa fa-user fa-fw"></i>会员信息</a>';
+        html+=' <a class="list-group-item" href="userbooks.html?'+notUrl+'"><i class="fa fa-book fa-fw"></i>我的书架</a>';
+        html+=' <a class="list-group-item" href="useredit.html?'+notUrl+'"><i class="fa fa-edit fa-fw"></i>修改资料</a>';
+        html+='<a class="list-group-item" href="passedit.html?'+notUrl+'"><i class="fa fa-key fa-fw"></i>修改密码</a>';
+        html+=' <a class="list-group-item" href="userboxes.html?'+notUrl+'"><i class="fa fa-envelope fa-fw"></i>收件箱</a>';
+        html+=' <a class="list-group-item" href="sendmessage.html?'+notUrl+'"><i class="fa fa-envelope fa-fw"></i>发信息给管理员</a>';
+        html+=' <a class="list-group-item" href="chongzhi.html?'+notUrl+'"><i class="fa fa-book fa-fw"></i>充值中心</a>';
+        html+='<a class="list-group-item" href="#" onclick="exitLogin()"><i class="fa fa-power-off fa-fw"></i>退出登录</a>';
+
         $(function() {
-           $('#titleLi').append(result)
+
+
+	$.ajax({
+    		url : "/userInfo.u?"+notUrl,
+    		type : 'GET',
+    		success : function(data) {
+
+    		    if(data =='-1' ){
+    		        alert("该用户还没登录,或者用户信息过期,请重新登陆")
+    		         window.location.href = "/login.html"
+    		    }else if( data =='' || data ==null){
+    		        alert("该用户信息异常,请重新登陆")
+    		        window.location.href = "/login.html"
+    		    }
+
+    		    var result = ''
+
+    		    result+="<li><a href='/userBooks.html?"+url+"' title='我的书架'><i class='fa fa-book fa-fw'></i>我的书架</a></li>"
+                result+="<li class='dropdown'><a class='dropdown-toggle'"
+                result+="data-toggle='dropdown'><i class='fa fa-user fa-fw'></i>"+data.username+"<span"
+                result+="class='caret'></span></a>"
+                result+="<ul class='dropdown-menu' role='menu'>"
+                result+="<li><a href='/userinfo.html?'"+url+""
+                result+="title='个人资料'><i class='fa fa-info fa-fw'></i>个人资料</a></li>"
+                result+="<li><a href='/userboxes.html?"+url+"'"
+                result+="title='站内消息'><i class='fa fa-envelope fa-fw'></i>站内消息</a></li>"
+                result+="<li><a href='#' title='退出登录'><i"
+                result+="class='fa fa-power-off fa-fw'></i>退出登录</a></li>"
+                result+="</ul></li>"
+                $('#userInfo').append(result)
+    		}
+    	});
+
+
+           $('#titleLi').append(result);
+           
+           $("#headerContent").append(html);
          })
 
          function indexUrl() {
@@ -71,6 +158,7 @@
             }
 
         }
+
 </script>
 
 </head>
@@ -89,13 +177,8 @@
             <ul class="nav navbar-nav" id="titleLi">
 
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="https://www.biqukan.cc/modules/article/bookcase.php" title="我的书架"><i class="fa fa-book fa-fw"></i>我的书架</a></li>
-                <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i>jiuhao<span class="caret"></span></a> <ul class="dropdown-menu" role="menu">
-                    <li><a href="https://www.biqukan.cc/userdetail.php" title="个人资料"><i class="fa fa-info fa-fw"></i>个人资料</a></li>
-                    <li><a href="https://www.biqukan.cc/message.php" title="站内消息"><i class="fa fa-envelope fa-fw"></i>站内消息</a></li>
-                    <li><a href="https://www.biqukan.cc/logout.php" title="退出登录"><i class="fa fa-power-off fa-fw"></i>退出登录</a></li>
-                </ul></li>
+            <ul class="nav navbar-nav navbar-right" id="userInfo">
+
 
             </ul>
         </nav>
@@ -106,42 +189,37 @@
 
     <div class="row">
         <div class="col-md-3 hidden-xs">
-            <div class="list-group">
-                <a class="list-group-item" href="/userinfo.html"><i class="fa fa-user fa-fw"></i>会员信息</a>
-			    <a class="list-group-item" href="/userbooks.html"><i class="fa fa-book fa-fw"></i>我的书架</a>
-			    <a class="list-group-item" href="/useredit.html"><i class="fa fa-edit fa-fw"></i>修改资料</a>
-			    <a class="list-group-item" href="/passedit.html"><i class="fa fa-key fa-fw"></i>修改密码</a>
-			    <a class="list-group-item" href="/userboxes.html"><i class="fa fa-envelope fa-fw"></i>收件箱</a>
-			    <a class="list-group-item" href="/userboxes.html"><i class="fa fa-envelope fa-fw"></i>发件箱</a>
-			    <a class="list-group-item" href="/sendmessasge.html"><i class="fa fa-envelope fa-fw"></i>发信息给管理员</a>
-			    <a class="list-group-item" href="#"><i class="fa fa-power-off fa-fw"></i>退出登录</a>
+            <div class="list-group" id="headerContent">
+               <!-- ...... -->
             </div>
         </div>
         <div class="col-md-9">
-            <form name="useredit" class="form-horizontal" id="useredit" action="https://www.biqukan.cc/useredit.php?do=submit" method="post">
+            <!--<form name="useredit" class="form-horizontal" id="useredit" action="https://www.biqukan.cc/useredit.php?do=submit" method="post">-->
+            <form name="useredit" class="form-horizontal" action="saveUserEdit.u" method="post" id="useredit" >
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-edit fa-fw"></i>修改个人资料</div>
                     <div class="panel-body">
                         <div class="form-group mt10">
                             <label class="col-sm-2 control-label">用户名</label>
-                            <div class="col-sm-10"><p class="form-control-static">jiuhao</p></div>
+                            <div class="col-sm-10"><p class="form-control-static" id="nameUserEdit" name="username">jiuhao</p></div>
+                            <input type="hidden" name="uid" value="">
                         </div>
                         <div class="form-group mt10">
                             <label class="col-md-2 control-label">邮箱</label>
                             <div class="col-md-5">
-                                <input type="text" name="email" class="form-control" value="157922018@qq.com" placeholder="请输入邮箱">
+                                <input type="text" name="email" class="form-control" value="" placeholder="请输入邮箱">
                             </div>
-                            <div class="col-md-3">
+                            <!--<div class="col-md-3">
                                 <label class="checkbox-inline"><input type="checkbox" class="checkbox" name="viewemail" value="1">公开邮箱</label>
-                            </div>
+                            </div>-->
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label">性别</label>
                             <div class="col-md-9">
                                 <div class="radio">
-                                    <label class="mr10"><input type="radio" name="usecookie" value="1"> 男</label>
-                                    <label class="mr10"><input type="radio" name="usecookie" value="2"> 女</label>
-                                    <label><input type="radio" name="usecookie" checked="" value="0"> 保密</label>
+                                    <label class="mr10"><input type="radio" name="sex" value="0"> 男</label>
+                                    <label class="mr10"><input type="radio" name="sex" value="1"> 女</label>
+                                    <label><input type="radio" name="sex"  value="2"> 保密</label>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +232,7 @@
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-2">
 
-                                <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-hdd-o fa-fw"></i> 保 存</button>
+                                <button id="saveUserEdit" class="btn btn-primary btn-block"><i class="fa fa-hdd-o fa-fw"></i> 保 存</button>
                             </div>
                         </div>
                     </div>
@@ -163,11 +241,27 @@
         </div>
     </div>
     <footer>
-        <p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请 <a href="https://www.biqukan.cc/newmessage.php?tosys=1" style="text-decoration: underline;">联系我们</a>，我们会尽快处理。</p>
-        <p>Copyright &#169; 2019 <a onclick="indexUrl()" href="javascript:void(0)" >嘿 ! 污 </a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
+        <p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请 <a href="javascript:void(0)" onclick="send()" style="text-decoration: underline;">联系我们</a>，我们会尽快处理。</p>
+        <p>Copyright &#169; 2019 <a onclick="indexUrl()" href="javascript:void(0)" >嘿 ! 污 </a>  All Rights Reserved. 沪ICP备19819998号</p>
     </footer>
     <div class="back-to-top" id="back-to-top" title="返回顶部" style="left: 1263px;"><i class="fa fa-chevron-up"></i></div>
 
 </div>
+<script type="text/javascript">
+		function exitLogin(){
+			var uid=window.location.search.substring(5,6);
+			
+			$ajax({
+				url:"exitlogin.u",
+				type:"post",
+				data:uid,
+				success: function(data){
+					if(data.code == 1){
+						window.location.href="login.html";
+					}
+				}
+			})
+		}
+	</script>
 
 </body></html>

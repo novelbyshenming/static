@@ -1,158 +1,443 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
+<title>嘿 ! 污</title>
 
-    <title>嘿 ! 污 </title>
+<meta name="keywords" content="嘿 ! 污 ,笔趣看">
 
+<meta name="description" content="">
 
-    <meta name="keywords" content="嘿 ! 污 ,笔趣看">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
-
-    <meta name="description" content="">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="applicable-device" content="pc,mobile">
-    <meta http-equiv="Cache-Control" content="no-transform">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/site.css" rel="stylesheet">
-    <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/images/apple-touch-icon-precomposed.png">
-    <meta name="apple-mobile-web-app-title" content="嘿 ! 污 ">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<link rel="apple-touch-icon-precomposed"
+	href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">
+<meta name="apple-mobile-web-app-title" content="嘿 ! 污 ">
 
 
 <script src="/js/jquery-1.7.2.min.js"></script>
-    <!--[if lt IE 9]><script src="/js/respond.min.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="/noveluser/js/respond.min.js"></script><![endif]-->
 
 <script type="text/javascript">
- var localUrl = window.location.search
 
-    var url =''
+	
 
-    if (localUrl==null ||localUrl==''){
+	var localUrl = window.location.search
 
-    }else{
-        url = localUrl.substring(1)
-        url = '&'+url
-    }
+	var url = ''
+	var notUrl =''
+
+	if (localUrl == null || localUrl == '') {
+
+	    alert("无法访问......请先登录!!!!!!")
+	    window.location.href="http//127.0.0.1/login.html"
+	} else {
+		url = localUrl.substring(1)
+		notUrl = url
+		url = '&' + url
+	}
+
+	function send() {
+
+	    if(url==''){
+	        alert("请先登录")
+	        return
+	    }
+	    window.location.href="sendmessage.html?"+url.substring(1)
+	}
+
+	var result = ''
+	result += "<li><a href='/type.html?page=1&type=玄幻魔法" + url
+			+ "' title='玄幻魔法'>玄幻魔法</a></li>"
+	result += "<li><a href='/type.html?page=1&type=武侠修真" + url
+			+ "' title='武侠修真'>武侠修真</a></li>"
+	result += "<li><a href='/type.html?page=1&type=都市言情" + url
+			+ "' title='都市言情'>都市言情</a></li>"
+	result += "<li><a href='/type.html?page=1&type=历史军事" + url
+			+ "' title='历史军事'>历史军事</a></li>"
+	result += "<li><a href='/type.html?page=1&type=侦探推理" + url
+			+ "' title='侦探推理'>侦探推理</a></li>"
+	result += "<li><a href='/type.html?page=1&type=网游动漫" + url
+			+ "' title='网游动漫'>网游动漫</a></li>"
+	result += "<li class='dropdown'>"
+	result += "<a class='dropdown-toggle' data-toggle='dropdown'>更多分类<span class='caret'></span></a>"
+	result += "<ul class='dropdown-menu' role='menu'>"
+	result += "<li><a href='/type.html?page=1&type=科幻小说" + url
+			+ "' title='科幻小说'>科幻小说</a></li>"
+	result += "<li><a href='/type.html?page=1&type=恐怖灵异" + url
+			+ "' title='恐怖灵异'>恐怖灵异</a></li>"
+	result += "<li><a href='/type.html?page=1&type=穿越小说" + url
+			+ "' title='穿越小说'>穿越小说</a></li>"
+	result += "<li><a href='/type.html?page=1&type=其他类型" + url
+			+ "' title='其他类型'>其他类型</a></li>"
+	result += "</ul>"
+	result += "</li>"
+	result += "<li><a href='/type.html?page=1&state=complete" + url
+			+ "' title='完本小说'>完本小说</a></li>"
+
+			 var html='';
+				html+='<a class="list-group-item" href="userinfo.html?'+notUrl+'"><i class="fa fa-user fa-fw"></i>会员信息</a>';
+				html+=' <a class="list-group-item" href="userbooks.html?'+notUrl+'"><i class="fa fa-book fa-fw"></i>我的书架</a>';
+				html+=' <a class="list-group-item" href="useredit.html?'+notUrl+'"><i class="fa fa-edit fa-fw"></i>修改资料</a>';
+				html+='<a class="list-group-item" href="passedit.html?'+notUrl+'"><i class="fa fa-key fa-fw"></i>修改密码</a>';
+				html+=' <a class="list-group-item" href="userboxes.html?'+notUrl+'"><i class="fa fa-envelope fa-fw"></i>收件箱</a>';
+				html+=' <a class="list-group-item" href="sendmessage.html?'+notUrl+'"><i class="fa fa-envelope fa-fw"></i>发信息给管理员</a>';
+				html+=' <a class="list-group-item" href="chongzhi.html?'+notUrl+'"><i class="fa fa-book fa-fw"></i>充值中心</a>';
+				html+='<a class="list-group-item" href="#" onclick="exitLogin()"><i class="fa fa-power-off fa-fw"></i>退出登录</a>';
+			
+			
+			
+			
+	 $(function() {
 
 
-        var result = ''
-        result+="<li><a href='/type.html?page=1&type=玄幻魔法"+url+"' title='玄幻魔法'>玄幻魔法</a></li>"
-        result+="<li><a href='/type.html?page=1&type=武侠修真"+url+"' title='武侠修真'>武侠修真</a></li>"
-        result+= "<li><a href='/type.html?page=1&type=都市言情"+url+"' title='都市言情'>都市言情</a></li>"
-        result+="<li><a href='/type.html?page=1&type=历史军事"+url+"' title='历史军事'>历史军事</a></li>"
-        result+="<li><a href='/type.html?page=1&type=侦探推理"+url+"' title='侦探推理'>侦探推理</a></li>"
-        result+="<li><a href='/type.html?page=1&type=网游动漫"+url+"' title='网游动漫'>网游动漫</a></li>"
-        result+="<li class='dropdown'>"
-        result+="<a class='dropdown-toggle' data-toggle='dropdown'>更多分类<span class='caret'></span></a>"
-        result+="<ul class='dropdown-menu' role='menu'>"
-        result+="<li><a href='/type.html?page=1&type=科幻小说"+url+"' title='科幻小说'>科幻小说</a></li>"
-        result+="<li><a href='/type.html?page=1&type=恐怖灵异"+url+"' title='恐怖灵异'>恐怖灵异</a></li>"
-        result+="<li><a href='/type.html?page=1&type=穿越小说"+url+"' title='穿越小说'>穿越小说</a></li>"
-        result+="<li><a href='/type.html?page=1&type=其他类型"+url+"' title='其他类型'>其他类型</a></li>"
-        result+="</ul>"
-        result+="</li>"
-        result+="<li><a href='/type.html?page=1&state=complete"+url+"' title='完本小说'>完本小说</a></li>"
+	$.ajax({
+    		url : "/userInfo.u?"+notUrl,
+    		type : 'GET',
+    		success : function(data) {
 
-        $(function() {
-         $('#titleLi').append(result)
+    		    if(data =='-1' ){
+    		        alert("该用户还没登录,或者用户信息过期,请重新登陆")
+    		         window.location.href = "/login.html"
+    		    }else if( data =='' || data ==null){
+    		        alert("该用户信息异常,请重新登陆")
+    		        window.location.href = "/login.html"
+    		    }
 
-       })
+    		    var result = ''
 
+    		    result+="<li><a href='/userBooks.html?"+url+"' title='我的书架'><i class='fa fa-book fa-fw'></i>我的书架</a></li>"
+                result+="<li class='dropdown'><a class='dropdown-toggle'"
+                result+="data-toggle='dropdown'><i class='fa fa-user fa-fw'></i>"+data.username+"<span"
+                result+="class='caret'></span></a>"
+                result+="<ul class='dropdown-menu' role='menu'>"
+                result+="<li><a href='/userinfo.html?'"+url+""
+                result+="title='个人资料'><i class='fa fa-info fa-fw'></i>个人资料</a></li>"
+                result+="<li><a href='/userboxes.html?"+url+"'"
+                result+="title='站内消息'><i class='fa fa-envelope fa-fw'></i>站内消息</a></li>"
+                result+="<li><a href='#' title='退出登录'><i"
+                result+="class='fa fa-power-off fa-fw'></i>退出登录</a></li>"
+                result+="</ul></li>"
+                $('#userInfo').append(result)
+    		}
+    	});
 
-       function indexUrl() {
-          if (url==''){
-              window.location.href = '/index.html'
-          }else{
-              window.location.href = '/index.html?'+url.substring(1)
-          }
+		 $("#headerContent").append(html);
+		 
+		$('#titleLi').append(result);
+		var currentpage=1;
+		
+		 $.ajax({
+			url:'getpage.u',
+			data:window.location.search.substring(1),
+			type:'post',
+			success: function(data){
+				
+				var uid=window.location.search.substring(5,6);
+				
+				function msglist(data){
+					var html='';
+					for(var i=0;i<data.obj.pageList.length;i++ ){
+						html += '<tr>';
+						html += '<td class="odd" align="center"><input type="checkbox" id="checkid[]" name="checkid[]" value="1327"></td>';
+						html += '<td class="even"><span class="hottext">'+data.obj.pageList[i].user.username+'</span></td>';
+						html += '<td class="odd"><a href="https://www.biqukan.cc/messagedetail.php?id=1327">'+data.obj.pageList[i].title+'</a></td>';
+						html += '<td class="even" align="center">'+data.obj.pageList[i].senddate+'</td>';
+						html += '</tr>';
+				
+					}
+					return html;
+				}
+				
+				function msghead(){
+					var html='';
+					html+='<form action="#" method="post" name="checkform" id="checkform">';
+					html+='<div class="panel panel-default">';
+					html+='<div class="panel-heading">';
+					html+='<i class="fa fa-envelope fa-fw"></i>发件箱 <small>（收/发件箱共允许消息数：100，现有消息数：1）</small>';
+					html+='</div>';
+					html+='<table class="table" id="msgtable">';
+					html+='<tbody>';
+					html += '<tr>';
+					html += '<th width="5%"><input type="checkbox" id="checkall" name="checkall" value="checkall"></th>';
+					html += '<th width="20%">收件人</th>';
+					html += '<th width="60%">标题</th>';
+					html += '<th width="15%">日期</th>';
+					html += '</tr>';
+					return html;
+				}
+				
+				function msgfooter(data){
+					var html='';
+					html += '<tr>';
+					html += '<td colspan="4" class="foot">&nbsp;<input type="button" name="allcheck" value="全部选中" class="button">&nbsp;&nbsp;'
+							+ '<input type="button" name="nocheck" value="全部取消" class="button">&nbsp;&nbsp;'
+							+ '<input type="button" name="delcheck" value="删除选中记录" class="button">&nbsp;&nbsp;'
+							+ '<input type="button" name="delall" value="清空所有记录" class="button"></td>';
+					html += '</tr>';
+					html+='</tbody>';
+					html+='</table>';
+					html+='</div>';
 
-      }
+					/* html+='<ul class="pagination" id="pagelink">';
+					html+='<li class="disabled"><span>1/1</span></li>';
+					html+='<li> <a id="firstpage" class="first">1</a> </li>';
+					html+='<li><a  id="perpage" class="pgroup">&lt;&lt;</a></li>';
+					html+='<li class="active"><span>1</span></li>';
+					html+='<li><a id="nextpage" class="ngroup">&gt;&gt;</a></li>';
+					html+='<li><a id="lastpage" class="last">'+data.obj.totalpagenum+'</a></li>';
+					html+='</ul>'; */
+					html+='</form>';
+					return html;
+				}
+				
+				
+				
+				$("#msgblock").empty();
+				var html = '';
+				html+=msghead()+msglist(data)+msgfooter(data);
+				
+				
+				
+				
+				$("#msgblock").append(html);
+				
+				$("#firstpage").on('click',function(){
+					$.ajax({
+						url:'getpage.u?page=0&uid='+uid,
+						type:'post',
+						data:'',
+						success: function(data){
+							$("#msgblock").empty();
+							var html = '';
+							html+=msghead()+msglist(data)+msgfooter(data);
+							$("#msgblock").append(html);
+						}
+					})
+				})
+				
+				
+				
+				$("#nextpage").on('click',function(){
+					if(data.obj.currengPagenum >= (data.obj.totalpagenum-1)){
+						alert('已经是最后一页了!');
+						return;
+					}
+					
+					var p=data.obj.currengPagenum+1;
+					
+					$.ajax({
+						url:'getpage.u?page='+p+'&uid='+uid,
+						type:'post',
+						data:'',
+						success: function(data){
+							$("#msgblock").empty();
+							var html = '';
+							html+=msghead()+msglist(data)+msgfooter(data);
+							$("#msgblock").append(html);
+						}
+					})
+				})
+				
+				
+				$("#perpage").on('click',function(){
+					if(data.obj.currengPagenum <= 1){
+						alert('已经是第一页了!');
+						return;
+					}
+					
+					var p= data.obj.currengPagenum-1;
+					
+					$.ajax({
+						url:'getpage.u?page='+p+'&uid='+uid,
+						type:'post',
+						data:'',
+						success: function(data){
+							$("#msgblock").empty();
+							var html = '';
+							html+=msghead()+msglist(data)+msgfooter(data);
+							$("#msgblock").append(html);
+						}
+					})
+				})
+				
+				
+				$("#lastpage").on('click',function(){
+					var p=data.obj.totalpagenum-1
+					$.ajax({
+						url:'getpage.u?page='+p+'&uid='+uid,
+						type:'post',
+						data:'',
+						success: function(data){
+							$("#msgblock").empty();
+							var html = '';
+							html+=msghead()+msglist(data)+msgfooter(data);
+							$("#msgblock").append(html);
+						}
+					})
+				}) 
+				
+				
+				
+				$("input[name='allcheck']").on('click', function() {
+					var chk = $("input[name^='checkid']");
+					var flag = !chk.eq(0).prop('checked');
+
+					for (var i = 0; i < chk.size(); i++) {
+						chk.eq(i).prop('checked', flag);
+					}
+				})
+				
+				$("input[name='nocheck']").on('click',function(){
+					var chk = $("input[name^='checkid']");
+					for(var i=0;i<chk.size();i++){
+						chk.eq(i).prop('checked',false);
+					}
+				})
+				
+				
+			}
+		})
+	}) 
+
+	function indexUrl() {
+		if (url == '') {
+			window.location.href = '/index.html'
+		} else {
+			window.location.href = '/index.html?' + url.substring(1)
+		}
+
+	}
+			
 </script>
 </head>
 <body>
-<div class="navbar navbar-inverse" id="header">
-    <div class="container">
-        <div class="navbar-header">
-            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a onclick="indexUrl()" href="javascript:void(0)" class="navbar-brand logo" title="嘿 ! 污 ">嘿 ! 污 </a>
-        </div>
-        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
-            <ul class="nav navbar-nav" id="titleLi">
+	<div class="navbar navbar-inverse" id="header">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed" type="button"
+					data-toggle="collapse" data-target=".bs-navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a onclick="indexUrl()" href="javascript:void(0)"
+					class="navbar-brand logo" title="嘿 ! 污 ">嘿 ! 污 </a>
+			</div>
+			<nav class="collapse navbar-collapse bs-navbar-collapse"
+				role="navigation" id="nav-header">
+				<ul class="nav navbar-nav" id="titleLi">
 
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/bookcase.php" title="我的书架"><i class="fa fa-book fa-fw"></i>我的书架</a></li>
-                <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i>jiuhao<span class="caret"></span></a> <ul class="dropdown-menu" role="menu">
-                    <li><a href="/userdetail.php" title="个人资料"><i class="fa fa-info fa-fw"></i>个人资料</a></li>
-                    <li><a href="/message.php" title="站内消息"><i class="fa fa-envelope fa-fw"></i>站内消息</a></li>
-                    <li><a href="/logout.php" title="退出登录"><i class="fa fa-power-off fa-fw"></i>退出登录</a></li>
-                </ul></li>
-
-            </ul>
-        </nav>
-    </div>
-</div>
-<div class="container body-content">
+				</ul>
+				<ul class="nav navbar-nav navbar-right" id="userInfo">
 
 
-    <div class="row">
-        <div class="col-md-3 hidden-xs">
-            <div class="list-group">
-	                <a class="list-group-item" href="/userinfo.html"><i class="fa fa-user fa-fw"></i>会员信息</a>
-				    <a class="list-group-item" href="/userbooks.html"><i class="fa fa-book fa-fw"></i>我的书架</a>
-				    <a class="list-group-item" href="/useredit.html"><i class="fa fa-edit fa-fw"></i>修改资料</a>
-				    <a class="list-group-item" href="/passedit.html"><i class="fa fa-key fa-fw"></i>修改密码</a>
-				    <a class="list-group-item" href="/userboxes.html"><i class="fa fa-envelope fa-fw"></i>收件箱</a>
-				    <a class="list-group-item" href="/userboxes.html"><i class="fa fa-envelope fa-fw"></i>发件箱</a>
-				    <a class="list-group-item" href="/sendmessage.html"><i class="fa fa-envelope fa-fw"></i>发信息给管理员</a>
-				    <a class="list-group-item" href="#"><i class="fa fa-power-off fa-fw"></i>退出登录</a>
-            </div>
-        </div>
-        <div class="col-md-9">
-            <form action="https://www.biqukan.cc/message.php?box=outbox" method="post" name="checkform" id="checkform">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-envelope fa-fw"></i>发件箱 <small>（收/发件箱共允许消息数：100，现有消息数：1）</small></div>
-                    <table class="table">
-                        <tbody><tr>
-                            <th width="5%"><input type="checkbox" id="checkall" name="checkall" value="checkall"></th>
-                            <th width="20%">收件人</th>
-                            <th width="60%">标题</th>
-                            <th width="15%">日期</th>
-                        </tr>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="container body-content">
 
-                        <tr>
-                            <td class="odd" align="center"><input type="checkbox" id="checkid[]" name="checkid[]" value="1327"></td>
-                            <td class="even"><span class="hottext">网站管理员</span></td>
-                            <td class="odd"><a href="https://www.biqukan.cc/messagedetail.php?id=1327">《斗罗大陆IV终极斗罗》催更报错</a></td>
-                            <td class="even" align="center">2019-05-07</td>
-                        </tr>
 
-                        <tr>
-                            <td colspan="4" class="foot">&nbsp;<input type="button" name="allcheck" value="全部选中" class="button">&nbsp;&nbsp;<input type="button" name="nocheck" value="全部取消" class="button">&nbsp;&nbsp;<input type="button" name="delcheck" value="删除选中记录" class="button">&nbsp;&nbsp;<input type="button" name="delall" value="清空所有记录" class="button"></td>
-                        </tr>
-                        </tbody></table>
-                </div>
-                <ul class="pagination" id="pagelink"><li class="disabled"><span>1/1</span></li><li><a href="https://www.biqukan.cc/message.php?box=outbox&amp;page=1" class="first">1</a></li><li><a href="https://www.biqukan.cc/message.php?box=outbox&amp;page=1" class="pgroup">&lt;&lt;</a></li><li class="active"><span>1</span></li><li><a href="https://www.biqukan.cc/message.php?box=outbox&amp;page=1" class="ngroup">&gt;&gt;</a></li><li><a href="https://www.biqukan.cc/message.php?box=outbox&amp;page=1" class="last">1</a></li></ul>
-            </form>
-        </div>
-    </div>
-    <footer>
-        <p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请 <a href="https://www.biqukan.cc/newmessage.php?tosys=1" style="text-decoration: underline;">联系我们</a>，我们会尽快处理。</p>
-        <p>Copyright &#169; 2019 <a onclick="indexUrl()" href="javascript:void(0)">嘿 ! 污 </a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
-    </footer>
-    <div class="back-to-top" id="back-to-top" title="返回顶部" style="left: 1263px;"><i class="fa fa-chevron-up"></i></div>
+		<div class="row">
+			<div class="col-md-3 hidden-xs">
+				<div class="list-group" id="headerContent">
+					<!-- ...... -->
+				</div>
+			</div>
+			<div class="col-md-9" id="msgblock">
+				 <!-- <form action="https://www.biqukan.cc/message.php?box=outbox" method="post" name="checkform" id="checkform">
+					
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="fa fa-envelope fa-fw"></i>发件箱 <small>（收/发件箱共允许消息数：100，现有消息数：1）</small>
+						</div>
+						<table class="table" id="msgtable">
+							  <tbody>
+				                       <tr>
+				                            <th width="5%"><input type="checkbox" id="checkall" name="checkall" value="checkall"></th>
+				                            <th width="20%">收件人</th>
+				                            <th width="60%">标题</th>
+				                            <th width="15%">日期</th>
+				                        </tr>
+				
+				                        <tr>
+				                            <td class="odd" align="center"><input type="checkbox" id="checkid[]" name="checkid[]" value="1327"></td>
+				                            <td class="even"><span class="hottext">网站管理员</span></td>
+				                            <td class="odd"><a href="https://www.biqukan.cc/messagedetail.php?id=1327">《斗罗大陆IV终极斗罗》催更报错</a></td>
+				                            <td class="even" align="center">2019-05-07</td>
+				                        </tr>
+				
+				                        <tr>
+				                            <td colspan="4" class="foot">&nbsp;<input type="button" name="allcheck" value="全部选中" class="button">&nbsp;&nbsp;<input type="button" name="nocheck" value="全部取消" class="button">&nbsp;&nbsp;<input type="button" name="delcheck" value="删除选中记录" class="button">&nbsp;&nbsp;<input type="button" name="delall" value="清空所有记录" class="button"></td>
+				                        </tr>  
+                        		  </tbody>
+						</table>
+					</div>
+					<ul class="pagination" id="pagelink">
+						<li class="disabled"><span>1/1</span></li>
+						<li><a
+							href="changepage?page=1"
+							class="first">1</a></li>
+						<li><a
+							href="https://www.biqukan.cc/message.php?box=outbox&amp;page=1"
+							class="pgroup">&lt;&lt;</a></li>
+						<li class="active"><span>1</span></li>
+						<li><a
+							href="https://www.biqukan.cc/message.php?box=outbox&amp;page=1"
+							class="ngroup">&gt;&gt;</a></li>
+						<li><a
+							href="https://www.biqukan.cc/message.php?box=outbox&amp;page=1"
+							class="last">1</a></li>
+					</ul>
+				</form>  -->
+			</div>
+		</div>
+		<footer>
+			<p>
+				本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请 <a id="send"
+					href="javascript:void(0)" onclick="send()"
+					style="text-decoration: underline;">联系我们</a>，我们会尽快处理。
+			</p>
+			<p>
+				Copyright &#169; 2019 <a onclick="indexUrl()"
+					href="javascript:void(0)">嘿 ! 污 </a>  All Rights
+				Reserved. 沪ICP备19819998号
+			</p>
+		</footer>
+		<div class="back-to-top" id="back-to-top" title="返回顶部"
+			style="left: 1263px;">
+			<i class="fa fa-chevron-up"></i>
+		</div>
 
-</div>
+	</div>
+	<script type="text/javascript">
+		
+	</script>
+</body>
 
-</body></html>
+<script type="text/javascript">
+		function exitLogin(){
+			var uid=window.location.search.substring(5,6);
+			
+			$ajax({
+				url:"exitlogin.u",
+				type:"post",
+				data:uid,
+				success: function(data){
+					if(data.code == 1){
+						window.location.href="login.html";
+					}
+				}
+			})
+		}
+	</script>
+</html>

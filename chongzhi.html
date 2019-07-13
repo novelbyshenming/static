@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/js/jquery-1.8.3.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>嘿 ! 污</title>
 
@@ -26,18 +29,30 @@
 <script src="/js/jquery-1.7.2.min.js"></script>
 <script src="/js/Vue.js"></script>
 <script type="text/javascript" src="/js/jquery.reveal.js"></script>
-<!--[if lt IE 9]><script src="/js/respond.min.js"></script><![endif]-->
+</head>
+<body>
+
+
 <script type="text/javascript">
 
-    
+  
+	   
+ 
 
 	var localUrl = window.location.search;
+	
+	var code=localUrl.substring(11,12);
+	
+	
+	if(code == 1 ){
+		   alert('充值成功!');
+	}
 
 	var url = '';
 	var rowurl = localUrl.substring(1);
-	var notUrl =''
 	
 	var uid = localUrl.substring(5,6);
+	var notUrl =''
 
 	if (localUrl == null || localUrl == '') {
 
@@ -47,17 +62,6 @@
 		url = '&' + url
 	}
 
-	
-	function send() {
-
-        	    if(url==''){
-        	        alert("请先登录")
-        	        return
-        	    }
-        	    window.location.href="sendmessage.html?"+url.substring(1)
-        	}
-
-	
 	var result = ''
 	result += "<li><a href='/type.html?page=1&type=玄幻魔法" + url
 			+ "' title='玄幻魔法'>玄幻魔法</a></li>"
@@ -117,114 +121,32 @@
 
 	}
 	
-	$.ajax({
-    		url : "/userInfo.u?"+notUrl,
-    		type : 'GET',
-    		success : function(data) {
-
-    		    if(data =='-1' ){
-    		        alert("该用户还没登录,或者用户信息过期,请重新登陆")
-    		         window.location.href = "/login.html"
-    		    }else if( data =='' || data ==null){
-    		        alert("该用户信息异常,请重新登陆")
-    		        window.location.href = "/login.html"
-    		    }
-
-    		    var result = ''
-
-    		    result+="<li><a href='/userBooks.html?"+url+"' title='我的书架'><i class='fa fa-book fa-fw'></i>我的书架</a></li>"
-                result+="<li class='dropdown'><a class='dropdown-toggle'"
-                result+="data-toggle='dropdown'><i class='fa fa-user fa-fw'></i>"+data.username+"<span"
-                result+="class='caret'></span></a>"
-                result+="<ul class='dropdown-menu' role='menu'>"
-                result+="<li><a href='/userinfo.html?'"+url+""
-                result+="title='个人资料'><i class='fa fa-info fa-fw'></i>个人资料</a></li>"
-                result+="<li><a href='/userboxes.html?"+url+"'"
-                result+="title='站内消息'><i class='fa fa-envelope fa-fw'></i>站内消息</a></li>"
-                result+="<li><a href='#' title='退出登录'><i"
-                result+="class='fa fa-power-off fa-fw'></i>退出登录</a></li>"
-                result+="</ul></li>"
-                $('#userInfo').append(result)
-    		}
-    	});
 	
 	
-	$.ajax({
-		url : "getuser.u",
-		data : rowurl,
-		type : 'post',
-		success : function(data) {
-			if (data.code == 1) {
-				var user = data.obj;
-				var userInfoObj = $(".form-control-static");
-				userInfoObj.eq(0).html(user.username);
-				userInfoObj.eq(1).html(user.level);
-				userInfoObj.eq(2).html(user.title);
-				userInfoObj.eq(3).html(user.integral);
-				
-				userInfoObj.eq(5).html(user.email);
-				userInfoObj.eq(6).html(user.regtime);
-				if(user.sex == '0'){
-					userInfoObj.eq(4).html('男');
-				}else if(user.sex == '1'){
-					userInfoObj.eq(4).html('女');
-				}else{
-					userInfoObj.eq(4).html('保密');
-				}
-				
-				
-				$("#un").html(user.username);
-				$("#em").val(user.email);
-				var sexval=$("input[name^='sex']");
-				if('0' == user.sex){
-					sexval[0].checked=true;
-				}else if('1' == user.sex){
-					sexval[1].checked=true;
-				}else{
-					sexval[2].checked=true;
-				}
-			}
-		}
-	});
+function changetype(){
 	
+	var hy = $("input[name='type']").eq(0).prop('checked');
+	var jf = $("input[name='type']").eq(1).prop('checked');
 	
+	if(hy){
+		$("#timelong").show();
+		$("#scorednum_1").hide();
+		$("#scorednum_2").hide();
+	}else{
+		$("#timelong").hide();
+		$("#scorednum_1").show();
+		$("#scorednum_2").show(); 
+	}
+}	
 	
-	
-function changeuserinfo(){
-	var sexvalue='';
-	 var sexobj=$("input[name^='sex']");
-	 for(var i=0;i<sexobj.size();i++){
-		if(sexobj.eq(i).prop('checked')){
-			sexvalue=sexobj.eq(i).val();
-		}
-	 }
-	
-	
-	 var data={
-		username:$("#un").html(),
-		email:$("#em").val(),
-		sex:sexvalue
-	 } 
 
 
-	$.ajax({
-		url:'updateuser.u',
-		type:'post',
-		data:data,
-		success: function(result){
-			if(result.code==1){
-				alert(result.msg);
-				window.location.reload();
-			}
-		}
-	})  
-}
-	
-	
 </script>
-</head>
-<body>
-	<div class="navbar navbar-inverse" id="header">
+
+
+
+
+<div class="navbar navbar-inverse" id="header">
 		<div class="container">
 			<div class="navbar-header">
 				<button class="navbar-toggle collapsed" type="button"
@@ -240,14 +162,28 @@ function changeuserinfo(){
 				<ul class="nav navbar-nav" id="titleLi">
 
 				</ul>
-				<ul class="nav navbar-nav navbar-right" id="userInfo">
-
+				<ul class="nav navbar-nav navbar-right">
+					<li><a
+						href="https://www.biqukan.cc/modules/article/bookcase.php"
+						title="我的书架"><i class="fa fa-book fa-fw"></i>我的书架</a></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown"><i class="fa fa-user fa-fw"></i>jiuhao<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="https://www.biqukan.cc/userdetail.php"
+								title="个人资料"><i class="fa fa-info fa-fw"></i>个人资料</a></li>
+							<li><a href="https://www.biqukan.cc/message.php"
+								title="站内消息"><i class="fa fa-envelope fa-fw"></i>站内消息</a></li>
+							<li><a href="https://www.biqukan.cc/logout.php" title="退出登录"><i
+									class="fa fa-power-off fa-fw"></i>退出登录</a></li>
+						</ul></li>
 
 				</ul>
 			</nav>
 		</div>
 	</div>
-	<div class="container body-content">
+
+<div class="container body-content">
 		<div class="row">
 			<div class="col-md-3 hidden-xs" id="tableheader">
 				<div class="list-group" id="headerContent">
@@ -257,110 +193,87 @@ function changeuserinfo(){
 			<div class="col-md-9">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<i class="fa fa-user fa-fw"></i>个人信息
+						<i class="fa fa-user fa-fw"></i>充值中心
 					</div>
 					<div class="panel-body">
 						<div class="form-group">
 							<label class="col-md-2 control-label text-right">用户名</label>
 							<div class="col-md-9">
-								<span class="form-control-static"></span>
+								<input type="text" name="username" class="form-control" style="width:220px" value="" placeholder="请输入用户名">
 							</div>
 							<div class="clear"></div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-2 control-label text-right">用户组</label>
+							<label class="col-md-2 control-label text-right">充值类型</label>
 							<div class="col-md-9">
-								<span class="form-control-static"></span>
+							
+								<input type="radio" name="type" value="0" checked="checked" onchange="changetype()"  >会员充值    &nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="type" value="1" onchange="changetype()" >积分充值
+								
 							</div>
 							<div class="clear"></div>
 						</div>
-						<div class="form-group">
-							<label class="col-md-2 control-label text-right">头衔</label>
+						
+						 <div class="form-group" id="timelong" >
+							<label class="col-md-2 control-label text-right">会员时长</label>
+							<div class="col-md-9" >
+							
+								<input type="radio" name="time" value="1" checked="checked" > 一个月   &nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="time" value="3" > 三个月   &nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="time" value="6" > 半年   &nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="time" value="12" > 一年
+							</div>
+							<div class="clear"></div>
+						</div> 
+						
+						
+						<div class="form-group" id="scorednum_1" style="display:none" >
+							<label class="col-md-2 control-label text-right">积分数量</label>
 							<div class="col-md-9">
-								<span class="form-control-static"></span>
+								<input type="radio" name="num" value="1"  > 100积分   &nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="num" value="3" > 300积分   &nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="num" value="5" > 500积分    &nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="num" value="10" > 1000积分
 							</div>
 							<div class="clear"></div>
 						</div>
-						<div class="form-group">
-							<label class="col-md-2 control-label text-right">积分</label>
+						<div class="form-group"  id="scorednum_2" style="display:none" >
+							<label class="col-md-2 control-label text-right">其他数量</label>
 							<div class="col-md-9">
-								<span class="form-control-static"></span>
+								<input type="text" name="codenum" class="form-control" style="width:120px" value="" placeholder="积分数量">
 							</div>
 							<div class="clear"></div>
 						</div>
+						
 						<div class="form-group">
-							<label class="col-md-2 control-label text-right">性别</label>
+							<label class="col-md-2 control-label text-right">支付金额</label>
 							<div class="col-md-9">
-								<span class="form-control-static">保密</span>
+								<span class="form-control-static" name="money" >￥1</span>
 							</div>
 							<div class="clear"></div>
 						</div>
-						<div class="form-group">
-							<label class="col-md-2 control-label text-right">Email</label>
-							<div class="col-md-9">
-								<span class="form-control-static"></span>
-							</div>
-							<div class="clear"></div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-2 control-label text-right">注册时间</label>
-							<div class="col-md-9">
-								<span class="form-control-static"></span>
-							</div>
-							<div class="clear"></div>
-						</div>
-						<div class="form-group">
+						
+						<div class="form-group"  id="cz" >
 							<div class="col-md-offset-2 col-md-3">
-								<a href="#" data-reveal-id="myModal"
+								<a href="#" 
 									class="btn btn-default btn-block"><i
-									class="fa fa-edit fa-fw"></i>修改个人信息</a>
+									class="fa fa-edit fa-fw"   ></i>充值</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-
-
-
-		<div id="myModal" class="reveal-modal">
-			<div class="xint_biaot">
-				<h3>修改个人信息</h3>
-			</div>
-			<div class="shouj_diz_b" align="center">
-				<div class="biaod_1" style="margin-left:-180px;">
-					<p>用户名：</p>
-					<b id="un" style="margin-left:45px;">root</b>
-				</div>
-
-				<div class="biaod_1" style="margin-left:-190px;">
-					<p>性别：</p>
-					<input name="sex" type="radio"   style="margin-left:140px;" value="0" />男
-					<input name="sex" type="radio" style="margin-left:30px;" value="1"  />女
-					<input name="sex" type="radio" style="margin-left:30px;" value="2" />保密
-					<input type="hidden" name="changedsex" value="">
-				</div>
-				<div class="biaod_1 biaod_2" style="margin-left:-190px;">
-					<div class="liangp_e">
-						<p>邮箱：</p>
-						<input type="text" id="em"
-							style="border-radius: 6px; display: inline-block; width: 240px; height: 25px; margin-left:220px;">
-					</div>
-					<button  onclick="changeuserinfo()" style="margin-left:200px;margin-top:5px; border-radius: 8px; display: inline-block; width: 200px; height: 35px;background-color:#87CEFA;">保存</button>
-				</div>
-			</div>
-			<a class="close-reveal-modal">&#215;</a>
 		</div>
 
 		<footer>
 			<p>
 				本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请 <a
-					href="javascript:void(0)" onclick="send()"
+					href="#"
 					style="text-decoration: underline;">联系我们</a>，我们会尽快处理。
 			</p>
 			<p>
 				Copyright &#169; 2019 <a onclick="indexUrl()"
-					href="javascript:void(0)">嘿 ! 污 </a> All Rights
+					href="javascript:void(0)">嘿 ! 污 </a>(www.biqukan.cc) All Rights
 				Reserved. 沪ICP备19819998号
 			</p>
 		</footer>
@@ -370,22 +283,96 @@ function changeuserinfo(){
 		</div>
 
 	</div>
-	<script type="text/javascript">
-		function exitLogin(){
-			var uid=window.location.search.substring(5,6);
-			
-			$ajax({
-				url:"exitlogin.u",
-				type:"post",
-				data:uid,
-				success: function(data){
-					if(data.code == 1){
-						window.location.href="login.html";
-					}
-				}
-			})
-		}
-	</script>
 
 </body>
+
+
+<script type="text/javascript">
+
+    var num = $("input[name='num']");
+	
+	for(var i=0;i<num.size();i++){
+		num.eq(i).on('change',function(){
+			
+				$("span[name='money']").html('￥'+ $(this).val() );
+				
+		})
+	}
+	
+	
+    var hytime =  $("input[name='time']");
+    
+    for(var i=0;i<hytime.size();i++){
+    	hytime.eq(i).on('click',function(){
+    		
+    		$("span[name='money']").html( '￥'+ $(this).val() );
+    		
+    	})
+    }
+
+
+
+$("#cz").on("click",function(){
+	
+	var flag_0 = $("input[name = 'type']").eq(0).prop('checked');
+	
+	var flag_1 = $("input[name = 'type']").eq(1).prop('checked');
+	
+	var money = null;
+	
+	var username=$("input[name='username']").val();
+	
+	var uid = localUrl.substring(5,6);
+	
+	if(username == '' || username == null){
+		alert('请输入用户名！');
+		return;
+	}
+	
+	if(flag_0){
+		var type = 'vip';
+		
+		var time = $("input[name = 'time']");
+		
+		for(var i=0;i<time.size();i++){
+			if(time.eq(i).prop('checked')){
+				money = time.eq(i).val();
+			}
+		}
+		
+		var data={
+			uid: uid,
+			money: money,
+			username: username,
+			type : type
+		}
+		
+		$.ajax({
+			url:'chongzhi.u',
+			type:'post',
+			data:data,
+			cache: false,
+			success: function(data){
+				if(data.code == 1){
+					document.write(data.obj);
+				}else{
+					alert(data.msg);
+				}
+			}
+		})
+		
+	}else{
+		
+		//充值积分
+	}
+	
+	
+	
+	
+})
+
+
+
+</script>
+
 </html>

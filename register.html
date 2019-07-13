@@ -20,33 +20,52 @@
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/site.css" rel="stylesheet">
     <script src="/js/jquery-1.7.2.min.js"></script>
-   <!-- <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/images/apple-touch-icon-precomposed.png">-->
+   <!-- <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">-->
     <meta name="apple-mobile-web-app-title" content="嘿 ! 污 ">
-    <script src="/js/register.js"></script>
     <script type="text/javascript">
+    function send() {
+
+        	    if(url==''){
+        	        alert("请先登录")
+        	        return
+        	    }
+        	    window.location.href="sendmessage.html?"+url.substring(1)
+        	}
+
+     function indexUrl() {
+                if (url==''){
+                    window.location.href = '/index.html'
+                }else{
+                    window.location.href = '/index.html?'+url.substring(1)
+                }
+
+            }
 	$(function(){
 		var Name = /^[a-zA-Z][a-zA-Z0-9]{3,15}$/;
 		var Pwd = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
 		var Email = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
-		$('#name').blur(function(){
-			var ex = $("#name").val();
-			
-			if(ex.match(Name)){
+		
+		
+		$("#name").on("blur",function(){
+			if($(this).val().match(Name)){
 				$("#errorSpan").text("");
 			}else{
-				$("#errorSpan").text("用户名格式不正确，或者用户名为空");
+				$("#errorSpan").text("用户名必须为长度大于3位包含字母,且不能有空格");
 			}
-		});
+		})
 		
-		$('#pwd').blur(function(){
-			 var ex1 = $("#pwd").val();
-			 
-			 if(ex1.match(Pwd)){
-			 	$("#errorSpan1").text("");
-			 }else{
-				$("#errorSpan1").text("密码格式不正确，或者密码为空");
-			 }
-		});
+		
+		$("#pwd").on("blur",function(){
+			 if($(this).val().match(Pwd)){
+				$("#errorSpan1").text("");
+			}else{
+				$("#errorSpan1").text("密码由数字和字母组成,且长度大于6");
+			}
+		})
+		
+		
+		
+	
 		
 		$('#repwd').blur(function(){
 			var ex1 = $("#pwd").val();
@@ -106,18 +125,18 @@
         <input type="hidden" value=${msg} id="msg" />
             <div class="panel panel-default">
                 <div class="panel-heading"><i class="fa fa-userfa-fw"></i>用户注册
-                    <a href="/html/login.html" class="pull-right">已有用户？立即登录</a></div>
+                    <a href="login.html" class="pull-right">已有用户？立即登录</a></div>
                 <div class="panel-body">
                         <div class="form-group mt10">
                             <label class="col-md-3 control-label">用户名(必填)</label>
                             <div class="col-md-9">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="请输入用户名"><span id="errorSpan" style="color:red"></span>
+                                <input type="text" name="username" class="form-control" id="name" placeholder="请输入用户名"><span id="errorSpan" style="color:red"></span>
                             </div>
                         </div>
                         <div class="form-group mt20">
                             <label class="col-md-3 control-label">密码(必填)</label>
                             <div class="col-md-9">
-                                <input type="password" name="pwd" class="form-control" id="pwd" placeholder="请输入密码" ><span id="errorSpan1" style="color:red"></span>
+                                <input type="password" name="password" class="form-control" id="pwd" placeholder="请输入密码" ><span id="errorSpan1" style="color:red"></span>
                             </div>
                         </div>
                         <div class="form-group mt20">
@@ -154,8 +173,8 @@
         </div>
     </div>
     <footer>
-        <p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请 <a href="https://www.biqukan.cc/newmessage.php?tosys=1" style="text-decoration: underline;">联系我们</a>，我们会尽快处理。</p>
-        <p>Copyright &#169; 2019 <a href="/">嘿 ! 污 </a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
+        <p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请 <a href="javascript:void(0)" onclick="send()" style="text-decoration: underline;">联系我们</a>，我们会尽快处理。</p>
+        <p>Copyright &#169; 2019 <a onclick="indexUrl()" href="javascript:void(0)" >嘿 ! 污 </a>  All Rights Reserved. 沪ICP备19819998号</p>
     </footer>
     <div class="back-to-top" id="back-to-top" title="返回顶部" style="left: 1263px;"><i class="fa fa-chevron-up"></i></div>
 	
@@ -164,25 +183,41 @@
   <script type="text/javascript">
   var flag = true;
     	function register(){
+    		if($("#name").val() == null || ""==$("#name").val()){
+    			alert("请输入用户名");
+    			return;
+    		}
+    		if($("#pwd").val() == null || ""==$("#pwd").val()){
+    			alert("请输入密码");
+    			return;
+    		}
+    		if($("#email").val() == null || ""==$("#email").val()){
+    			alert("请输入邮箱");
+    			return;
+    		}
+    		if($("input[name='usecookie']:checked").val() == null || ""==$("input[name='usecookie']:checked").val()){
+    			alert("请选择性别");
+    			return;
+    		}
+    		
     		$("#button").attr("disabled","true");
     		var data = {
-    			name:$("#name").val(),
-    			pwd:$("#pwd").val(),
+    			username:$("#name").val(),
+    			password:$("#pwd").val(),
     			email:$("#email").val(),
     			sex:$("input[name='usecookie']:checked").val()
     		};
     		$.post(
-    			"/noveluser/register.u",
+    			"register.l",
     			data,
     			function(data){
-    				console.info(data);
-    				if(data.result != -1){
-    						alert(data.msg);
-    						window.location.href = "/noveluser/login.html"
-    					
+    				alert(data.msg);
+    				if(data.code != -1){
+    					window.location.href = "login.html"
     				}else{
-    					alert(data.msg);
     					$("#button").removeAttr("disabled");
+    					$("#pwd").val("");
+    					$("#repwd").val("")
     				}
 
     			});

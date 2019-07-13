@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>嘿 ! 污 </title>
+    <title>笔趣阁</title>
 
-    <meta name="keywords" content="嘿 ! 污 ,笔趣看">
+    <meta name="keywords" content="笔趣阁,笔趣看">
 
     <meta name="description" content="">
 
@@ -15,42 +15,16 @@
     <meta name="applicable-device" content="pc,mobile">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta name="apple-mobile-web-app-title" content="嘿 ! 污 ">
-
+    <meta name="apple-mobile-web-app-title" content="笔趣阁">
+    
+	<script type="text/javascript" src="/js/HZRecorder.js"></script>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/site.css" rel="stylesheet">
     <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">
     <script src="/js/login.js"></script>
-    <!--[if lt IE 9]><script src="/novel/js/respond.min.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/respond.min.js"></script><![endif]-->
     <script src="/js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript">
-	function login(){
-		var name = $('#name').val()
-		var pwd = $('#pwd').val()
-			var data = {
-				name:name,
-				pwd:pwd
-			};
-			if(name == ""){
-				alert("请先输入用户名")
-			}
-			else if(pwd == ""){
-				alert("请先输入密码")
-			}else{
-			 $.post(
-				"/noveluser/login.u",
-				data,
-                function(data){
-                	 if(data != -1){
-                		window.location.href="/index.html?"+data;
-                	}else{
-                		alert(data);
-                	} 
-                });
-			}
-		}
-	</script>
 </head>
 <body>
 <div class="navbar navbar-inverse" id="header">
@@ -61,15 +35,20 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/" class="navbar-brand logo" title="嘿 ! 污 ">嘿 ! 污 </a>
+            <a href="/" class="navbar-brand logo" title="笔趣阁">笔趣阁</a>
         </div>
 
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
             <ul class="nav navbar-nav">
-
+                <li><a href="/type.html?page=1&type=玄幻" title="玄幻魔法">玄幻魔法</a></li>
+                <li><a href="/type.html?page=1&type=武侠" title="武侠修真">武侠修真</a></li>
+                <li><a href="/type.html?page=1&type=都市" title="都市言情">都市言情</a></li>
+                <li><a href="/type.html?page=1&type=穿越" title="历史军事">历史军事</a></li>
+                <li><a href="/type.html?page=1&type=科幻" title="侦探推理">侦探推理</a></li>
+                <li><a href="/type.html?page=1&type=网游" title="网游动漫">网游动漫</a></li>
+                <li><a href="#" title="完本小说">完本小说</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login.html">登录</a></li><li><a href="/register.html">免费注册</a></li>
 
             </ul>
         </nav>
@@ -80,19 +59,20 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading"><i class="fa fa-user fa-fw"></i>用户登录
+                
                     <a href="/register.html" class="pull-right">新用户注册</a></div>
                 <div class="panel-body">
                         <div class="form-group mt10">
                             <label class="col-sm-2 control-label">用户名</label>
                             <div class="col-sm-10">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="请输入用户名">
+                                <input type="text" name="username" class="form-control" id="name" placeholder="请输入用户名">
                             </div>
                         </div>
                         <div class="form-group mt20">
                             <label class="col-sm-2 control-label">密码</label>
                             <div class="col-sm-10">
 
-                                <input type="password" name="pwd" class="form-control" id="pwd" placeholder="请输入密码">
+                                <input type="password" name="password" class="form-control" id="pwd" placeholder="请输入密码">
                             </div>
                         </div>
 
@@ -100,7 +80,7 @@
                             <div class="col-sm-offset-2 col-sm-10">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="usecookie" checked="" value="315360000"> 记住登录状态
+                                        <input type="checkbox" id="checkbox" name="usecookie" checked="checked" > 记住账号
                                     </label>
                                 </div>
                             </div>
@@ -118,7 +98,7 @@
     <footer>
         <p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请
             <a href="https://www.biqukan.cc/newmessage.php?tosys=1" style="text-decoration: underline;">联系我们</a>，我们会尽快处理。</p>
-        <p>Copyright &#169; 2019 <a href="/">嘿 ! 污</a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
+        <p>Copyright &#169; 2019 <a href="/">笔趣阁</a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
     </footer>
     <div class="back-to-top" id="back-to-top" title="返回顶部" style="left: 1263px;">
         <i class="fa fa-chevron-up">
@@ -127,5 +107,26 @@
     </div>
 
 </div>
+<script type="text/javascript">
+//获取cookie
+$(function(){
+	$.ajax({
+		url:'getcookie.l',
+		type:'post',
+		data:'',
+		success: function(data){
+			if(data.username != null || data.username != ''){
+				
+				
+				$('#name').val(data.username);
+				
+				$('#pwd').val(data.password);
+				
+			}
+		}
+	})
+})
+</script>
+
 
 </body></html>
