@@ -46,6 +46,7 @@ result+="<li><a href='/type.html?page=1&type=其他类型"+url+"' title='其他�
 result+="</ul>"
 result+="</li>"
 result+="<li><a href='/type.html?page=1&state=complete"+url+"' title='完本小说'>完本小说</a></li>"
+$('#titleLi').append(result)
 var novelChapterName =''
 function bookMark(nid,cid) {
 
@@ -79,7 +80,7 @@ function bookMark(nid,cid) {
 }
 
 $(function(){
-    $('#titleLi').append(result)
+
     /*
     url: 请求服务器地址
     data:请求参数
