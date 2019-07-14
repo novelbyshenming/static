@@ -176,7 +176,6 @@ $(function(){
             }
 
             var result =''
-            data = eval(data)
             result+="<p class='text-center booktag'>"
             result+="<a class='blue' href='/introduction.html?nid="+nid+url+"'><i class='fa fa-list fa-fw'></i>"+data.introductionNovel.novelName+"</a>"
             result+="<a class='blue' href='/search.html?page=1&key="+data.introductionNovel.author+url+"' target='_blank' title='"+data.introductionNovel.author+"'>作者："+data.introductionNovel.author+"</a>"
