@@ -164,6 +164,7 @@
 							head+='<th width="30%">文章名称</th>'	
 							head+='<th width="30%">书签</th>'	
 							head+='<th width="25%"  align="center" class="hidden-xs">操作时间</th>'
+							head+='<th width="7%">操作</th>'
 
 							last += " <tr><td colspan=\"6\">选中项目<select name=\"newclassid\" id=\"newclassid\" class=\"select\">"
 							last += " <option value=\"-1\" selected=\"selected\">移出书架</option>"
@@ -178,7 +179,7 @@
 														+ "</a></td>"
 												result += "<td class=\"hidden-xs\" >"
 														+ ele.cTimes + " </td>"
-												result += "</tr>"
+												result += "<td class=\"text-danger\" align=\"center\"><a class=\"text-danger\"><a class=\"text-danger\" ><i class=\"fa fa-times-circle fa-fw\"></i></a></td></tr>"
 												i++
 											})
 							num += "<div class=\"panel-heading\"><i class=\"fa fa-book fa-fw\"></i>我的书架 <small>您的书架可收藏 20 本，已收藏 "
