@@ -29,7 +29,7 @@ function login() {
 			} else if (data.code == -1) {
 				alert(data.msg);
 			} else {
-				window.location.href = "index.html?uid="
+				window.location.href = "http://localhost:90/index.html?uid="
 						+ data.code;
 			}
 
