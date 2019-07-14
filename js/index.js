@@ -14,8 +14,8 @@ if (localUrl==null ||localUrl==''){
     url = localUrl.substring(1)
 
     url = '&'+url
-    aUrl1 = "<a href='/userbooks.html?'"+url.substring(1)+" >我的书架</a>"
-    aUrl2 = "<a href='/userinfo.html?'"+url.substring(1)+" >个人中心</a>"
+    aUrl1 = "<a href='/userbooks.html?"+url.substring(1)+"' >我的书架</a>"
+    aUrl2 = "<a href='/userinfo.html?"+url.substring(1)+"' >个人中心</a>"
 }
 
 
