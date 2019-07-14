@@ -99,7 +99,7 @@ $(function(){
                  * @type {string}
                  */
                 var result = ''
-                result+="<li><a href='/userBooks.html?"+url.substring(1)+"' title='我的书架'><i class='fa fa-book fa-fw'></i>我的书架</a></li>"
+                result+="<li><a href='/userbooks.html?"+url.substring(1)+"' title='我的书架'><i class='fa fa-book fa-fw'></i>我的书架</a></li>"
                 result+="<li class='dropdown'><a class='dropdown-toggle'"
                 result+="data-toggle='dropdown'><i class='fa fa-user fa-fw'></i>"+data.username+"<span"
                 result+="class='caret'></span></a>"

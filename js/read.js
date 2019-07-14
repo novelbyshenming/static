@@ -93,7 +93,7 @@ $(function(){
 
     if(uid !=''){
         $.ajax({
-            url : "http://localhost:100/userInfo.u?uid="+uid,
+            url : "userInfo.u?uid="+uid,
             type : 'GET',
             success : function(data) {
                 alert(data)
