@@ -374,7 +374,7 @@ function changeuserinfo(){
 		function exitLogin(){
 			var uid=window.location.search.substring(5,6);
 			
-			$ajax({
+			$.ajax({
 				url:"exitlogin.u",
 				type:"post",
 				data:uid,
