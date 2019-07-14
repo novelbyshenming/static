@@ -172,10 +172,10 @@
 							last+="<input name=\"btnsubmit\" type=\"submit\" value=\" 确认 \" class=\"btn btn-sm btn-primary\">"
 							$(data).each( function(index, ele) {
 												result += "<tr><td class=\"hidden-xs\"><input type=\"checkbox\" id=\"checkid["+index+"]\" name=\"checkid[]\" value="+ ele.coid +"></td>"
-												result += "<td class=\"even\"><a href=\"http://localhost/novel/introduction.html?nid=" + ele.nid +url+ "\" target=\"_blank\">"
+												result += "<td class=\"even\"><a href=\"/introduction.html?nid=" + ele.nid +url+ "\" target=\"_blank\">"
 														+ ele.searchHistoryNovel.novelName
 														+ "</a> <span class=\"text-red fs-12\">New</span></td>"
-												result += "<td class=\"even\"><a href=\"http://localhost/novel/read.html?nid=" + ele.nid + "&cid=" + ele.cid + url + "\" target=\"_blank\">"
+												result += "<td class=\"even\"><a href=\"/read.html?nid=" + ele.nid + "&cid=" + ele.cid + url + "\" target=\"_blank\">"
 														+ ele.chapterName
 														+ "</a></td>"
 												result += "<td class=\"hidden-xs\" >"
