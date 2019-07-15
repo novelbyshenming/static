@@ -150,7 +150,7 @@ $(function () {
             var docs = jsonObject.response.docs
             $(docs).each(function (index, ele) {
                 result += "<tr><td class=\"text-muted hidden-xs\" width=\"10%\">" + ele.novel_type + "</td>"
-                result += "<td><a  href=\"/induction.html?nid="+ele.id+url+"\" title=\"" + ele.novel_name + "\">" + ele.novel_name + "</a></td>"
+                result += "<td><a  href=\"/introduction.html?nid="+ele.id+url+"\" title=\"" + ele.novel_name + "\">" + ele.novel_name + "</a></td>"
                 result += "<td class=\"hidden-xs\">"
                 result += "<a href=\"/read.html?nid=" + ele.id + "&cid=" + ele.novel_latestChaptersUrl + url + "\"title=\"" + ele.novel_latestChapters + "\">" + ele.novel_latestChapters + "</a></td>"
                 result += "<td class=\"text-muted fs-12\" title=\"" + ele.novel_author + "\">" + ele.novel_author + "</td>"
