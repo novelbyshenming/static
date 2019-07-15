@@ -178,7 +178,7 @@ function getReadList(num) {
 
                 $('#showList').append('<li class="list-group-item">\n' +
                     '<i class="topNum">' + i++ + '</i>\n' +
-                    '<a href="" class="novelMemory"\n' +
+                    '<a href="/introduction.html?nid='+data[j].nid+url+'" class="novelMemory"\n' +
                     '>' + data[j].novelName + '</a>\n' +
                     '<small class="text-muted">/' + data[j].author + '</small>\n' +
                     '<span class="pull-right text-muted">' + data[j].number + '</span>\n' +
@@ -204,7 +204,7 @@ function getConlectionList(num) {
             for (var key in data) {
                 $('#showList').append('<li class="list-group-item">\n' +
                     '<i class="topNum">' + i++ + '</i>\n' +
-                    '<a href=\"/introduction.html?nid="+key.nid+"\" class="novelMemory"\n' +
+                    '<a href="/introduction.html?nid='+data[key].nid+url+'" class="novelMemory"\n' +
                     '>' + data[key].novelName + '</a>\n' +
                     '<small class="text-muted">/' + data[key].author + '</small>\n' +
                     '<span class="pull-right text-muted">' + data[key].number + '</span>\n' +
@@ -230,7 +230,7 @@ function getRecommendList( num ) {
             for (var key in data) {
                 $('#showList').append('<li class="list-group-item">\n' +
                     '<i class="topNum">' + i++ + '</i>\n' +
-                    '<a href=\"/introduction.html?nid="+key.nid+"\" class="novelMemory"\n' +
+                    '<a href="/introduction.html?nid='+data[key].nid+url+'" class="novelMemory"\n' +
                     '>' + data[key].novelName + '</a>\n' +
                     '<small class="text-muted">/' + data[key].author + '</small>\n' +
                     '<span class="pull-right text-muted">' + data[key].number + '</span>\n' +
