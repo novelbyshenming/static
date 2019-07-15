@@ -150,7 +150,7 @@ $(function () {
             var docs = jsonObject.response.docs
             $(docs).each(function (index, ele) {
                 result += "<tr><td class=\"text-muted hidden-xs\" width=\"10%\">" + ele.novel_type + "</td>"
-                result += "<td><a onclick=\"novelMemorys(" + ele.id + ")\" href=\"javascript:void(0)\" title=\"" + ele.novel_name + "\">" + ele.novel_name + "</a></td>"
+                result += "<td><a  href=\"/induction.html?nid="+ele.id+url+"\" title=\"" + ele.novel_name + "\">" + ele.novel_name + "</a></td>"
                 result += "<td class=\"hidden-xs\">"
                 result += "<a href=\"/read.html?nid=" + ele.id + "&cid=" + ele.novel_latestChaptersUrl + url + "\"title=\"" + ele.novel_latestChapters + "\">" + ele.novel_latestChapters + "</a></td>"
                 result += "<td class=\"text-muted fs-12\" title=\"" + ele.novel_author + "\">" + ele.novel_author + "</td>"
@@ -175,9 +175,10 @@ function getReadList(num) {
         success: function (data) {
             var i = 1;
             for (var j in data) {
+
                 $('#showList').append('<li class="list-group-item">\n' +
                     '<i class="topNum">' + i++ + '</i>\n' +
-                    '<a href=\"/introduction.html?nid="+j.nid+"\" class="novelMemory"\n' +
+                    '<a href="" class="novelMemory"\n' +
                     '>' + data[j].novelName + '</a>\n' +
                     '<small class="text-muted">/' + data[j].author + '</small>\n' +
                     '<span class="pull-right text-muted">' + data[j].number + '</span>\n' +
