@@ -136,11 +136,12 @@
 		var uid = ""
 		var t = tLocalUrl.split("=")
 		var i = 0
-		uid = t[1]
+		uid = t[0]
 		if (uid == undefined) {
 			alert("请先登录!");
 			window.location.href = "/login.html"
 		} else {
+
 					$.ajax({
 						url : '/userCollectList.u',
 						data : {
