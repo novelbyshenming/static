@@ -210,9 +210,13 @@ $(function(){
 
 function vote(nid) {
 
+    if(url ==''){
+        alert("此功能暂时只为用户开发,请先登录")
+        return
+    }
     $.ajax({
 
-        url : "vote.u?nid="+nid,
+        url : "vote.u?nid="+nid+"&uid="+uid,
         type : 'GET',
         success : function(data) {
 
@@ -220,7 +224,7 @@ function vote(nid) {
                 alert("投票成功")
                 return
             }
-            
+
         }
     });
 }
