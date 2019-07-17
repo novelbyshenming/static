@@ -47,7 +47,6 @@ function bookMark(nid,cid) {
         },
         success:function(data){
 
-            alert(data)
             if(data =='1'){
 
                 alert("操作成功")
@@ -57,7 +56,6 @@ function bookMark(nid,cid) {
         },
         type:'POST'
     });
-
 
 }
 
@@ -96,7 +94,6 @@ $(function(){
             url : "userInfo.u?uid="+uid,
             type : 'GET',
             success : function(data) {
-                alert(data)
                 if(data =='-1' ){
                     alert("该用户还没登录,或者用户信息过期,请重新登陆")
                     window.location.href = "/login.html"
