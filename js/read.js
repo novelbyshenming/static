@@ -167,7 +167,7 @@ $(function(){
 
             if(data=="-1"){
                 alert("用户信息异常,请重新登陆")
-                window.location.href="http://127.0.0.1:80/login.html"
+                window.location.href="/login.html"
                 return ;
             }else if(data ==""||data==null){
                 alert("服务器繁忙,请稍候再试")
@@ -179,9 +179,9 @@ $(function(){
             result+="<p class='text-center booktag'>"
             result+="<a class='blue' href='/introduction.html?nid="+nid+url+"'><i class='fa fa-list fa-fw'></i>"+data.introductionNovel.novelName+"</a>"
             result+="<a class='blue' href='/search.html?page=1&key="+data.introductionNovel.author+url+"' target='_blank' title='"+data.introductionNovel.author+"'>作者："+data.introductionNovel.author+"</a>"
-            result+="<a class='blue' rel='nofollow'><i class='fa fa-thumbs-up fa-fw'></i>投票推荐</a>"
+            result+="<a class='blue' onclick='vote("+nid+")' rel='nofollow'><i class='fa fa-thumbs-up fa-fw'></i>投票推荐</a>"
             result+="<a class='red' id='' onclick='bookMark("+nid+","+cid+")' rel='nofollow'><i class='fa fa-bookmark fa-fw'></i>加入书签</a>"
-            result+="<a href='#' class='red errorlink' target='_blank'>"
+            result+="<a href='/sendmessage.html?"+url+"' class='red errorlink' target='_blank'>"
             result+="<i class='fa fa-comments fa-fw'></i>留言反馈</a></p>"
 
             $('#novelChapterTitle').append(result)
@@ -220,4 +220,25 @@ function indexUrl() {
         window.location.href = '/index.html?'+url.substring(1)
     }
 
+}
+
+function vote(nid) {
+
+    if(url ==''){
+        alert("此功能暂时只为用户开发,请先登录")
+        return
+    }
+    $.ajax({
+
+        url : "vote.u?nid="+nid+"&uid="+uid,
+        type : 'GET',
+        success : function(data) {
+
+            if(data==1){
+                alert("投票成功")
+                return
+            }
+
+        }
+    });
 }
