@@ -5,7 +5,7 @@ var url = ''
 
 var aUrl1 = "<a href='/login.html' >登录</a>"
 
-var aUrl2 = "<a href='/register.html' >登录</a>"
+var aUrl2 = "<a href='/register.html' >注册</a>"
 
 if (localUrl == null || localUrl == '') {
 
