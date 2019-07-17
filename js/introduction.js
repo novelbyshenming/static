@@ -209,7 +209,20 @@ $(function(){
 });
 
 function vote(nid) {
-    alert(nid)
+
+    $.ajax({
+
+        url : "vote.u?nid="+nid,
+        type : 'GET',
+        success : function(data) {
+
+            if(data==1){
+                alert("投票成功")
+                return
+            }
+            
+        }
+    });
 }
 
 function userCollect() {
