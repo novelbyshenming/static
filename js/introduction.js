@@ -75,8 +75,6 @@ $(function(){
 
     $('#titleLi').append(result)
 
-    // var params1 = urlParams[1].split('=')
-
     if(uid !=''){
         $.ajax({
             url : "userInfo.u?uid="+uid,
@@ -154,7 +152,7 @@ $(function(){
             result+="<button onclick='userCollect()' class='btn btn-sm btn-success' type='button'>"
             result+="<i class='fa fa-plus fa-fw'></i>加入书架"
             result+="</button>"
-            result+="<a class='errorlink btn btn-sm btn-warning' href='#' target='_blank' rel='nofollow'>"
+            result+="<a class='errorlink btn btn-sm btn-warning' href='/sendmessage.html?"+url.substring(1)+"' target='_blank' rel='nofollow'>"
             result+="<i class='fa fa-comments fa-fw'></i>留言反馈</a></span>"
             result+="<div class='clear'></div></div><hr>"
             result+="<p class='text-muted' id='bookIntro' style=''>"
@@ -218,12 +216,26 @@ function userCollect() {
         collectUrl = t.substring(0,tUrl.lastIndexOf('&'))
     }
 
+    if(url==''){
+        alert("你还未登陆")
+        return
+    }
+
     $.ajax({
 
         url : "userCollectNovel.u"+collectUrl,
         type : 'GET',
         success : function(data) {
-            alert(data)
+
+            if( data =='0' || data==0 ){
+
+                alert("参数异常,请稍后再试")
+                return
+            }else if( data=='-1' || data==-1 ){
+                alert("你已经收藏此书籍了")
+                return
+            }
+            alert("收藏成功! 已经添加到你的书架了 ")
         }
     });
 
