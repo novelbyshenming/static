@@ -15,14 +15,14 @@
    <!--<%&#45;&#45; <meta name="keywords" content="第二百九十四章 樱落红,斗罗大陆4终极斗罗,笔趣阁">
     <meta name="description" content="笔趣阁提供斗罗大陆4终极斗罗最新章节《第二百九十四章 樱落红》免费在线阅读，页面清爽无弹窗，笔趣阁还提供斗罗大陆4终极斗罗全本txt下载。">&#45;&#45;%>-->
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/site.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet">
     <!--<%&#45;&#45;<link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/images/apple-touch-icon-precomposed.png">
     <meta name="apple-mobile-web-app-title" content="斗罗大陆4终极斗罗">&#45;&#45;%>-->
 
     <!-- <script src="/js/jquery-1.7.2.min.js"></script> -->
-    <script src="/js/jquery-1.7.2.min.js"></script>
+    <script src="js/jquery-1.7.2.min.js"></script>
  
     <script src="js/read.js"></script>
     <!--[if lt IE 9]><script src="/js/respond.min.js"></script><![endif]-->
@@ -63,7 +63,6 @@
 
 
         <span class="pull-right"><select name="bcolor" id="bcolor">
-            <option style="background-color: #E9FAFF" value="#E9FAFF">底色</option>
             <option style="background-color: #E9FAFF" value="#E9FAFF">默认</option>
             <option style="background-color: #ffffff" value="#ffffff">白色</option>
             <option style="background-color: #e3e8f7" value="#e3e8f7">淡蓝</option>
@@ -88,26 +87,15 @@
                 <option value="16px">中号</option>
                 <option value="18px">较大</option>
                 <option value="24px">大号</option>
-            </select> <select name="scrollspeed" id="scrollspeed">
-                <option value="5">滚屏</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select></span>
+            </select> 
+        </span>
     </ol>
     <div class="panel panel-default panel-readcontent" id="content" style="background-color: rgb(233, 250, 255);">
         <div class="page-header text-center" id="novelChapterTitle">
                <h1 class='readTitle' id="novelChapterName"></h1>
         </div>
 
-        <div class="panel-body" id="htmlContent" style="font-size: 24px;" a>
+        <div class="panel-body" id="htmlContent" style="font-size: 24px;">
             <!--小说内容-->
         </div>
 
@@ -145,5 +133,20 @@
 <iframe id="google_esf" name="google_esf" src="cid:frame-97E4F7A8FC7E22DF0862AC6131640597@mhtml.blink" data-ad-client="ca-pub-4699940173522722" style="display: none;">
 
 </iframe>
+
+<script type="text/javascript">
+	//设置背景颜色
+	$("#bcolor").on('change',function(){
+		$("#htmlContent").css('background-color',$(this).val());
+	})
+	//设置字体大小
+	$("#fonttype").on('change',function(){
+		$("#htmlContent").css('font-size',$(this).val());
+	})
+	//设置字体颜色
+	$("#txtcolor").on('change',function(){
+		$("#htmlContent").css('font-color',$(this).val());
+	})
+</script>
 
 </html>
