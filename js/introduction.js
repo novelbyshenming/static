@@ -124,7 +124,7 @@ $(function(){
 
             $('#novelNewChapter').append("<strong>《"+data.introductionNovel.novelName+"》最新章节</strong>")
             var result =''
-            result+="<li><a href='/' title='嘿 ! 污'><i class='fa fa-home fa-fw'></i>首页</a></li>"
+            result+="<li><a href='/index.html' title='嘿 ! 污'><i class='fa fa-home fa-fw'></i>首页</a></li>"
             result+="<li><a href='/type.html?page=1&type="+data.introductionNovel.type+url+"' target='_blank' title='"+data.introductionNovel.type+"'>"+data.introductionNovel.type+"</a></li>"
             result+="<li class='active'>"+data.introductionNovel.novelName+"</li>"
             $('#introductionHead').append(result)
@@ -146,7 +146,7 @@ $(function(){
             result+="</p>"
             result+="<div class='row'>"
             result+="<span class='col-md-8'>"
-            result+="<button class='btn btn-sm btn-info' type='button'>"
+            result+="<button class='btn btn-sm btn-info' onclick='vote("+data.introductionNovel.nid+")' type='button'>"
             result+="<i class='fa fa-thumbs-up fa-fw'></i>投票推荐"
             result+="</button>"
             result+="<button onclick='userCollect()' class='btn btn-sm btn-success' type='button'>"
@@ -207,6 +207,10 @@ $(function(){
     });
 
 });
+
+function vote(nid) {
+    alert(nid)
+}
 
 function userCollect() {
 
