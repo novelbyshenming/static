@@ -47,7 +47,7 @@
 	var url = '';
 	var rowurl = localUrl.substring(1);
 
-	var uid = localUrl.substring(5,6);
+	var uid = localUrl.substring(5,7);
 	var notUrl =''
 
 	if (localUrl == null || localUrl == '') {
@@ -60,7 +60,6 @@
 if(notUrl.indexOf("code")>=0){
 	    notUrl=notUrl.substring(0,notUrl.indexOf(code)-1)
 }
-alert(notUrl)
 function send() {
 
     	    if(url==''){
