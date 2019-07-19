@@ -27,7 +27,7 @@
 
 <script src="js/jquery-1.7.2.min.js"></script>
 
-    <!--[if lt IE 9]><script src="/noveluser/js/respond.min.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="/js/respond.min.js"></script><![endif]-->
 <script type="text/javascript">
 
 var uid=window.location.search.substring(5,6);
@@ -103,7 +103,9 @@ function send() {
         var html='';
         html+='<a class="list-group-item" href="userinfo.html?'+notUrl+'"><i class="fa fa-user fa-fw"></i>会员信息</a>';
         html+=' <a class="list-group-item" href="userbooks.html?'+notUrl+'"><i class="fa fa-book fa-fw"></i>我的书架</a>';
+        html+=' <a class="list-group-item" href="useredit.html?'+notUrl+'"><i class="fa fa-edit fa-fw"></i>修改资料</a>';
         html+='<a class="list-group-item" href="passedit.html?'+notUrl+'"><i class="fa fa-key fa-fw"></i>修改密码</a>';
+        html+=' <a class="list-group-item" href="userboxes.html?'+notUrl+'"><i class="fa fa-envelope fa-fw"></i>收件箱</a>';
         html+=' <a class="list-group-item" href="sendmessage.html?'+notUrl+'"><i class="fa fa-envelope fa-fw"></i>发信息给管理员</a>';
         html+=' <a class="list-group-item" href="chongzhi.html?'+notUrl+'"><i class="fa fa-book fa-fw"></i>充值中心</a>';
         html+='<a class="list-group-item" href="#" onclick="exitLogin()"><i class="fa fa-power-off fa-fw"></i>退出登录</a>';
@@ -193,7 +195,7 @@ function send() {
         </div>
         <div class="col-md-9">
             <!--<form name="useredit" class="form-horizontal" id="useredit" action="https://www.biqukan.cc/useredit.php?do=submit" method="post">-->
-            <form name="useredit" class="form-horizontal" action="saveUserEdit.u" method="post" id="useredit" >
+            <form name="useredit" class="form-horizontal" target="nm_iframe" action="saveUserEdit.u" method="post" id="useredit" >
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-edit fa-fw"></i>修改个人资料</div>
                     <div class="panel-body">
@@ -233,6 +235,7 @@ function send() {
                                 <button id="saveUserEdit" class="btn btn-primary btn-block"><i class="fa fa-hdd-o fa-fw"></i> 保 存</button>
                             </div>
                         </div>
+                        <iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>
                     </div>
                 </div>
             </form>
