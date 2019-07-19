@@ -66,6 +66,7 @@ $(function (){
     result+="<li><a href='/type.html?page=1&state=complete"+url+"' title='完本小说'>完本小说</a></li>"
     $('#titleLi').append(result)
 
+    alert(uid)
     if(uid !=''){
         $.ajax({
             url : "/userInfo.u?uid="+uid,
@@ -87,7 +88,7 @@ $(function (){
                  * @type {string}
                  */
                 var result = ''
-                result+="<li><a href='/userBooks.html?"+url.substring(1)+"' title='我的书架'><i class='fa fa-book fa-fw'></i>我的书架</a></li>"
+                result+="<li><a href='/userbooks.html?"+url.substring(1)+"' title='我的书架'><i class='fa fa-book fa-fw'></i>我的书架</a></li>"
                 result+="<li class='dropdown'><a class='dropdown-toggle'"
                 result+="data-toggle='dropdown'><i class='fa fa-user fa-fw'></i>"+data.username+"<span"
                 result+="class='caret'></span></a>"
