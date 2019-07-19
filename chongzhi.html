@@ -141,6 +141,10 @@ function changetype(){
 	}
 }
 
+if(notUrl.indexOf("code")>=0){
+	    notUrl=notUrl.substring(0,notUrl.indexOf(code))
+}
+
 $.ajax({
 	url : "/userInfo.u?"+notUrl,
 	type : 'GET',
