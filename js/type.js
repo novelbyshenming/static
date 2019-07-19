@@ -66,7 +66,6 @@ $(function (){
     result+="<li><a href='/type.html?page=1&state=complete"+url+"' title='完本小说'>完本小说</a></li>"
     $('#titleLi').append(result)
 
-    alert(uid)
     if(uid !=''){
         $.ajax({
             url : "/userInfo.u?uid="+uid,
